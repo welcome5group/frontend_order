@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { toastError } from '../toast';
 import styled from './FindPassword.module.scss'
 import logo from '../../assets/logo.svg'
+import BackArrow from '../common/BackArrow';
 
 const FindPassword = () => {
   const [inputValue, setInputValue] = useState({
@@ -25,6 +26,7 @@ const FindPassword = () => {
 
   return (
     <div>
+      <BackArrow link={"/login"} />
       <div className={styled.findPasswordContainer}>
         <img src={logo} alt="로고" className={styled.img} />
         <div className={styled.findPasswordInputWrap}>
