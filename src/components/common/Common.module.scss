@@ -10,4 +10,52 @@
     fill: #bdbdbd;
   }
 }
-//
+
+// 슬라이드 바
+.slideBarContainer {
+  // position: fixed;
+  // left:-100%;
+  // right:0;
+  // bottom: 0;
+  // width: 7rem;
+  // height: 100vh;
+  // z-index: 1;
+  // background-color: white;
+  // box-shadow: rgba(129, 129, 136, 0.5) 0px 10px 10px 0px;
+  // -webkit-transition: left .3s;
+  // -moz-transition: left .3s;
+  // -ms-transition: left .3s;
+  // -o-transition: left .3s;
+  // transition: left .3s;
+  position: absolute;
+  left:-100%;
+  right:0;
+  width: 7rem;
+  height: calc(100% - 4.5rem);
+  box-shadow: rgba(129, 129, 136, 0.5) 0px 10px 10px 0px;
+  z-index: 1;
+  background-color: rgb(245, 245, 245);
+  -webkit-transition: left .3s;
+  -moz-transition: left .3s;
+  -ms-transition: left .3s;
+  -o-transition: left .3s;
+  transition: left .3s;
+}
+
+.on {
+  left: 0;
+}
+
+.slideBarMenuWrap {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  padding: 0 0.5rem;
+  
+  li {
+    padding: 1rem 0 1rem 0.3rem;
+    border-bottom: 1px solid #e2e2e2;
+    font-weight: 600;
+    color: #868686;
+  }
+}
