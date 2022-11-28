@@ -3,9 +3,9 @@ import styled from './Main.module.scss'
 
 const Main = () => {
   return (
-    <div className={styled.mainContainer}>
+    <main className={styled.mainContainer}>
 
-    </div>
+    </main>
   );
 };
 

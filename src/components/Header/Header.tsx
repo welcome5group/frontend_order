@@ -9,18 +9,20 @@ const Header = () => {
 
   return (
     <>
-      <div className={styled.headerContainer}>
+      <header className={styled.headerContainer}>
         <h1 className={styled.title}>
           Finger Order
         </h1>
         {loginCheck ?
-          <div>로그인</div>
-          :
-          <Link to='/login'>
+          <Link to='/mypage'>
             <AiOutlineUser />
           </Link>
+          :
+          <Link to='/login'>
+            <p>로그인</p>
+          </Link>
         }
-      </div>
+      </header>
     </>
   );
 };

@@ -6,10 +6,11 @@
   justify-content: space-between;
   top: 0;
   width: 100%;
-  height: 3rem;
+  height: 4rem;
   padding: 0 1.5rem;
-
-  box-shadow: rgba(152, 152, 160, 0.25) 0px 7px 50px 0px;
+  background: white;
+  z-index: 999;
+  box-shadow: rgba(191, 191, 197, 0.25) 0px 7px 50px 0px;
 
   .title {
     font-family: 'Nerko One', cursive;
@@ -23,5 +24,9 @@
     border-radius: 100%;
     padding: 0.1rem;
     margin-top: 0.2rem;
+  }
+  
+  p {
+    font-size: 14px;
   }
 }

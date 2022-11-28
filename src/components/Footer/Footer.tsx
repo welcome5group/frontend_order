@@ -1,25 +1,34 @@
 import React from 'react';
 import styled from './Footer.module.scss'
 import { BsHouseDoor } from 'react-icons/bs';
-import { AiOutlineFileText, AiOutlineBell } from 'react-icons/ai';
+import { AiOutlineFileText, AiOutlineBell, AiOutlineShoppingCart } from 'react-icons/ai';
 
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logo.svg'
+import { useRecoilValue } from 'recoil';
+import { cartCount } from '../../store/testStore';
 
 const Footer = () => {
+
+  const totalCartCount = useRecoilValue(cartCount)
+
   return (
     <>
-      <div className={styled.footerContainer}>
+      <footer className={styled.footerContainer}>
         <Link to='/'>
           <BsHouseDoor />
         </Link>
-        <Link to='/'>
+        <Link to='/menu'>
           <AiOutlineBell />
+        </Link>
+        <Link to='/menu'>
+          <AiOutlineShoppingCart />
+          <div className={styled.totalCart}>{totalCartCount}</div>
         </Link>
         <Link to='/'>
           <AiOutlineFileText />
         </Link>
-      </div>
+      </footer>
     </>
   );
 };
