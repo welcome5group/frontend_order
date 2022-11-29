@@ -4,7 +4,6 @@ import styled from './Menu.module.scss'
 import { useRecoilState } from 'recoil';
 import { menuTypes, selectItem, testStore, testType } from '../../store/testStore';
 import MenuCategory from './MenuCategory';
-import MenuDetail from './MenuDetail';
 
 
 
@@ -58,9 +57,6 @@ const MenuList = () => {
           <MenuCategory category={category} key={category} data={data} handleOrderClick={handleOrderClick} />
         ))}
       </div>
-      {/* {selectData !== undefined &&
-        <MenuDetail selectData={selectData} />
-      } */}
     </>
   );
 };
