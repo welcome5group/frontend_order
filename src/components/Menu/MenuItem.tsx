@@ -23,7 +23,7 @@ const MenuItem = ({ item, handleOrderClick }: types) => {
         <div className={styled.iteminfoWrap}>
           <span className={styled.itemName}>{item.name}</span>
           <span className={showDetail ? `${styled.itemdesc} ${styled.showDetail}` : styled.itemDesc}>{item.desc}</span>
-          <span className={styled.itemPrice}>{item.price}원</span>
+          <span className={styled.itemPrice}>{item.price.toLocaleString()}원</span>
           {showDetail &&
             <button className={styled.orderBtn} onClick={() => handleOrderClick(item.id)}>주문하기</button>
           }

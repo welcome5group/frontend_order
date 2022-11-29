@@ -9,7 +9,7 @@ export interface menuTypes {
   id: number,
   name: string,
   desc: string,
-  price: string;
+  price: number;
   scope: number;
   count: number;
   category: string;
@@ -18,11 +18,6 @@ export interface menuTypes {
 export const testStore = atom<testType[]>({
   key: "testStore",
   default: []
-})
-
-export const selectItem = atom<menuTypes>({
-  key: "selectItem",
-  default: undefined
 })
 
 export const cartCount = selector({

@@ -3,9 +3,7 @@ import Menu from '../components/Menu/Menu';
 
 const OrderPage = () => {
   return (
-    <div>
-      <Menu />
-    </div>
+    <Menu />
   );
 };
 

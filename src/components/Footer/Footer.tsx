@@ -4,7 +4,6 @@ import { BsHouseDoor } from 'react-icons/bs';
 import { AiOutlineFileText, AiOutlineBell, AiOutlineShoppingCart } from 'react-icons/ai';
 
 import { Link } from 'react-router-dom'
-import logo from '../../assets/logo.svg'
 import { useRecoilValue } from 'recoil';
 import { cartCount } from '../../store/testStore';
 
@@ -21,9 +20,9 @@ const Footer = () => {
         <Link to='/menu'>
           <AiOutlineBell />
         </Link>
-        <Link to='/menu'>
+        <Link to='/cart'>
           <AiOutlineShoppingCart />
-          <div className={styled.totalCart}>{totalCartCount}</div>
+          {totalCartCount !== 0 && <div className={styled.totalCart}>{totalCartCount}</div>}
         </Link>
         <Link to='/'>
           <AiOutlineFileText />

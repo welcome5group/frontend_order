@@ -2,25 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { menu } from '../../mock/menuData';
 import styled from './Menu.module.scss'
 import { useRecoilState } from 'recoil';
-import { menuTypes, selectItem, testStore, testType } from '../../store/testStore';
+import { menuTypes, testStore, testType } from '../../store/testStore';
 import MenuCategory from './MenuCategory';
-
-
 
 const MenuList = () => {
 
   const [cartList, setCartList] = useRecoilState<testType[]>(testStore)
-  const [selectData, setSelectData] = useRecoilState<menuTypes>(selectItem)
   const [category, setCategory] = useState<string[]>([]);
   const [data, setData] = useState<menuTypes[]>(menu)
 
-
   const handleOrderClick = (id: number) => {
     const idList = cartList.map(item => item.id)
-
+    const item = { id: id, count: 1 };
     if (idList.indexOf(id) === -1) {
-      const item = { id: id, count: 1 };
-
       setCartList([...cartList, item]);
     } else {
       setCartList(item => {
@@ -33,11 +27,6 @@ const MenuList = () => {
         })
       })
     }
-  }
-
-  const handleSelectItem = (id: number) => {
-    const item: menuTypes = data[id - 1]
-    setSelectData(item)
   }
 
   useEffect(() => {
