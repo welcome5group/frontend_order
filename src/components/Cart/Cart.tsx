@@ -8,9 +8,9 @@ const Cart = () => {
 
   const [cartList, setCartList] = useRecoilState<testType[]>(testStore)
 
-
-
-  console.log(cartList)
+  const handleClick = () => {
+    console.log(1);
+  }
 
   return (
     <div className={styled.cartContainer}>
@@ -21,10 +21,12 @@ const Cart = () => {
           </h1>
         </div>
         <div className={styled.cartListArea}>
-          <CartList cartList={cartList} setCartList={setCartList} />
+          {cartList.length === 0 ? <div className={styled.noCart}>주문 내역이 없습니다.</div> :
+            <CartList cartList={cartList} setCartList={setCartList} />
+          }
         </div>
         <div>
-          <button>결제하기</button>
+          <button className={cartList.length === 0 ? styled.emptyList : styled.paymentBtn} disabled={cartList.length === 0} onClick={handleClick}>결제하기</button>
         </div>
       </div>
       {/* <MenuList /> */}
