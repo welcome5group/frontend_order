@@ -1,31 +1,32 @@
-@media screen and (max-width:1023px) {
-  /* 타블렛 */
-}
-  
-@media screen and (max-width:767px) {
-  /* 모바일 */
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
 .headerContainer {
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 767;
+  top: 0;
   width: 100%;
-  height: 60px;
-  padding: 10px 20px;
+  height: 4rem;
+  padding: 0 1.5rem;
+  background: white;
+  z-index: 999;
+  box-shadow: rgba(191, 191, 197, 0.25) 0px 7px 50px 0px;
 
-  box-shadow: rgba(152, 152, 160, 0.25) 0px 7px 50px 0px;
-}
+  .title {
+    font-family: 'Nerko One', cursive;
+    font-size: 1.5rem;
+  }
 
-.menu {
-  width: 30px;
-  height: 30px;
-  fill: #929292;
-}
-
-.loginBtn {
-  display: flex;
-  color: #929292;
-  font-size: 18px;
+  svg {
+    width: 1.8rem;
+    height: 1.8rem;
+    border: 1px solid black;
+    border-radius: 100%;
+    padding: 0.1rem;
+    margin-top: 0.2rem;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
 }

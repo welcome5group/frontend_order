@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from './Header.module.scss'
-import { AiOutlineMenu } from 'react-icons/ai';
-import { Link } from 'react-router-dom'
+import { AiOutlineUser } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
+
+  const [loginCheck, setLoginCheck] = useState(false);
+
   return (
-    <div className={styled.headerContainer}>
-      <div>
-        <AiOutlineMenu className={styled.menu} />
-      </div>
-      <div>
-        <p className={styled.loginBtn}><Link to="/login">로그인</Link></p>
-      </div>
-    </div>
+    <>
+      <header className={styled.headerContainer}>
+        <h1 className={styled.title}>
+          Finger Order
+        </h1>
+        {loginCheck ?
+          <Link to='/mypage'>
+            <AiOutlineUser />
+          </Link>
+          :
+          <Link to='/login'>
+            <p>로그인</p>
+          </Link>
+        }
+      </header>
+    </>
   );
 };
 
