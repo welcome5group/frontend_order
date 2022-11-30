@@ -2,6 +2,7 @@ import { atom, selector } from "recoil";
 
 export interface testType {
   id: number,
+  price: number,
   count: number
 }
 

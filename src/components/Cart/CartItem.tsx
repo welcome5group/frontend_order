@@ -12,14 +12,11 @@ interface types {
 
 const CartItem = ({ cartItem, handleIncreaseHanlder, handleDeleteItem }: types) => {
   const item = menu[cartItem.id - 1]
-
-  console.log(item.price)
-
   const totalPrice = (Number(item.price) * Number(cartItem.count));
   return (
     <>
-      <div className={styled.menuItem}>
-        <div className={styled.menuImg}>
+      <div className={styled.cartItem}>
+        <div className={styled.cartImg}>
           <img src={require('../../assets/americano.jpg')} alt="이미지" />
         </div>
         <div className={styled.iteminfoWrap}>
@@ -31,9 +28,9 @@ const CartItem = ({ cartItem, handleIncreaseHanlder, handleDeleteItem }: types) 
             <button className={styled.deleteBtn} onClick={() => handleDeleteItem(item.id)} > X </button>
           </div>
           <div className={styled.countGroup}>
-            <button className={styled.countBtn} onClick={() => handleIncreaseHanlder(item.id, 'minus')} disabled={cartItem.count === 1}><AiOutlineMinus /></button>
+            <button className={cartItem.count === 1 ? `${styled.countBtn} ${styled.disabled}` : styled.countBtn} onClick={() => handleIncreaseHanlder(item.id, 'minus')} disabled={cartItem.count === 1}>-</button>
             <p>{cartItem.count}</p>
-            <button className={styled.countBtn} onClick={() => handleIncreaseHanlder(item.id, 'plus')}><AiOutlinePlus /></button>
+            <button className={styled.countBtn} onClick={() => handleIncreaseHanlder(item.id, 'plus')}>+</button>
           </div>
         </div>
       </div>

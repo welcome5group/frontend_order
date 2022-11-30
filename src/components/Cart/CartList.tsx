@@ -32,7 +32,7 @@ const CartList = ({ cartList, setCartList }: types) => {
   }
 
   return (
-    <div className={styled.menuList}>
+    <div className={styled.cartList}>
       {cartList.map(cartItem => (
         <CartItem cartItem={cartItem} key={cartItem.id} handleIncreaseHanlder={handleIncreaseHanlder} handleDeleteItem={handleDeleteItem} />
       ))}

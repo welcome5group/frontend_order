@@ -13,7 +13,7 @@ const MenuList = () => {
 
   const handleOrderClick = (id: number) => {
     const idList = cartList.map(item => item.id)
-    const item = { id: id, count: 1 };
+    const item = { id: id, price: data[id - 1].price, count: 1 };
     if (idList.indexOf(id) === -1) {
       setCartList([...cartList, item]);
     } else {
