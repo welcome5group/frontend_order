@@ -1,0 +1,58 @@
+.orderContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  padding: 0 1rem;
+}
+
+.orderListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.orderProductContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid black;
+  width: 18rem;
+  height: 100%;
+  padding: 1rem;
+  margin: 1rem;
+
+  .orderNumberArea {
+    display: flex;
+    align-items: center;
+
+    p {
+      display: flex;
+      padding: 0 0.025rem 1rem 0.025rem;
+    }
+  }
+}
+
+.orderProductWrap {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding: 0.1rem 0;
+
+  .orderInfo {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  p {
+    font-size: 0.8rem;
+    margin: 0 0.25rem;
+  }
+}

@@ -1,26 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { testStore, testType } from '../../store/testStore';
+import { cartStore, cartType, orderStore, orderType } from '../../store/store';
 import styled from './Cart.module.scss'
 import CartList from './CartList';
 
 const Cart = () => {
 
-  const [cartList, setCartList] = useRecoilState<testType[]>(testStore)
+  const [cartList, setCartList] = useRecoilState<cartType[]>(cartStore)
   const [totalPrice, setTotalPrice] = useState(0)
+  const [orderList, setOrderList] = useRecoilState<orderType[]>(orderStore)
 
 
   const handleClick = () => {
-    console.log(1);
+    const item = { orderProduct: cartList, totalPrice: totalPrice }
+    setOrderList([...orderList, item])
+    setCartList([])
+    console.log(orderList)
   }
 
   useEffect(() => {
     if (cartList.length !== 0) {
-      let price = cartList.map(item => (item.price * item.count))
+      let price = cartList.map(item => (item.product.price * item.count))
       setTotalPrice(price.reduce((acc, cur) => acc + cur))
     } else {
       setTotalPrice(0)
     }
+
+    console.log(cartList)
   }, [cartList])
 
   return (

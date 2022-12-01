@@ -1,5 +1,5 @@
 import React from 'react';
-import { menuTypes } from '../../store/testStore';
+import { menuTypes } from '../../store/store';
 import MenuItem from './MenuItem';
 import styled from './Menu.module.scss'
 

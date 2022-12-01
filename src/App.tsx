@@ -7,6 +7,7 @@ import SignUpPage from './pages/SignUpPage';
 import FindPasswordPage from './pages/FindPasswordPage';
 import MenuPage from './pages/MenuPage';
 import CartPage from './pages/CartPage';
+import OrderPage from './pages/OrderPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/" element={<MainPage />}>
         <Route path='/menu' element={<MenuPage />} />
         <Route path='/cart' element={<CartPage />} />
+        <Route path='/order' element={<OrderPage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />

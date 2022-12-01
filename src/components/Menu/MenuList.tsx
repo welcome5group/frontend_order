@@ -2,24 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { menu } from '../../mock/menuData';
 import styled from './Menu.module.scss'
 import { useRecoilState } from 'recoil';
-import { menuTypes, testStore, testType } from '../../store/testStore';
+import { menuTypes, cartStore, cartType } from '../../store/store';
 import MenuCategory from './MenuCategory';
 
 const MenuList = () => {
 
-  const [cartList, setCartList] = useRecoilState<testType[]>(testStore)
+  const [cartList, setCartList] = useRecoilState<cartType[]>(cartStore)
   const [category, setCategory] = useState<string[]>([]);
   const [data, setData] = useState<menuTypes[]>(menu)
 
   const handleOrderClick = (id: number) => {
-    const idList = cartList.map(item => item.id)
-    const item = { id: id, price: data[id - 1].price, count: 1 };
+    const idList = cartList.map(item => item.product.id)
+    const item = { product: data[id - 1], count: 1 };
+    // const item = { id: id, price: data[id - 1].price, count: 1 };
     if (idList.indexOf(id) === -1) {
       setCartList([...cartList, item]);
     } else {
       setCartList(item => {
         return item.map(obj => {
-          if (obj.id === id) {
+          if (obj.product.id === id) {
             return { ...obj, 'count': obj.count + 1 }
           } else {
             return { ...obj };
@@ -33,10 +34,6 @@ const MenuList = () => {
     const categoryFilter = data.map(item => item.category)
     const categoryArray = categoryFilter.filter((cateogry: string, idx: number) => categoryFilter.indexOf(cateogry) === idx)
     setCategory(categoryArray)
-
-    console.log(cartList)
-    console.log(data)
-
   }, [cartList, data])
 
   return (

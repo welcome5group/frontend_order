@@ -1,9 +1,14 @@
 import { atom, selector } from "recoil";
 
-export interface testType {
-  id: number,
-  price: number,
+export interface cartType {
+  // id: number,
+  product: menuTypes,
   count: number
+}
+
+export interface orderType {
+  orderProduct: cartType[],
+  totalPrice: number,
 }
 
 export interface menuTypes {
@@ -12,19 +17,23 @@ export interface menuTypes {
   desc: string,
   price: number;
   scope: number;
-  count: number;
   category: string;
 }
 
-export const testStore = atom<testType[]>({
-  key: "testStore",
+export const cartStore = atom<cartType[]>({
+  key: "cartStore",
   default: []
+})
+
+export const orderStore = atom<orderType[]>({
+  key: 'orderStore',
+  default: [],
 })
 
 export const cartCount = selector({
   key: 'cartCount',
   get: ({ get }) => {
-    const cartList = get(testStore)
+    const cartList = get(cartStore)
     let allCount = 0
     if (cartList.length !== 0) {
       const count = cartList.map(item => item.count)

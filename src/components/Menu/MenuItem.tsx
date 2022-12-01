@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { menuTypes } from '../../store/testStore';
+import { menuTypes } from '../../store/store';
 import styled from './Menu.module.scss'
-import MenuDetail from './MenuDetail';
 import { AiOutlineDown } from 'react-icons/ai';
 
 

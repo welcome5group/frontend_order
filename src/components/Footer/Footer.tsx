@@ -5,7 +5,7 @@ import { AiOutlineFileText, AiOutlineBell, AiOutlineShoppingCart } from 'react-i
 
 import { Link } from 'react-router-dom'
 import { useRecoilValue } from 'recoil';
-import { cartCount } from '../../store/testStore';
+import { cartCount } from '../../store/store';
 
 const Footer = () => {
 
@@ -24,7 +24,7 @@ const Footer = () => {
           <AiOutlineShoppingCart />
           {totalCartCount !== 0 && <div className={styled.totalCart}>{totalCartCount}</div>}
         </Link>
-        <Link to='/'>
+        <Link to='/order'>
           <AiOutlineFileText />
         </Link>
       </footer>
