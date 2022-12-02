@@ -24,6 +24,7 @@ const OrderItem = ({ order }: types) => {
     <div className={styled.orderProductContainer}>
       <div className={styled.orderNumberArea}>
         <p>주문번호 : 122</p>
+        <p>주문일시 : 2022-12-02 13:42:02</p>
       </div>
       {order.orderProduct.map((item) => (
         <div key={item.product.id} className={styled.orderProductWrap}>
@@ -33,7 +34,7 @@ const OrderItem = ({ order }: types) => {
           </div>
         </div>
       ))}
-      <div>{order.totalPrice} 원</div>
+      <div className={styled.totalPrice}>결제금액 : {order.totalPrice.toLocaleString()} 원</div>
       {/* <div>{order[0].product.name} 외 {order.length - 1} 개</div> */}
     </div>
   );

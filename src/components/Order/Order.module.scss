@@ -4,9 +4,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 5rem;
+  margin-top: 6rem;
   margin-bottom: 5rem;
   padding: 0 1rem;
+  
+  .titleArea {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #bdbdbd;
+
+    .orderTitle {
+      font-size: 1.5rem;
+      font-weight: 700;
+      // color: #a5a5a5;
+    }
+  }
+
 }
 
 .orderListContainer {
@@ -22,37 +36,45 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid black;
+  border: 1px solid #bdbdbd;
   width: 18rem;
   height: 100%;
-  padding: 1rem;
+  padding: 1.25rem;
   margin: 1rem;
+
+  font-size: 0.8rem;
 
   .orderNumberArea {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    border-bottom: 1px solid #bdbdbd;
+    margin-bottom: 1rem;
 
     p {
       display: flex;
-      padding: 0 0.025rem 1rem 0.025rem;
+      padding: 0 0.025rem 0.5rem 0.025rem;
+    
     }
   }
-}
 
-.orderProductWrap {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  padding: 0.1rem 0;
-
-  .orderInfo {
+  
+  .orderProductWrap {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    
+    padding: 0.2rem 0;
+
+    .orderInfo {
+     display: flex;
+     justify-content: space-between;
+    }
   }
 
-  p {
-    font-size: 0.8rem;
-    margin: 0 0.25rem;
+  .totalPrice {
+    border-top: 1px solid #bdbdbd;
+    margin-top: 1rem;
+    padding: 1rem 0 0 0;
   }
 }

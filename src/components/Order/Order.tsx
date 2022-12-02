@@ -12,8 +12,10 @@ const Order = () => {
 
   return (
     <div className={styled.orderContainer}>
-      <div>
-        <h1>주문 내역</h1>
+      <div className={styled.titleArea}>
+        <h1 className={styled.orderTitle}>
+          주문 내역
+        </h1>
       </div>
       <OrderList orderList={orderList} />
     </div>
