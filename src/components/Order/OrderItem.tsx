@@ -8,18 +8,6 @@ interface types {
 }
 
 const OrderItem = ({ order }: types) => {
-
-  const [showDetail, setShowDetail] = useState(false);
-
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = date.getMonth();
-  const day = date.getDate();
-
-  const today = `${year}-${month}-${day}`
-
-  console.log(order)
-
   return (
     <div className={styled.orderProductContainer}>
       <div className={styled.orderNumberArea}>
@@ -35,7 +23,6 @@ const OrderItem = ({ order }: types) => {
         </div>
       ))}
       <div className={styled.totalPrice}>결제금액 : {order.totalPrice.toLocaleString()} 원</div>
-      {/* <div>{order[0].product.name} 외 {order.length - 1} 개</div> */}
     </div>
   );
 };
