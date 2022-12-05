@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import logo from '../../assets/logo.svg'
 import styled from './Login.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { toastError } from '../toast';
 import BackArrow from '../common/BackArrow';
+import { useRecoilState } from 'recoil';
+import { loginStore } from '../../store/store';
 
 const Login = () => {
+  const nav = useNavigate()
 
+  const [loginCheck, setLoginCheck] = useRecoilState(loginStore)
   const [inputValue, setInputValue] = useState({
     id: '',
     password: ''
@@ -17,14 +21,15 @@ const Login = () => {
   }
 
   const handleSubmit = () => {
-    if (inputValue.id === '') {
-      toastError("아이디를 입력해주세요.")
-    }
-    else if (inputValue.password === '') {
-      toastError('비밀번호를 입력해주세요.')
-    }
+    // if (inputValue.id === '') {
+    //   toastError("아이디를 입력해주세요.")
+    // }
+    // else if (inputValue.password === '') {
+    //   toastError('비밀번호를 입력해주세요.')
+    // }
 
-    console.log(inputValue)
+    setLoginCheck(!loginCheck)
+    nav('/')
   }
 
   return (
