@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, memo } from 'react';
 import { menu } from '../../mock/testData';
 import styled from './Menu.module.scss'
 import { useRecoilState } from 'recoil';
@@ -57,4 +57,4 @@ const MenuList = () => {
   );
 };
 
-export default MenuList;
+export default memo(MenuList);

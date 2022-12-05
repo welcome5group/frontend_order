@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { menuTypes } from '../../store/store';
 import MenuItem from './MenuItem';
 import styled from './Menu.module.scss'
@@ -11,7 +11,7 @@ interface types {
 
 const MenuCategory = ({ category, data, handleOrderClick }: types) => {
 
-  const categoryTitle = data.filter(item => item.category === category)
+  const categoryTitle = useMemo(() => data.filter(item => item.category === category), [category, data])
 
   return (
     <div className={styled.menuCategory}>

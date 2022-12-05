@@ -1,0 +1,27 @@
+//결제 내역 컴포넌트
+.mypaymentContainer {
+  margin-top: 6rem;
+  margin-bottom: 5rem;
+  padding: 0 1rem;
+
+  .date {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .paymentList {
+    margin-top: 2rem;
+  }
+
+  .paymentItem {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #bdbdbd;
+
+    .day {
+      font-size: 1rem;
+      color: #aaa;
+    }
+  }
+}

@@ -9,6 +9,7 @@ import MenuPage from "./pages/MenuPage";
 import CartPage from "./pages/CartPage";
 import OrderPage from "./pages/OrderPage";
 import MypagePage from "./pages/MypagePage";
+import MyPayment from "./components/MyPayment/MyPayment";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/order" element={<OrderPage />} />
         <Route path="/mypage" element={<MypagePage />} />
+        <Route path="/mypayment" element={<MyPayment />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />

@@ -14,10 +14,26 @@ const Mypage = () => {
         <span>환영합니다!</span>
       </div>
       <div className={styled.mypageMenuListGroup}>
-        <div className={styled.mypageMenu}><AiOutlineCreditCard /><span>결제 내역</span></div>
-        <div className={styled.mypageMenu}><AiOutlineFileSearch /><span>내가 쓴 리뷰</span></div>
-        <div className={styled.mypageMenu}><AiOutlineAudit /><span>닉네임 변경</span></div>
-        <div className={styled.mypageMenu}><AiOutlineLock /><span>비밀번호 변경</span></div>
+        <Link to='/mypayment'>
+          <div className={styled.mypageMenu}>
+            <AiOutlineCreditCard /><span>결제 내역</span>
+          </div>
+        </Link>
+        <Link to='/mypayment'>
+          <div className={styled.mypageMenu}>
+            <AiOutlineFileSearch /><span>내가 쓴 리뷰</span>
+          </div>
+        </Link>
+        <Link to='/mypayment'>
+          <div className={styled.mypageMenu}>
+            <AiOutlineAudit /><span>닉네임 변경</span>
+          </div>
+        </Link>
+        <Link to='/mypayment'>
+          <div className={styled.mypageMenu}>
+            <AiOutlineLock /><span>비밀번호 변경</span>
+          </div>
+        </Link>
       </div>
       <div className={styled.myapgeLinkGroup}>
         <span>
