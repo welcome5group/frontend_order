@@ -4,22 +4,23 @@ import { BsHouseDoor } from 'react-icons/bs';
 import { AiOutlineFileText, AiOutlineBell, AiOutlineShoppingCart } from 'react-icons/ai';
 
 import { Link } from 'react-router-dom'
-import { useRecoilValue } from 'recoil';
-import { cartCount } from '../../store/store';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { cartCount, orderNumTypes, paramStore, tableNumTypes } from '../../store/store';
 
 const Footer = () => {
 
   const totalCartCount = useRecoilValue(cartCount)
+  const [params, setParams] = useRecoilState<tableNumTypes>(paramStore)
 
   return (
     <>
       <footer className={styled.footerContainer}>
-        <Link to='/'>
+        <Link to={`/menu/${params.id}/${params.storeName}/${params?.tableNum}`}>
           <BsHouseDoor />
         </Link>
-        <Link to='/menu'>
+        {/* <Link to='/menu'>
           <AiOutlineBell />
-        </Link>
+        </Link> */}
         <Link to='/cart'>
           <AiOutlineShoppingCart />
           {totalCartCount !== 0 && <div className={styled.totalCart}>{totalCartCount}</div>}

@@ -20,16 +20,42 @@ export interface menuTypes {
   category: string;
 }
 
+export interface tableNumTypes {
+  id: string,
+  storeName: string,
+  tableNum: number,
+}
+
+export interface orderNumTypes {
+  id: string,
+  storeName: string,
+}
+
+//로그인 체크 아톰
+export const loginStore = atom<boolean>({
+  key: "loginStore",
+  default: false
+})
+
+//param값 저장
+export const paramStore = atom<tableNumTypes>({
+  key: "paramStroe",
+  default: { id: '', storeName: '', tableNum: -1 },
+})
+
+//장바구니 아톰
 export const cartStore = atom<cartType[]>({
   key: "cartStore",
   default: []
 })
 
+//주문내역 아톰
 export const orderStore = atom<orderType[]>({
   key: 'orderStore',
   default: [],
 })
 
+//주문 개수 셀렉터
 export const cartCount = selector({
   key: 'cartCount',
   get: ({ get }) => {
