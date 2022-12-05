@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
-import { Router, Routes, Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 import MainPage from "./pages/MainPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -12,6 +12,18 @@ import MypagePage from "./pages/MypagePage";
 import MyPayment from "./components/MyPayment/MyPayment";
 
 function App() {
+
+  const closeEvent = (e: BeforeUnloadEvent) => {
+    e.returnValue = "";
+    localStorage.removeItem("recoil-persist");
+  };
+
+  useEffect(() => {
+    (() => {
+      window.addEventListener("beforeunload", closeEvent);
+    })();
+  })
+
   return (
     <Routes>
       <Route path="/" element={<MainPage />}>

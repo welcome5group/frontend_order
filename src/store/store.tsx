@@ -1,4 +1,7 @@
 import { atom, selector } from "recoil";
+import { recoilPersist } from 'recoil-persist'
+
+const { persistAtom } = recoilPersist()
 
 export interface cartType {
   // id: number,
@@ -34,13 +37,15 @@ export interface orderNumTypes {
 //로그인 체크 아톰
 export const loginStore = atom<boolean>({
   key: "loginStore",
-  default: false
+  default: false,
+  effects_UNSTABLE: [persistAtom],
 })
 
 //param값 저장
 export const paramStore = atom<tableNumTypes>({
   key: "paramStroe",
   default: { id: '', storeName: '', tableNum: -1 },
+  effects_UNSTABLE: [persistAtom],
 })
 
 //장바구니 아톰
