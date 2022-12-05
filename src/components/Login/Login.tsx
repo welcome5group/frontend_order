@@ -29,7 +29,12 @@ const Login = () => {
     // }
 
     setLoginCheck(!loginCheck)
-    nav(`/${params.id}/${params.storeName}`)
+
+    if (isNaN(params.tableNum)) {
+      nav(`/${params.id}/${params.storeName}`)
+    } else {
+      nav(`/${params.id}/${params.storeName}/${params.tableNum}`)
+    }
   }
 
   return (

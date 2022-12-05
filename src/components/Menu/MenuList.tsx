@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { menu } from '../../mock/testData';
 import styled from './Menu.module.scss'
 import { useRecoilState } from 'recoil';
-import { menuTypes, cartStore, cartType, paramStore, tableNumTypes, orderNumTypes } from '../../store/store';
+import { menuTypes, cartStore, cartType, paramStore, tableNumTypes } from '../../store/store';
 import MenuCategory from './MenuCategory';
 import { useParams } from 'react-router-dom';
 
 const MenuList = () => {
   const param = useParams()
-
-  console.log(param)
-
   const [, setParams] = useRecoilState<tableNumTypes>(paramStore)
 
   //처음 렌더링 시 param 값 저장
   useEffect(() => {
-    const params: tableNumTypes | orderNumTypes =
+    const params: tableNumTypes =
       { id: param.id, storeName: param.storeName, tableNum: Number(param.tableNum) }
     setParams(params)
   }, [])
@@ -24,15 +21,15 @@ const MenuList = () => {
   const [category, setCategory] = useState<string[]>([]);
   const [data] = useState<menuTypes[]>(menu)
 
-  const handleOrderClick = (id: number) => {
+  const handleOrderClick = useCallback((id: number) => {
     const idList = cartList.map(item => item.product.id)
     const item = { product: data[id - 1], count: 1 };
     // const item = { id: id, price: data[id - 1].price, count: 1 };
     if (idList.indexOf(id) === -1) {
       setCartList([...cartList, item]);
     } else {
-      setCartList(item => {
-        return item.map(obj => {
+      setCartList(prevState => {
+        return prevState.map(obj => {
           if (obj.product.id === id) {
             return { ...obj, 'count': obj.count + 1 }
           } else {
@@ -41,7 +38,7 @@ const MenuList = () => {
         })
       })
     }
-  }
+  }, [cartList, data, setCartList])
 
   useEffect(() => {
     const categoryFilter = data.map(item => item.category)
