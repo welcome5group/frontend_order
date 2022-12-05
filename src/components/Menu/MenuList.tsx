@@ -11,7 +11,7 @@ const MenuList = () => {
 
   console.log(param)
 
-  const [params, setParams] = useRecoilState<tableNumTypes>(paramStore)
+  const [, setParams] = useRecoilState<tableNumTypes>(paramStore)
 
   //처음 렌더링 시 param 값 저장
   useEffect(() => {
@@ -22,7 +22,7 @@ const MenuList = () => {
 
   const [cartList, setCartList] = useRecoilState<cartType[]>(cartStore)
   const [category, setCategory] = useState<string[]>([]);
-  const [data, setData] = useState<menuTypes[]>(menu)
+  const [data] = useState<menuTypes[]>(menu)
 
   const handleOrderClick = (id: number) => {
     const idList = cartList.map(item => item.product.id)

@@ -1,8 +1,6 @@
 import React from 'react';
-import { menu } from '../../mock/testData';
 import { cartType } from '../../store/store';
 import styled from './Cart.module.scss'
-import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 
 interface types {
   cartItem: cartType,

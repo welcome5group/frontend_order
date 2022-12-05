@@ -1,6 +1,5 @@
-import { type } from 'os';
-import React, { useState } from 'react';
-import { cartType, orderType } from '../../store/store';
+import React from 'react';
+import { orderType } from '../../store/store';
 import styled from './Order.module.scss'
 
 interface types {
