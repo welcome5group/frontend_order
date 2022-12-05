@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import styled from './Header.module.scss'
 import { AiOutlineUser } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { loginStore } from '../../store/store';
 
 const Header = () => {
 
-  const [loginCheck, setLoginCheck] = useState(false);
+  const [loginCheck] = useRecoilState(loginStore);
 
   return (
     <>

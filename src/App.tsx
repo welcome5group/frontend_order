@@ -8,6 +8,7 @@ import FindPasswordPage from "./pages/FindPasswordPage";
 import MenuPage from "./pages/MenuPage";
 import CartPage from "./pages/CartPage";
 import OrderPage from "./pages/OrderPage";
+import MypagePage from "./pages/MypagePage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/:id/:storeName/" element={<MenuPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/order" element={<OrderPage />} />
+        <Route path="/mypage" element={<MypagePage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
