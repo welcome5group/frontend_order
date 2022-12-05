@@ -15,9 +15,14 @@ const Footer = () => {
   return (
     <>
       <footer className={styled.footerContainer}>
-        <Link to={`/menu/${params.id}/${params.storeName}/${params?.tableNum}`}>
-          <BsHouseDoor />
-        </Link>
+        {isNaN(params.tableNum) ?
+          <Link to={`/${params.id}/${params.storeName}`}>
+            <BsHouseDoor />
+          </Link> :
+          <Link to={`/${params.id}/${params.storeName}/${params?.tableNum}`}>
+            <BsHouseDoor />
+          </Link>
+        }
         <Link to='/cart'>
           <AiOutlineShoppingCart />
           {totalCartCount !== 0 && <div className={styled.totalCart}>{totalCartCount}</div>}

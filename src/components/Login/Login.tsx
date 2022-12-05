@@ -5,11 +5,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import { toastError } from '../toast';
 import BackArrow from '../common/BackArrow';
 import { useRecoilState } from 'recoil';
-import { loginStore } from '../../store/store';
+import { loginStore, paramStore, tableNumTypes } from '../../store/store';
 
 const Login = () => {
   const nav = useNavigate()
-
+  const [params] = useRecoilState<tableNumTypes>(paramStore)
   const [loginCheck, setLoginCheck] = useRecoilState(loginStore)
   const [inputValue, setInputValue] = useState({
     id: '',
@@ -29,7 +29,7 @@ const Login = () => {
     // }
 
     setLoginCheck(!loginCheck)
-    nav('/')
+    nav(`/${params.id}/${params.storeName}`)
   }
 
   return (
