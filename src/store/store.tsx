@@ -34,6 +34,18 @@ export interface orderNumTypes {
   storeName: string,
 }
 
+export interface paymentType {
+  id: number,
+  date: string,
+  storeName: string,
+  menu: {
+    menuName: string,
+    count: number,
+    price: number,
+  }[],
+  totalPrice: number,
+}
+
 //로그인 체크 아톰
 export const loginStore = atom<boolean>({
   key: "loginStore",
