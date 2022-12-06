@@ -9,7 +9,7 @@ import MenuPage from "./pages/MenuPage";
 import CartPage from "./pages/CartPage";
 import OrderPage from "./pages/OrderPage";
 import MypagePage from "./pages/MypagePage";
-import MyPayment from "./components/MyPayment/MyPayment";
+import MyPaymentPage from "./pages/MyPaymentPage";
 
 function App() {
 
@@ -32,7 +32,7 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/order" element={<OrderPage />} />
         <Route path="/mypage" element={<MypagePage />} />
-        <Route path="/mypayment" element={<MyPayment />} />
+        <Route path="/mypayment" element={<MyPaymentPage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />

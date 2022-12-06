@@ -31,7 +31,37 @@ export const paymentData = [
   },
   {
     id: 3,
-    date: '2022-02-10',
+    date: '2022-02-11',
+    storeName: "치킨집",
+    menu: [{
+      menuName: "치킨",
+      count: 3,
+      price: 15000,
+    }, {
+      menuName: "떡볶이",
+      count: 1,
+      price: 2000,
+    }],
+    totalPrice: 47000
+  },
+  {
+    id: 3,
+    date: '2022-03-01',
+    storeName: "치킨집",
+    menu: [{
+      menuName: "치킨",
+      count: 3,
+      price: 15000,
+    }, {
+      menuName: "떡볶이",
+      count: 1,
+      price: 2000,
+    }],
+    totalPrice: 47000
+  },
+  {
+    id: 3,
+    date: '2022-03-01',
     storeName: "치킨집",
     menu: [{
       menuName: "치킨",
