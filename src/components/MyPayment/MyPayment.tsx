@@ -1,5 +1,4 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
 import { useDateFilter } from '../../Hooks/useDateFilter';
 import { paymentData } from '../../mock/paymentData';
 import { paymentType } from '../../store/store';
@@ -8,20 +7,18 @@ import MyPaymentList from './MyPaymentList';
 
 const MyPayment = () => {
 
-  const currentYear = new Date().getFullYear()
-
   const [paymentList, setPaymentList] = useState<paymentType[]>([])
-  const [year, setYear] = useState(String(currentYear))
 
-  const month = useDateFilter(paymentList, 1)
+  const currentYear = new Date().getFullYear()
+  const [year, setYear] = useState(String(currentYear))
 
   const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
     setYear(e.target.value)
   }
 
+  //배열에 현재 년도 -10 까지 추가해주는 기능
   const yearOptions = () => {
-    const date = new Date();
-    const year = date.getFullYear()
+    const year = new Date().getFullYear();
     const yearOption = [];
     for (let i = year; i > year - 10; i--) {
       yearOption.push(String(i))
@@ -30,7 +27,10 @@ const MyPayment = () => {
   }
   const yearOption = yearOptions();
 
+  const month = useDateFilter(paymentList, 1)
+
   useEffect(() => {
+    //데이터 중 현재 년도에 해당하는 데이터만 저장
     const yearFilteredData = paymentData.filter(item => item.date.split('-')[0] === year)
     setPaymentList(yearFilteredData)
   }, [year])

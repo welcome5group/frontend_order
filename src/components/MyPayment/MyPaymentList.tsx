@@ -11,8 +11,11 @@ interface types {
 
 const MyPaymentList = ({ paymentList, month }: types) => {
 
+  // props로 받은 월에 해당하는 일별 데이터 분류
   const day = paymentList.filter(item => item.date.split('-')[1] === month)
-  // const filteredDay = day.map(item => item.date.split('-')[2])
+
+  // 일별 데이터 배열(중복 제거)
+  // ex) [11, 11, 12, 12, 21] => [11, 12, 21]
   const filteredDay = useDateFilter(day, 2)
 
   return (

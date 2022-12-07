@@ -10,10 +10,10 @@ interface types {
 
 const MyPaymentItem = ({ paymentList, month, day }: types) => {
 
+  // props로 받은 월에 해당하는 데이터 저장
   const monthFilteredData = paymentList.filter(item => item.date.split('-')[1] === month)
+  // 월별 데이터에서 일별로 데이터 분류
   const dayFilteredData = monthFilteredData.filter(item => item.date.split('-')[2] === day)
-
-  console.log(dayFilteredData)
 
   return (
     <div className={styled.paymentItemContainer}>
