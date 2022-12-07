@@ -11,14 +11,14 @@ interface types {
 
 const MenuCategory = ({ category, data, handleOrderClick }: types) => {
 
-  const categoryTitle = useMemo(() => data.filter(item => item.category === category), [category, data])
-
+  // props로 받은 카테고리에 해당하는 아이템 분류
+  const categoryItmes = useMemo(() => data.filter(item => item.category === category), [category, data])
   return (
     <div className={styled.menuCategory}>
       <p>
         {category}
       </p>
-      {categoryTitle.map((item) => (
+      {categoryItmes.map((item) => (
         <MenuItem item={item} key={item.id} handleOrderClick={handleOrderClick} />
       ))}
     </div>
