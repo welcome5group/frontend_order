@@ -17,7 +17,7 @@ const MyPaymentList = ({ paymentList, month }: types) => {
 
   return (
     <>
-      {filteredDay.map(item => (
+      {filteredDay.map((item) => (
         <>
           <div className={styled.paymentList} key={item}>
             <div className={styled.paymentItem}>
