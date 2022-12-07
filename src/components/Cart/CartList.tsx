@@ -11,6 +11,7 @@ interface types {
 
 const CartList = ({ cartList, setCartList }: types) => {
 
+  // 카트리스트에 있는 아이템 증가, 감소 기능
   const handleIncreaseHanlder = (id: number, operations: string) => {
     setCartList(item => {
       return item.map(obj => {
@@ -27,6 +28,7 @@ const CartList = ({ cartList, setCartList }: types) => {
     })
   }
 
+  // 선택한 아이템 리스트에서 삭제
   const handleDeleteItem = (id: number) => {
     setCartList(cartList.filter(item => item.product.id !== id))
   }

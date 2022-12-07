@@ -6,9 +6,7 @@ import OrderList from './OrderList';
 
 const Order = () => {
 
-  const [orderList, setOrderList] = useRecoilState<orderType[]>(orderStore)
-
-  console.log(orderList)
+  const [orderList] = useRecoilState<orderType[]>(orderStore)
 
   return (
     <div className={styled.orderContainer}>

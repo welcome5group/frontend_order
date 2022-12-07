@@ -9,7 +9,6 @@ interface types {
 }
 
 const CartItem = ({ cartItem, handleIncreaseHanlder, handleDeleteItem }: types) => {
-  // const item = menu[cartItem.product.id - 1]
   const totalPrice = (Number(cartItem.product.price) * Number(cartItem.count));
   return (
     <>

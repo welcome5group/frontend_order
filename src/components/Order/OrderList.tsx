@@ -8,9 +8,6 @@ interface types {
 }
 
 const OrderList = ({ orderList }: types) => {
-
-  console.log(orderList)
-
   return (
     <div className={styled.orderListContainer}>
       {orderList.map((order, idx) => (

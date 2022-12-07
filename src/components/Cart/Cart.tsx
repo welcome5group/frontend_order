@@ -7,18 +7,19 @@ import CartList from './CartList';
 const Cart = () => {
 
   const [cartList, setCartList] = useRecoilState<cartType[]>(cartStore)
-  const [totalPrice, setTotalPrice] = useState(0)
   const [orderList, setOrderList] = useRecoilState<orderType[]>(orderStore)
+  const [totalPrice, setTotalPrice] = useState(0)
 
 
+  // 계산하기 버튼 클릭 시 주문내역에 카트에 있는 아이템들과 총 결제금액 추가
   const handleClick = () => {
     const item = { orderProduct: cartList, totalPrice: totalPrice }
     setOrderList([...orderList, item])
     setCartList([])
-    console.log(orderList)
   }
 
   useEffect(() => {
+    // 카트 리스트 안에 있는 아이템 총 합 계산
     if (cartList.length !== 0) {
       let price = cartList.map(item => (item.product.price * item.count))
       setTotalPrice(price.reduce((acc, cur) => acc + cur))
