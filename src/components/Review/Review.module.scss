@@ -55,7 +55,23 @@
     .userInfo {
       display: flex;
       align-content: center;
-      margin-bottom: .5rem;
+      margin: .5rem 0; 
+
+      svg {
+        width: 2rem;
+        height: 2rem;
+      }
+    
+      .textWrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-left: .7rem;
+
+        .writeTime {
+          font-size: .8rem;
+        }
+      }
     }
   }
 }

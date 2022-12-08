@@ -11,6 +11,7 @@ export interface cartType {
 
 export interface reviewType {
   id: number,
+  time: string,
   content: string,
 }
 

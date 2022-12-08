@@ -8,14 +8,29 @@ const Review = () => {
 
   const [reviewList, setReviewList] = useState<reviewType[]>(reviewData)
   const [textValue, setTextValue] = useState('')
-  const currentId = useRef(4);
+
+
+
+  const time = () => {
+    const today = new Date()
+
+    const year = today.getFullYear()
+    const month = today.getMonth() - 1
+    const day = today.getDay()
+
+    const hour = today.getHours()
+    const min = today.getMinutes()
+    const sec = today.getSeconds()
+
+    return `${year}-${month}-${day} ${hour}:${min}:${sec}`
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTextValue(e.target.value)
   }
 
   const handleSubmit = () => {
-    const item = { id: reviewList.length + 1, content: textValue }
+    const item = { id: reviewList.length + 1, time: time(), content: textValue }
     setReviewList([...reviewList, item])
   }
 
@@ -35,7 +50,10 @@ const Review = () => {
           <div className={styled.reviewItem} key={item.id}>
             <div className={styled.userInfo}>
               <span className={styled.userImg}><AiOutlineUser /></span>
-              <span className={styled.userNickname}>jys9049</span>
+              <div className={styled.textWrap}>
+                <span className={styled.userNickname}>jys9049</span>
+                <span className={styled.writeTime}>{item.time}</span>
+              </div>
             </div>
             <div>
               {item.content}
