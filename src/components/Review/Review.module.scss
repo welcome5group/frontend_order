@@ -18,6 +18,60 @@
   }
 }
 
+.alignRight {
+  display: flex;
+  flex-direction: column;
+  margin-top: .8rem;
+
+  .starTitle {
+    display: flex;
+    justify-content: flex-end;
+    font-size: .7rem;
+    margin-bottom: 1rem;
+
+    svg {
+      margin-left: .2rem;
+    }
+
+    .open {
+      transform: rotate(180deg);
+      transition: all 0.1s linear;
+    }
+  
+    .close {
+      transform: rotate(0deg);
+      transition: all 0.1s linear;
+    }
+  }
+
+  .starContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+
+    .starWrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    svg {
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+
+    .clicked {
+      fill: rgb(241, 241, 40);
+    }
+
+    span {
+      font-size: 1rem;
+      font-weight: 700;
+      padding-bottom: .7rem;
+    }
+  }
+}
+
 .reviewWriteArea {
   width: 100%;
   padding-bottom: 1rem;

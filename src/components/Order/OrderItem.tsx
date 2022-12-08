@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { orderType } from '../../store/store';
+import { useRecoilState } from 'recoil';
+import { orderType, paramStore } from '../../store/store';
 import styled from './Order.module.scss'
 
 interface types {
@@ -9,8 +10,10 @@ interface types {
 
 const OrderItem = ({ order }: types) => {
 
+  const [params] = useRecoilState(paramStore)
   const [testStatus, setTestStatus] = useState(false)
-  console.log(order)
+
+  console.log(params)
 
   return (
     <div className={styled.orderProductContainer}>
@@ -38,7 +41,7 @@ const OrderItem = ({ order }: types) => {
       <div className={styled.totalPrice}>결제금액 : {order.totalPrice.toLocaleString()} 원</div>
       {
         testStatus ?
-          <Link to={'/review'} className={styled.reviewBtn}>리뷰작성</Link> : null
+          <Link to={`/review/${params.id}`} className={styled.reviewBtn}>리뷰작성</Link> : null
       }
     </div >
   );
