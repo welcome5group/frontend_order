@@ -1,0 +1,61 @@
+.reviewContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  
+  .titleArea {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #bdbdbd;
+
+    .reviewTitle {
+      font-size: 1.5rem;
+      font-weight: 700;
+      // color: #a5a5a5;
+    }
+  }
+}
+
+.reviewWriteArea {
+  width: 100%;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #bdbdbd;
+
+  .reviewTextArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    width: 100%;
+    height: 5rem;
+    border-radius: 0.5rem;
+    outline: none;
+  }
+  
+  .reivewWriteBtn {
+    width: 100%;
+    height: 2rem;
+    margin-top: .5rem;
+    border: none;
+    border-radius: 0.5rem;
+    color: white;
+    background: rgba(56, 182, 45, 0.808);
+  }
+}
+
+.reviewList {
+  display: flex;
+  flex-direction: column;
+
+  .reviewItem {
+    margin-top: 1rem;
+
+    .userInfo {
+      display: flex;
+      align-content: center;
+      margin-bottom: .5rem;
+    }
+  }
+}

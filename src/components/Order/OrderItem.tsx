@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { orderType } from '../../store/store';
 import styled from './Order.module.scss'
 
@@ -37,7 +38,7 @@ const OrderItem = ({ order }: types) => {
       <div className={styled.totalPrice}>결제금액 : {order.totalPrice.toLocaleString()} 원</div>
       {
         testStatus ?
-          <button className={styled.reviewBtn}>리뷰작성</button> : null
+          <Link to={'/review'} className={styled.reviewBtn}>리뷰작성</Link> : null
       }
     </div >
   );

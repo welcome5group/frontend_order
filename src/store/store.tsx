@@ -9,6 +9,11 @@ export interface cartType {
   count: number
 }
 
+export interface reviewType {
+  id: number,
+  content: string,
+}
+
 export interface orderType {
   orderProduct: cartType[],
   totalPrice: number,
