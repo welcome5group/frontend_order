@@ -12,6 +12,7 @@ export interface cartType {
 export interface orderType {
   orderProduct: cartType[],
   totalPrice: number,
+  orderStatus: boolean,
 }
 
 export interface menuTypes {

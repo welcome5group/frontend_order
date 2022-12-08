@@ -10,6 +10,7 @@ import CartPage from "./pages/CartPage";
 import OrderPage from "./pages/OrderPage";
 import MypagePage from "./pages/MypagePage";
 import MyPaymentPage from "./pages/MyPaymentPage";
+import ReviewPage from "./pages/ReviewPage";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/order" element={<OrderPage />} />
         <Route path="/mypage" element={<MypagePage />} />
         <Route path="/mypayment" element={<MyPaymentPage />} />
+        <Route path="/review" element={<ReviewPage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
