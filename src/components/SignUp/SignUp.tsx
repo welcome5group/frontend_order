@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { signup } from '../../apis/signupApi';
 import logo from '../../assets/logo.svg'
 import BackArrow from '../common/BackArrow';
 import { toastError } from '../toast';
@@ -7,26 +8,37 @@ import styled from './SignUp.module.scss'
 const SignUp = () => {
 
   const [inputValue, setInputValue] = useState({
-    id: '',
+    email: '',
     password: '',
     nickname: '',
+    type: 'member'
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = () => {
-    if (inputValue.id === '') {
-      toastError("아이디를 입력해주세요.")
+  const handleSubmit = async () => {
+    if (inputValue.email === '') {
+      toastError("이메일을 입력해주세요.")
+      return
     }
     else if (inputValue.password === '') {
       toastError('비밀번호를 입력해주세요.')
+      return
     }
     else if (inputValue.nickname === '') {
       toastError('닉네임을 입력해주세요.')
+      return
     }
     console.log(inputValue)
+
+    try {
+      const result = await signup(inputValue)
+
+    } catch (e) {
+      console.log(1)
+    }
   }
 
   return (
@@ -37,7 +49,7 @@ const SignUp = () => {
         <div className={styled.signUpInputWrap}>
           <div className={styled.signUpInput}>
             <label id='email'>아이디</label>
-            <input type="text" name='id' placeholder='E - MAIL' onChange={handleChange} />
+            <input type="text" name='email' placeholder='E - MAIL' onChange={handleChange} />
           </div>
           <div className={styled.signUpInput}>
             <label id='email'>비밀번호</label>
