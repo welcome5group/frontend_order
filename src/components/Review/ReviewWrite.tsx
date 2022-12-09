@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { text } from 'stream/consumers';
 import { reviewType } from '../../store/store';
 import styled from './Review.module.scss'
 

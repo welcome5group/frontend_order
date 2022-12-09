@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from './Review.module.scss'
-import { AiOutlineDown, AiFillStar } from 'react-icons/ai';
+import { AiOutlineDown } from 'react-icons/ai';
 import { useRecoilState } from 'recoil';
 import { orderStore } from '../../store/store';
 import { useParams } from 'react-router-dom';
@@ -11,7 +11,7 @@ const ReviewStar = () => {
   const param = useParams()
   const idx = Number(param.orderId) - 1
 
-  const [orderList, setOrderList] = useRecoilState(orderStore)
+  const [orderList] = useRecoilState(orderStore)
   const [showMore, setShowMore] = useState(false)
 
   return (
