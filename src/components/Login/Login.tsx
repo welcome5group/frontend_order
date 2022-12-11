@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import logo from '../../assets/logo.svg'
 import styled from './Login.module.scss'
 import { Link, useNavigate } from 'react-router-dom'
-import { toastError } from '../toast';
-import BackArrow from '../common/BackArrow';
+import BackArrow from '../Common/BackArrow';
 import { useRecoilState } from 'recoil';
 import { loginStore, paramStore, tableNumTypes } from '../../store/store';
 
@@ -21,12 +20,6 @@ const Login = () => {
   }
 
   const handleSubmit = () => {
-    // if (inputValue.id === '') {
-    //   toastError("아이디를 입력해주세요.")
-    // }
-    // else if (inputValue.password === '') {
-    //   toastError('비밀번호를 입력해주세요.')
-    // }
 
     setLoginCheck(!loginCheck)
 

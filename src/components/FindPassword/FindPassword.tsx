@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { toastError } from '../toast';
 import styled from './FindPassword.module.scss'
 import logo from '../../assets/logo.svg'
-import BackArrow from '../common/BackArrow';
+import BackArrow from '../Common/BackArrow';
 
 const FindPassword = () => {
   const [inputValue, setInputValue] = useState({

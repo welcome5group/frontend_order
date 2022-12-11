@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { signup } from '../../apis/signupApi';
 import logo from '../../assets/logo.svg'
-import BackArrow from '../common/BackArrow';
+import BackArrow from '../Common/BackArrow';
 import { toastError } from '../toast';
 import styled from './SignUp.module.scss'
 
