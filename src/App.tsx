@@ -11,6 +11,7 @@ import OrderPage from "./pages/OrderPage";
 import MypagePage from "./pages/MypagePage";
 import MyPaymentPage from "./pages/MyPaymentPage";
 import ReviewPage from "./pages/ReviewPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/findPassword" element={<FindPasswordPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
