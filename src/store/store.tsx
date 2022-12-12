@@ -63,7 +63,7 @@ export const loginStore = atom<boolean>({
 //param값 저장
 export const paramStore = atom<tableNumTypes>({
   key: "paramStroe",
-  default: { id: '', storeName: '', tableNum: -1 },
+  default: { id: '-1', storeName: '-1', tableNum: -1 },
   effects_UNSTABLE: [persistAtom],
 })
 

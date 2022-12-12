@@ -12,12 +12,21 @@ import MypagePage from "./pages/MypagePage";
 import MyPaymentPage from "./pages/MyPaymentPage";
 import ReviewPage from "./pages/ReviewPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import { useRecoilState } from "recoil";
+import { paramStore, tableNumTypes } from "./store/store";
 
 function App() {
+
+  const [, setParams] = useRecoilState<tableNumTypes>(paramStore)
 
   const closeEvent = (e: BeforeUnloadEvent) => {
     e.returnValue = "";
     localStorage.removeItem("recoil-persist");
+    setParams({
+      id: '',
+      storeName: '',
+      tableNum: 0,
+    })
   };
 
   useEffect(() => {

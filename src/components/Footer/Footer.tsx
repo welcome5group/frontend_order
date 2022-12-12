@@ -12,17 +12,25 @@ const Footer = () => {
   const totalCartCount = useRecoilValue(cartCount)
   const [params] = useRecoilState<tableNumTypes>(paramStore)
 
+  const urlChanger = () => {
+    let url = ''
+    if (params.id === '' || params.storeName === '') {
+      url = `/NotFoundPage`
+    } else if (isNaN(params.tableNum)) {
+      url = `/${params.id}/${params.storeName}`
+    } else {
+      url = `/${params.id}/${params.storeName}/${params.tableNum}`
+    }
+
+    return url
+  }
+
   return (
     <>
       <footer className={styled.footerContainer}>
-        {isNaN(params.tableNum) ?
-          <Link to={`/${params.id}/${params.storeName}`}>
-            <BsHouseDoor />
-          </Link> :
-          <Link to={`/${params.id}/${params.storeName}/${params?.tableNum}`}>
-            <BsHouseDoor />
-          </Link>
-        }
+        <Link to={urlChanger()}>
+          <BsHouseDoor />
+        </Link>
         <Link to='/cart'>
           <AiOutlineShoppingCart />
           {totalCartCount !== 0 && <div className={styled.totalCart}>{totalCartCount}</div>}
