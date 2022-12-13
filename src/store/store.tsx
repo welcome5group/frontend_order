@@ -9,8 +9,14 @@ export interface cartType {
   count: number
 }
 
+export interface userType {
+  id: number,
+  nickName: string,
+}
+
 export interface reviewType {
   id: number,
+  userInfo: userType,
   time: string,
   content: string,
 }
@@ -65,6 +71,12 @@ export const paramStore = atom<tableNumTypes>({
   key: "paramStroe",
   default: { id: '-1', storeName: '-1', tableNum: -1 },
   effects_UNSTABLE: [persistAtom],
+})
+
+//유저 정보 저장 아톰
+export const userStore = atom<userType>({
+  key: "userStore",
+  default: { id: 1, nickName: "jys9049" },
 })
 
 //장바구니 아톰

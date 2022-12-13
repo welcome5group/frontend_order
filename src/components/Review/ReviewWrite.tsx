@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { reviewType } from '../../store/store';
+import { useRecoilState } from 'recoil';
+import { reviewType, userStore } from '../../store/store';
 import styled from './Review.module.scss'
 
 interface types {
@@ -10,6 +11,7 @@ interface types {
 const ReviewWrite = ({ reviewList, setReviewList }: types) => {
 
   const [textValue, setTextValue] = useState('')
+  const [userInfo, setUserInfo] = useRecoilState(userStore)
 
   const time = () => {
     const today = new Date()
@@ -30,7 +32,8 @@ const ReviewWrite = ({ reviewList, setReviewList }: types) => {
   }
 
   const handleSubmit = () => {
-    const item = { id: reviewList.length + 1, time: time(), content: textValue }
+    const item = { id: reviewList.length + 1, userInfo: userInfo, time: time(), content: textValue }
+    console.log(item)
     setReviewList([...reviewList, item])
     setTextValue('')
   }

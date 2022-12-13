@@ -11,7 +11,7 @@ const ReviewItem = (props: { reviewList: reviewType[] }) => {
           <div className={styled.userInfo}>
             <span className={styled.userImg}><AiOutlineUser /></span>
             <div className={styled.textWrap}>
-              <span className={styled.userNickname}>jys9049</span>
+              <span className={styled.userNickname}>{item.userInfo.nickName}</span>
               <span className={styled.writeTime}>{item.time}</span>
             </div>
           </div>
