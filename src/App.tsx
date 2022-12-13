@@ -14,6 +14,7 @@ import ReviewPage from "./pages/ReviewPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import { useRecoilState } from "recoil";
 import { paramStore, tableNumTypes } from "./store/store";
+import MyReviewPage from "./pages/MyReviewPage";
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
         <Route path="/mypage" element={<MypagePage />} />
         <Route path="/mypayment" element={<MyPaymentPage />} />
         <Route path="/review/:orderId" element={<ReviewPage />} />
+        <Route path="/myreview" element={<MyReviewPage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />

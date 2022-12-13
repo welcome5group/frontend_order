@@ -2,10 +2,7 @@ import React from 'react';
 import styled from './Mypage.module.scss'
 import { AiOutlineAudit, AiOutlineCreditCard, AiOutlineFileSearch, AiOutlineLock } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-//AiOutlineAudit = 개인정보 수정
-//AiOutlineCreditCard = 결제 내역 조회
-//AiOutlineFileSearch = 내가 작성한 리뷰
-//AiOutlineLock = 비밀번호 변경
+
 const Mypage = () => {
   return (
     <div className={styled.mypageContainer}>
@@ -19,7 +16,7 @@ const Mypage = () => {
             <AiOutlineCreditCard /><span>결제 내역</span>
           </div>
         </Link>
-        <Link to='/mypayment'>
+        <Link to='/myreview'>
           <div className={styled.mypageMenu}>
             <AiOutlineFileSearch /><span>내가 쓴 리뷰</span>
           </div>

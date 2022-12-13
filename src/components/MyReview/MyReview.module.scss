@@ -1,0 +1,95 @@
+.myReviewContainer {
+  padding: 0 2rem;  
+
+  .myReviewMainTitle {
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #c9c9c9;
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;  
+    }
+  }
+
+  .myReviewItem {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+    
+    .infoGroup {
+      display: flex;
+      justify-content: space-between;
+      
+      .storeName {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: .2rem;
+      }
+
+      .writeDate {
+        font-size: .8rem;
+        color: #aaa;
+      }
+
+      .reviewInfoGroup {
+        display: flex;
+        flex-direction: column;
+      } 
+
+      .deleteBtn {
+        display: flex;
+        align-items: flex-end;
+
+        button {
+          padding: .2rem .4rem;
+          background: #ececec;
+          border: none;
+          border-radius: .5rem;
+        }
+      }
+    }
+
+    .userReview {
+      margin-top: .8rem;
+    }
+
+    .presidentReview {
+      display: flex;
+      margin-top: 1rem;
+
+      svg {
+        padding: .3rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        background: rgba(186, 208, 255, 0.568);
+        border-radius: 100%;
+      }
+
+      .presidentReviewInfo {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        height: 100%;
+        padding: .8rem .7rem;
+        margin-left: 1rem;
+        background: rgb(243, 243, 243);
+
+        .presidnetName {
+          display: flex;
+          padding-bottom: 1rem;
+          font-weight: 700;
+        }
+
+        .presidentReviewContent {
+          width: 90%;
+          min-width: 10rem;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+        }
+      }
+    }
+  }
+}
