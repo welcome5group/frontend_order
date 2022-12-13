@@ -11,7 +11,7 @@ interface types {
 const ReviewWrite = ({ reviewList, setReviewList }: types) => {
 
   const [textValue, setTextValue] = useState('')
-  const [userInfo, setUserInfo] = useRecoilState(userStore)
+  const [userInfo] = useRecoilState(userStore)
 
   const time = () => {
     const today = new Date()
