@@ -1,5 +1,5 @@
 import React from 'react';
-import MyReview from '../components/MyReview/MyReview';
+import MyReview from '../../components/MyReview/MyReview';
 
 const MyReviewPage = () => {
   return (

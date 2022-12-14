@@ -1,9 +1,9 @@
 import React from 'react';
-import Order from '../components/Order/Order';
+import Menu from '../../components/Menu/Menu';
 
 const OrderPage = () => {
   return (
-    <Order />
+    <Menu />
   );
 };
 

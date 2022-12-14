@@ -2,19 +2,19 @@ import React, { useEffect } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom"
 import MainPage from "./pages/MainPage";
-import LoginPage from "./pages/LoginPage";
-import SignUpPage from "./pages/SignUpPage";
-import FindPasswordPage from "./pages/FindPasswordPage";
-import MenuPage from "./pages/MenuPage";
-import CartPage from "./pages/CartPage";
-import OrderPage from "./pages/OrderPage";
-import MypagePage from "./pages/MypagePage";
-import MyPaymentPage from "./pages/MyPaymentPage";
-import ReviewPage from "./pages/ReviewPage";
+import LoginPage from "./pages/Login/LoginPage";
+import SignUpPage from "./pages/Login/SignUpPage";
+import FindPasswordPage from "./pages/Login/FindPasswordPage";
+import MenuPage from "./pages/Order/MenuPage";
+import CartPage from "./pages/Order/CartPage";
+import OrderPage from "./pages/Order/OrderPage";
+import MypagePage from "./pages/MyPage/MypagePage";
+import MyPaymentPage from "./pages/MyPage/MyPaymentPage";
+import ReviewPage from "./pages/Order/ReviewPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import { useRecoilState } from "recoil";
 import { paramStore, tableNumTypes } from "./store/store";
-import MyReviewPage from "./pages/MyReviewPage";
+import MyReviewPage from "./pages/MyPage/MyReviewPage";
 
 function App() {
 

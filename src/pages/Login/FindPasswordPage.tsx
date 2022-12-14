@@ -1,4 +1,4 @@
-import FindPassword from '../components/FindPassword/FindPassword';
+import FindPassword from '../../components/FindPassword/FindPassword';
 
 const FindPasswordPage = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import MyPayment from '../components/MyPayment/MyPayment';
+import MyPayment from '../../components/MyPayment/MyPayment';
 
 const MyPaymentPage = () => {
   return (
