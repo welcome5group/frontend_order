@@ -1,0 +1,65 @@
+.changeNickNameContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20rem;
+  height: 12rem;
+  border: 1px solid #aaa;
+  border-radius: 1rem;
+  background: white;
+  padding: 1.5rem;
+
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  
+  .inputGroup {
+    display: flex;
+
+    input {
+      width: 12rem;
+      height: 2rem;
+      margin-right: .5rem;
+      border: 1px solid #adadad;
+      border-radius: .2rem;
+      outline: none;
+    }
+
+    button {
+      color: white;
+      background: #457aff;
+      border: none;
+      border-radius: .3rem;
+    }
+  }
+
+  .btnGroup {
+    display: flex;
+    justify-content: space-between;
+    width: 8rem;
+
+    .changeBtn {
+      width: 3.5rem;
+      height: 1.8rem;
+      border: none;
+      border-radius: .3rem;
+      color: white;
+      background: #457aff;
+    }
+
+    .cancelBtn {
+      width: 3.5rem;
+      height: 1.8rem;
+      border: none;
+      border-radius: .3rem;
+      color: white;
+      background: #bdbdbd;
+    }
+  }
+}

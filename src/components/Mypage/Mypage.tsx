@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from './Mypage.module.scss'
 import { AiOutlineAudit, AiOutlineCreditCard, AiOutlineFileSearch, AiOutlineLock } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import ChangeNickName from '../ChangeNickName/ChangeNickName';
 
 const Mypage = () => {
+
+  const [showChangeNickName, setShowChangeNickName] = useState(false)
+
   return (
     <div className={styled.mypageContainer}>
       <div className={styled.mainTitle}>
@@ -21,11 +25,9 @@ const Mypage = () => {
             <AiOutlineFileSearch /><span>내가 쓴 리뷰</span>
           </div>
         </Link>
-        <Link to='/mypayment'>
-          <div className={styled.mypageMenu}>
-            <AiOutlineAudit /><span>닉네임 변경</span>
-          </div>
-        </Link>
+        <div className={styled.mypageMenu} onClick={() => setShowChangeNickName(!showChangeNickName)}>
+          <AiOutlineAudit /><span>닉네임 변경</span>
+        </div>
         <Link to='/mypayment'>
           <div className={styled.mypageMenu}>
             <AiOutlineLock /><span>비밀번호 변경</span>
@@ -45,6 +47,9 @@ const Mypage = () => {
           </Link>
         </span>
       </div>
+      {showChangeNickName &&
+        <ChangeNickName showChangeNickName={showChangeNickName} setShowChangeNickName={setShowChangeNickName} />
+      }
     </div>
   );
 };
