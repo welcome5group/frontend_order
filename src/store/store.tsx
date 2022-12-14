@@ -21,6 +21,18 @@ export interface reviewType {
   content: string,
 }
 
+export interface myReviewType {
+  id: number,
+  storeName: string,
+  userInfo: userType,
+  time: string,
+  content: string,
+  presidentContent: {
+    time: string,
+    content: string,
+  },
+}
+
 export interface orderType {
   orderProduct: cartType[],
   totalPrice: number,

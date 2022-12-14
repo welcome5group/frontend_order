@@ -27,11 +27,6 @@
         margin-bottom: .2rem;
       }
 
-      .writeDate {
-        font-size: .8rem;
-        color: #aaa;
-      }
-
       .reviewInfoGroup {
         display: flex;
         flex-direction: column;
@@ -56,6 +51,7 @@
 
     .presidentReview {
       display: flex;
+      justify-content: space-between;
       margin-top: 1rem;
 
       svg {
@@ -69,27 +65,33 @@
       .presidentReviewInfo {
         display: flex;
         flex-direction: column;
-        width: 90%;
+        width: 84%;
         height: 100%;
-        padding: .8rem .7rem;
-        margin-left: 1rem;
+        padding: .8rem .6rem;
         background: rgb(243, 243, 243);
+        border-radius: .5rem;
+
+        .presidentInfo {
+          margin-bottom: 1rem;
+        }
 
         .presidnetName {
           display: flex;
-          padding-bottom: 1rem;
           font-weight: 700;
         }
 
         .presidentReviewContent {
-          width: 90%;
-          min-width: 10rem;
-          height: 100%;
           display: flex;
           flex-direction: column;
           flex-wrap: wrap;
+          height: 100%;
         }
       }
     }
+  }
+  
+  .writeDate {
+    font-size: .8rem;
+    color: #aaa;
   }
 }
