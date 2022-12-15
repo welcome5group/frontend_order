@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from './Mypage.module.scss'
 import { AiOutlineAudit, AiOutlineCreditCard, AiOutlineFileSearch, AiOutlineLock } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import ChangeNickName from '../ChangeNickName/ChangeNickName';
+import ChangeNickName from '../ChangeInfo/ChangeNickName';
 
 const Mypage = () => {
 
