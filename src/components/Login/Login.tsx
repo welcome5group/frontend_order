@@ -6,13 +6,14 @@ import BackArrow from '../Common/BackArrow';
 import { useRecoilState } from 'recoil';
 import { loginStore, paramStore, tableNumTypes } from '../../store/store';
 import { toastError } from '../toast';
+import { emailRegExpCheck, passwordRegExpCheck } from '../../utils/regExp';
 
 const Login = () => {
   const nav = useNavigate()
   const [params] = useRecoilState<tableNumTypes>(paramStore)
   const [loginCheck, setLoginCheck] = useRecoilState(loginStore)
   const [inputValue, setInputValue] = useState({
-    id: '',
+    email: '',
     password: ''
   })
 
@@ -22,10 +23,10 @@ const Login = () => {
 
   const handleSubmit = () => {
 
-    if (inputValue.id === '') {
-      toastError('이메일을 입력해주세요.')
-    } else if (inputValue.password === '') {
-      toastError('비밀번호를 입력해주세요.')
+    if (emailRegExpCheck(inputValue.email) === false) {
+      toastError('이메일 형식을 확인해주세요.')
+    } else if (passwordRegExpCheck(inputValue.password) === false) {
+      toastError('비밀번호를 확인해주세요.')
     } else {
       setLoginCheck(!loginCheck)
       nav('/')
@@ -39,7 +40,7 @@ const Login = () => {
       <div className={styled.loginContainer}>
         <img src={logo} alt="로고" className={styled.img} />
         <div className={styled.loginInputWrap}>
-          <input type="text" name='id' value={inputValue.id} placeholder='ID' onChange={handleChange} />
+          <input type="text" name='email' value={inputValue.email} placeholder='EMAIL' onChange={handleChange} />
           <input type="password" name='password' value={inputValue.password} placeholder='PASSWORD' onChange={handleChange} />
         </div>
         <button className={styled.loginBtn} type='button' onClick={handleSubmit}>로그인</button>
