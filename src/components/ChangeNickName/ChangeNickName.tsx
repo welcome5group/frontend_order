@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from './ChangeNickName.module.scss'
 import { toastError, toastSuccess } from '../toast';
+import { onlyTextRegExpCheck } from '../../utils/regExp';
 
 interface types {
   showChangeNickName: boolean,
@@ -17,10 +18,8 @@ const ChangeNickName = ({ showChangeNickName, setShowChangeNickName }: types) =>
   }
 
   const handleDoubleCheck = () => {
-    if (inputValue.indexOf(' ') !== -1) {
-      toastError("닉네임에 공백은 들어갈 수 없습니다.")
-    } else if (inputValue.length === 0) {
-      toastError("닉네임을 입력해주세요.")
+    if (onlyTextRegExpCheck(inputValue) === false) {
+      toastError("닉네임을 확인해주세요.")
     } else {
       toastSuccess("중복확인 완료")
       setDoubleCheck(true)

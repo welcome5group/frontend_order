@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import BackArrow from '../Common/BackArrow';
 import { useRecoilState } from 'recoil';
 import { loginStore, paramStore, tableNumTypes } from '../../store/store';
+import { toastError } from '../toast';
 
 const Login = () => {
   const nav = useNavigate()
@@ -21,13 +22,15 @@ const Login = () => {
 
   const handleSubmit = () => {
 
-    setLoginCheck(!loginCheck)
-
-    if (isNaN(params.tableNum)) {
-      nav(`/${params.id}/${params.storeName}`)
+    if (inputValue.id === '') {
+      toastError('이메일을 입력해주세요.')
+    } else if (inputValue.password === '') {
+      toastError('비밀번호를 입력해주세요.')
     } else {
-      nav(`/${params.id}/${params.storeName}/${params.tableNum}`)
+      setLoginCheck(!loginCheck)
+      nav('/')
     }
+
   }
 
   return (
