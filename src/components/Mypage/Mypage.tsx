@@ -3,10 +3,12 @@ import styled from './Mypage.module.scss'
 import { AiOutlineAudit, AiOutlineCreditCard, AiOutlineFileSearch, AiOutlineLock } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import ChangeNickName from '../ChangeInfo/ChangeNickName';
+import ChangePasswordCinfirm from '../ChangeInfo/ChangePasswordCinfirm';
 
 const Mypage = () => {
 
   const [showChangeNickName, setShowChangeNickName] = useState(false)
+  const [showChangePassword, setShowChangePassword] = useState(false)
 
   return (
     <div className={styled.mypageContainer}>
@@ -28,11 +30,9 @@ const Mypage = () => {
         <div className={styled.mypageMenu} onClick={() => setShowChangeNickName(!showChangeNickName)}>
           <AiOutlineAudit /><span>닉네임 변경</span>
         </div>
-        <Link to='/mypayment'>
-          <div className={styled.mypageMenu}>
-            <AiOutlineLock /><span>비밀번호 변경</span>
-          </div>
-        </Link>
+        <div className={styled.mypageMenu} onClick={() => setShowChangePassword(!showChangePassword)}>
+          <AiOutlineLock /><span>비밀번호 변경</span>
+        </div>
       </div>
       <div className={styled.myapgeLinkGroup}>
         <span>
@@ -47,10 +47,15 @@ const Mypage = () => {
           </Link>
         </span>
       </div>
-      {showChangeNickName &&
+      {
+        showChangeNickName &&
         <ChangeNickName showChangeNickName={showChangeNickName} setShowChangeNickName={setShowChangeNickName} />
       }
-    </div>
+      {
+        showChangePassword &&
+        <ChangePasswordCinfirm showChangePassword={showChangePassword} setShowChangePassword={setShowChangePassword} />
+      }
+    </div >
   );
 };
 

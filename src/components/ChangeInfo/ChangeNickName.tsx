@@ -35,7 +35,7 @@ const ChangeNickName = ({ showChangeNickName, setShowChangeNickName }: types) =>
   }
 
   return (
-    <div className={styled.changeNickNameContainer}>
+    <div className={styled.changeContainer}>
       <h2>닉네임 변경</h2>
       <div className={styled.inputGroup}>
         <input type="text" value={inputValue} onChange={handleChange} />
