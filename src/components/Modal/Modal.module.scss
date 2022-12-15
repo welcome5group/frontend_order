@@ -24,22 +24,24 @@
     justify-content: space-between;
     width: 8rem;
 
-    .changeBtn {
+    button {
       width: 3.5rem;
       height: 1.8rem;
       border: none;
       border-radius: .3rem;
       color: white;
+    }
+
+    .changeBtn {
       background: #457aff;
     }
 
     .cancelBtn {
-      width: 3.5rem;
-      height: 1.8rem;
-      border: none;
-      border-radius: .3rem;
-      color: white;
       background: #bdbdbd;
+    }
+
+    .withDrawBtn {
+      background: #ff6666;
     }
   }
 }
@@ -58,6 +60,10 @@
     border: 1px solid #adadad;
     border-radius: .2rem;
     outline: none;
+  }
+  
+  input::placeholder {
+    font-size: .7rem;
   }
 
   button {

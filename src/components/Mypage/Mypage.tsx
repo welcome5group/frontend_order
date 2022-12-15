@@ -4,11 +4,13 @@ import { AiOutlineAudit, AiOutlineCreditCard, AiOutlineFileSearch, AiOutlineLock
 import { Link } from 'react-router-dom';
 import ChangeNickName from '../Modal/ChangeNickName';
 import ChangePasswordCinfirm from '../Modal/ChangePasswordCinfirm';
+import WithDraw from '../Modal/WithDraw';
 
 const Mypage = () => {
 
   const [showChangeNickName, setShowChangeNickName] = useState(false)
   const [showChangePassword, setShowChangePassword] = useState(false)
+  const [showWithDraw, setShowWithDraw] = useState(false)
 
   return (
     <div className={styled.mypageContainer}>
@@ -35,10 +37,8 @@ const Mypage = () => {
         </div>
       </div>
       <div className={styled.myapgeLinkGroup}>
-        <span>
-          <Link to={'/'}>
-            회원탈퇴
-          </Link>
+        <span onClick={() => setShowWithDraw(!showWithDraw)}>
+          회원탈퇴
         </span>
         <span className={styled.bar}>|</span>
         <span>
@@ -54,6 +54,10 @@ const Mypage = () => {
       {
         showChangePassword &&
         <ChangePasswordCinfirm showChangePassword={showChangePassword} setShowChangePassword={setShowChangePassword} />
+      }
+      {
+        showWithDraw &&
+        <WithDraw showWithDraw={showWithDraw} setShowWithDraw={setShowWithDraw} />
       }
     </div >
   );
