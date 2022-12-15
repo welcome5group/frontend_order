@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from './ChangeNickName.module.scss'
+import styled from './ChangeInfo.module.scss'
 import { toastError, toastSuccess } from '../toast';
 import { onlyTextRegExpCheck } from '../../utils/regExp';
 
