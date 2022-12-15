@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from './ChangeInfo.module.scss'
+import styled from './Modal.module.scss'
 
 interface types {
   showChangePassword: boolean,

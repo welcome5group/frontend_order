@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styled from './Mypage.module.scss'
 import { AiOutlineAudit, AiOutlineCreditCard, AiOutlineFileSearch, AiOutlineLock } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import ChangeNickName from '../ChangeInfo/ChangeNickName';
-import ChangePasswordCinfirm from '../ChangeInfo/ChangePasswordCinfirm';
+import ChangeNickName from '../Modal/ChangeNickName';
+import ChangePasswordCinfirm from '../Modal/ChangePasswordCinfirm';
 
 const Mypage = () => {
 
