@@ -37,6 +37,7 @@ const ChangeNickName = ({ showChangeNickName, setShowChangeNickName }: types) =>
   return (
     <div className={styled.changeContainer}>
       <h2>닉네임 변경</h2>
+      <span className={styled.subDesc}>변경하실 닉네임을 입력해주세요</span>
       <div className={styled.inputGroup}>
         <input type="text" value={inputValue} onChange={handleChange} />
         <button onClick={handleDoubleCheck}>중복확인</button>
