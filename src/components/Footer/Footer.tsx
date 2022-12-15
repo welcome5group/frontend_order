@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from './Footer.module.scss'
 import { BsHouseDoor } from 'react-icons/bs';
-import { AiOutlineFileText, AiOutlineShoppingCart } from 'react-icons/ai';
+import { AiOutlineFileText, AiOutlineShoppingCart, AiOutlineBell } from 'react-icons/ai';
 
 import { Link } from 'react-router-dom'
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -17,9 +17,9 @@ const Footer = () => {
     if (params.id === '' || params.storeName === '') {
       url = `/NotFoundPage`
     } else if (isNaN(params.tableNum)) {
-      url = `/${params.id}/${params.storeName}`
+      url = `/menu/${params.id}/${params.storeName}`
     } else {
-      url = `/${params.id}/${params.storeName}/${params.tableNum}`
+      url = `/menu/${params.id}/${params.storeName}/${params.tableNum}`
     }
 
     return url
@@ -28,15 +28,18 @@ const Footer = () => {
   return (
     <>
       <footer className={styled.footerContainer}>
-        <Link to={urlChanger()}>
+        <Link to='/'>
           <BsHouseDoor />
+        </Link>
+        <Link to={urlChanger()}>
+          <AiOutlineFileText />
         </Link>
         <Link to='/cart'>
           <AiOutlineShoppingCart />
           {totalCartCount !== 0 && <div className={styled.totalCart}>{totalCartCount}</div>}
         </Link>
         <Link to='/order'>
-          <AiOutlineFileText />
+          <AiOutlineBell />
         </Link>
       </footer>
     </>

@@ -39,8 +39,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<MainPage />}>
-        <Route path="/:id/:storeName/:tableNum" element={<MenuPage />} />
-        <Route path="/:id/:storeName/" element={<MenuPage />} />
+        <Route path="/menu/:id/:storeName/:tableNum" element={<MenuPage />} />
+        <Route path="/menu/:id/:storeName/" element={<MenuPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/order" element={<OrderPage />} />
         <Route path="/mypage" element={<MypagePage />} />
