@@ -15,6 +15,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import { useRecoilState } from "recoil";
 import { paramStore, tableNumTypes } from "./store/store";
 import MyReviewPage from "./pages/MyPage/MyReviewPage";
+import HomePage from "./pages/Home/HomePage";
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<MainPage />}>
+        <Route path="/" element={<HomePage />} />
         <Route path="/menu/:id/:storeName/:tableNum" element={<MenuPage />} />
         <Route path="/menu/:id/:storeName/" element={<MenuPage />} />
         <Route path="/cart" element={<CartPage />} />
