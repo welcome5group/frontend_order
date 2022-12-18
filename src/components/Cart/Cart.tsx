@@ -11,7 +11,6 @@ const Cart = () => {
   const [orderList, setOrderList] = useRecoilState<orderType[]>(orderStore)
   const [totalPrice, setTotalPrice] = useState(0)
 
-
   // 계산하기 버튼 클릭 시 주문내역에 카트에 있는 아이템들과 총 결제금액 추가
   const handleClick = () => {
     const item = { orderProduct: cartList, totalPrice: totalPrice, orderStatus: false }

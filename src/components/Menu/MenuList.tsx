@@ -6,6 +6,7 @@ import { cartStore, paramStore } from '../../store/store';
 import MenuCategory from './MenuCategory';
 import { useParams } from 'react-router-dom';
 import { cartType, menuTypes, tableNumTypes } from '../../types/types';
+import { testMode } from '../../utils/testMode';
 
 const MenuList = () => {
   const param = useParams()
@@ -13,7 +14,14 @@ const MenuList = () => {
 
   const [cartList, setCartList] = useRecoilState<cartType[]>(cartStore)
   const [category, setCategory] = useState<string[]>([]);
-  const [data] = useState<menuTypes[]>(menu)
+  const [data, setData] = useState<menuTypes[]>([])
+
+  //테스트모드
+  useEffect(() => {
+    if (testMode) {
+      setData(menu)
+    }
+  }, [])
 
   const handleOrderClick = useCallback((id: number) => {
     const idList = cartList.map(item => item.product.id)

@@ -2,12 +2,21 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useDateFilter } from '../../Hooks/useDateFilter';
 import { paymentData } from '../../mock/paymentData';
 import { paymentType } from '../../types/types';
+import { testMode } from '../../utils/testMode';
 import styled from './MyPayment.module.scss'
 import MyPaymentList from './MyPaymentList';
 
 const MyPayment = () => {
 
   const [paymentList, setPaymentList] = useState<paymentType[]>([])
+  //테스트모드
+  useEffect(() => {
+    if (testMode) {
+      setPaymentList(paymentData)
+    }
+  }, [])
+
+  const [paymentFilterList, setPaymentFilterList] = useState<paymentType[]>([])
 
   const currentYear = new Date().getFullYear()
   const [year, setYear] = useState(String(currentYear))
@@ -27,13 +36,14 @@ const MyPayment = () => {
   }
   const yearOption = yearOptions();
 
-  const month = useDateFilter(paymentList, 1)
+  const month = useDateFilter(paymentFilterList, 1)
 
   useEffect(() => {
     //데이터 중 현재 년도에 해당하는 데이터만 저장
-    const yearFilteredData = paymentData.filter(item => item.date.split('-')[0] === year)
-    setPaymentList(yearFilteredData)
-  }, [year])
+    console.log(paymentList)
+    const yearFilteredData = paymentList?.filter(item => item.date.split('-')[0] === year)
+    setPaymentFilterList(yearFilteredData)
+  }, [paymentList, year])
 
   return (
     <div className={styled.mypaymentContainer}>
@@ -46,7 +56,7 @@ const MyPayment = () => {
         {month.map(item => (
           <div key={item}>
             <div className={styled.date}>{item}</div>
-            <MyPaymentList paymentList={paymentList} month={item} />
+            <MyPaymentList paymentFilterList={paymentFilterList} month={item} />
           </div>
         ))}
       </div>

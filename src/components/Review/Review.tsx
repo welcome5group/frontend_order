@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { reviewData } from '../../mock/reviewData';
 import styled from './Review.module.scss'
 
@@ -6,10 +6,17 @@ import ReviewStar from './ReviewStar';
 import ReviewWrite from './ReviewWrite';
 import ReviewItem from './ReviewItem';
 import { reviewType } from '../../types/types';
+import { testMode } from '../../utils/testMode';
 
 const Review = () => {
 
-  const [reviewList, setReviewList] = useState<reviewType[]>(reviewData)
+  const [reviewList, setReviewList] = useState<reviewType[]>([])
+
+  useEffect(() => {
+    if (testMode) {
+      setReviewList(reviewData)
+    }
+  }, [])
 
   return (
     <div className={styled.reviewContainer}>
