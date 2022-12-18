@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useDateFilter } from '../../Hooks/useDateFilter';
 import { paymentData } from '../../mock/paymentData';
-import { paymentType } from '../../store/store';
+import { paymentType } from '../../types/types';
 import styled from './MyPayment.module.scss'
 import MyPaymentList from './MyPaymentList';
 

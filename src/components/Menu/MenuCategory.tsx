@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
-import { menuTypes } from '../../store/store';
 import MenuItem from './MenuItem';
 import styled from './Menu.module.scss'
+import { menuTypes } from '../../types/types';
 
 interface types {
   category: string

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { reviewData } from '../../mock/reviewData';
 import styled from './Review.module.scss'
-import { reviewType } from '../../store/store';
 
 import ReviewStar from './ReviewStar';
 import ReviewWrite from './ReviewWrite';
 import ReviewItem from './ReviewItem';
+import { reviewType } from '../../types/types';
 
 const Review = () => {
 

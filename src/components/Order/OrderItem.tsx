@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { orderType, paramStore } from '../../store/store';
+import { paramStore } from '../../store/store';
+import { orderType } from '../../types/types';
 import styled from './Order.module.scss'
 
 interface types {

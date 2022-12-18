@@ -1,5 +1,5 @@
 import React from 'react';
-import { paymentType } from '../../store/store';
+import { paymentType } from '../../types/types';
 import styled from './MyPayment.module.scss'
 
 interface types {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import { orderStore, orderType } from '../../store/store';
+import { orderStore } from '../../store/store';
+import { orderType } from '../../types/types';
 import styled from './Order.module.scss'
 import OrderList from './OrderList';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import CartItem from './CartItem';
 import styled from './Cart.module.scss'
-import { cartType } from '../../store/store';
 import { SetterOrUpdater } from 'recoil';
+import { cartType } from '../../types/types';
 
 interface types {
   cartList: cartType[],

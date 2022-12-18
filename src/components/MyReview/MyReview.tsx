@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from './MyReview.module.scss'
 import { myReviewData } from '../../mock/reviewData';
-import { myReviewType } from '../../store/store';
 import MyReviewList from './MyReviewList';
+import { myReviewType } from '../../types/types';
 
 const MyReview = () => {
 

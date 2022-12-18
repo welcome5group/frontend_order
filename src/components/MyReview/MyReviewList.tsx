@@ -1,6 +1,6 @@
 import React from 'react';
+import { myReviewType } from '../../types/types';
 import styled from './MyReview.module.scss'
-import { myReviewType } from '../../store/store';
 import MyReviewItem from './MyReviewItem';
 
 interface types {

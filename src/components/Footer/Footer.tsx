@@ -5,7 +5,8 @@ import { AiOutlineFileText, AiOutlineShoppingCart, AiOutlineBell } from 'react-i
 
 import { Link } from 'react-router-dom'
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { cartCount, paramStore, tableNumTypes } from '../../store/store';
+import { cartCount, paramStore } from '../../store/store';
+import { tableNumTypes } from '../../types/types';
 
 const Footer = () => {
 

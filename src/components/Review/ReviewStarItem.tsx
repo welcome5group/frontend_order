@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from './Review.module.scss'
 import { AiFillStar } from 'react-icons/ai';
-import { cartType } from '../../store/store';
+import { cartType } from '../../types/types';
 
 interface types {
   item: cartType,

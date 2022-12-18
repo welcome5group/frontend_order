@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { signup } from '../../apis/signupApi';
 import logo from '../../assets/logo.svg'
 import { emailRegExpCheck, onlyTextRegExpCheck, passwordRegExpCheck } from '../../utils/regExp';
 import BackArrow from '../Common/BackArrow';

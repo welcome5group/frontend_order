@@ -2,9 +2,10 @@ import React, { useEffect, useState, useCallback, memo } from 'react';
 import { menu } from '../../mock/testData';
 import styled from './Menu.module.scss'
 import { useRecoilState } from 'recoil';
-import { menuTypes, cartStore, cartType, paramStore, tableNumTypes } from '../../store/store';
+import { cartStore, paramStore } from '../../store/store';
 import MenuCategory from './MenuCategory';
 import { useParams } from 'react-router-dom';
+import { cartType, menuTypes, tableNumTypes } from '../../types/types';
 
 const MenuList = () => {
   const param = useParams()

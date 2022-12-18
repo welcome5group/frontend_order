@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { cartStore, cartType, orderStore, orderType } from '../../store/store';
+import { cartStore, orderStore } from '../../store/store';
+import { cartType, orderType } from '../../types/types';
 import styled from './Cart.module.scss'
 import CartList from './CartList';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDateFilter } from '../../Hooks/useDateFilter';
-import { paymentType } from '../../store/store';
+import { paymentType } from '../../types/types';
 import styled from './MyPayment.module.scss'
 import MyPaymentItem from './MyPaymentItem';
 

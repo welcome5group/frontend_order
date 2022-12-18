@@ -13,9 +13,10 @@ import MyPaymentPage from "./pages/MyPage/MyPaymentPage";
 import ReviewPage from "./pages/Order/ReviewPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import { useRecoilState } from "recoil";
-import { paramStore, tableNumTypes } from "./store/store";
+import { paramStore } from "./store/store";
 import MyReviewPage from "./pages/MyPage/MyReviewPage";
 import HomePage from "./pages/Home/HomePage";
+import { tableNumTypes } from "./types/types";
 
 function App() {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from './MyReview.module.scss'
 import { AiOutlineUser } from 'react-icons/ai';
-import { myReviewType } from '../../store/store';
+import { myReviewType } from '../../types/types';
 
 interface types {
   item: myReviewType

@@ -1,7 +1,7 @@
 import React from 'react';
-import { orderType } from '../../store/store';
 import OrderItem from './OrderItem';
 import styled from './Order.module.scss'
+import { orderType } from '../../types/types';
 
 interface types {
   orderList: orderType[],

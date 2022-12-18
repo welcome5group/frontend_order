@@ -4,9 +4,10 @@ import styled from './Login.module.scss'
 import { Link, useNavigate } from 'react-router-dom'
 import BackArrow from '../Common/BackArrow';
 import { useRecoilState } from 'recoil';
-import { loginStore, paramStore, tableNumTypes } from '../../store/store';
+import { loginStore, paramStore } from '../../store/store';
 import { toastError } from '../toast';
 import { emailRegExpCheck, passwordRegExpCheck } from '../../utils/regExp';
+import { tableNumTypes } from '../../types/types';
 
 const Login = () => {
   const nav = useNavigate()

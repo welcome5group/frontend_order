@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { reviewType, userStore } from '../../store/store';
+import { userStore } from '../../store/store';
+import { reviewType } from '../../types/types';
 import styled from './Review.module.scss'
 
 interface types {

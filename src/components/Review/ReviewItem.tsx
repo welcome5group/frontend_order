@@ -1,7 +1,7 @@
 import React from 'react';
-import { reviewType } from '../../store/store';
 import styled from './Review.module.scss'
 import { AiOutlineUser } from 'react-icons/ai';
+import { reviewType } from '../../types/types';
 
 const ReviewItem = (props: { reviewList: reviewType[] }) => {
   return (

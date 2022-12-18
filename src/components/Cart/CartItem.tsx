@@ -1,5 +1,5 @@
 import React from 'react';
-import { cartType } from '../../store/store';
+import { cartType } from '../../types/types';
 import styled from './Cart.module.scss'
 
 interface types {
