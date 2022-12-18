@@ -4,6 +4,13 @@ import { cartType, orderType, tableNumTypes, userType } from "../types/types";
 
 const { persistAtom } = recoilPersist()
 
+//테스트 모드 체크 아톰
+//api 연결 될 시 false로 변경
+export const testModeCheckStore = atom<boolean>({
+  key: "testModeCheckStore",
+  default: true,
+})
+
 //로그인 체크 아톰
 export const loginStore = atom<boolean>({
   key: "loginStore",
