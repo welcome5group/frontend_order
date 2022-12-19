@@ -34,7 +34,7 @@
 
       .deleteBtn {
         display: flex;
-        align-items: flex-end;
+        align-items: flex-start;
 
         button {
           padding: .2rem .4rem;
@@ -42,6 +42,25 @@
           border: none;
           border-radius: .5rem;
         }
+      }
+    }
+
+    .orderMenuList {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: .5rem;
+      margin-left: -.2rem;
+      width: 100%;
+      height: 100%;
+
+      .orderMenuItem {
+        border: 1px solid #c9c9c9;
+        border-radius: 10rem;
+        padding: .2rem .4rem;
+        margin-right: .2rem;
+        margin-bottom: .2rem;
+        font-size: .6rem;
+        font-weight: 700;
       }
     }
 

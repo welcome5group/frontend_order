@@ -8,8 +8,6 @@ const MyReview = () => {
 
   const [data, setData] = useState<myReviewType[]>(myReviewData)
 
-  console.log(data)
-
   return (
     <div className={styled.myReviewContainer}>
       <div className={styled.myReviewMainTitle}>

@@ -8,9 +8,6 @@ interface types {
 }
 
 const MyReviewItem = ({ item }: types) => {
-
-  console.log(item)
-
   return (
     <div className={styled.myReviewItem}>
       <div className={styled.infoGroup}>
@@ -21,6 +18,11 @@ const MyReviewItem = ({ item }: types) => {
         <div className={styled.deleteBtn}>
           <button>삭제</button>
         </div>
+      </div>
+      <div className={styled.orderMenuList}>
+        {item.orderMenu.map((item, idx) => (
+          <span className={styled.orderMenuItem} key={idx}>{item}</span>
+        ))}
       </div>
       <div className={styled.userReview}>
         <span>{item.content}</span>
