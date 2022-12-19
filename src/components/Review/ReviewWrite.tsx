@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { userStore } from '../../store/store';
-import { reviewType } from '../../types/types';
+import { reviewType, starType } from '../../types/types';
 import styled from './Review.module.scss'
 
 interface types {
   reviewList: reviewType[],
-  setReviewList: React.Dispatch<React.SetStateAction<reviewType[]>>
+  setReviewList: React.Dispatch<React.SetStateAction<reviewType[]>>,
+  starData: starType[],
 }
 
-const ReviewWrite = ({ reviewList, setReviewList }: types) => {
+const ReviewWrite = ({ reviewList, setReviewList, starData }: types) => {
 
   const [textValue, setTextValue] = useState('')
   const [userInfo] = useRecoilState(userStore)
@@ -35,6 +36,7 @@ const ReviewWrite = ({ reviewList, setReviewList }: types) => {
   const handleSubmit = () => {
     const item = { id: reviewList.length + 1, userInfo: userInfo, time: time(), content: textValue }
     console.log(item)
+    console.log(starData)
     setReviewList([...reviewList, item])
     setTextValue('')
   }

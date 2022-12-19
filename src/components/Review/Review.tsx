@@ -5,12 +5,15 @@ import styled from './Review.module.scss'
 import ReviewStar from './ReviewStar';
 import ReviewWrite from './ReviewWrite';
 import ReviewItem from './ReviewItem';
-import { reviewType } from '../../types/types';
+import { reviewType, starType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
 
 const Review = () => {
 
   const [reviewList, setReviewList] = useState<reviewType[]>([])
+  const [starData, setStarData] = useState<starType[]>([])
+
+  console.log(starData)
 
   useEffect(() => {
     if (testMode) {
@@ -25,8 +28,8 @@ const Review = () => {
           리뷰
         </h1>
       </div>
-      <ReviewStar />
-      <ReviewWrite reviewList={reviewList} setReviewList={setReviewList} />
+      <ReviewStar starData={starData} setStarData={setStarData} />
+      <ReviewWrite reviewList={reviewList} setReviewList={setReviewList} starData={starData} />
       <ReviewItem reviewList={reviewList} />
     </div>
   );

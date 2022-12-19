@@ -5,9 +5,14 @@ import { useRecoilState } from 'recoil';
 import { orderStore } from '../../store/store';
 import { useParams } from 'react-router-dom';
 import ReviewStarItem from './ReviewStarItem';
+import { starType } from '../../types/types';
 
+interface types {
+  starData: starType[],
+  setStarData: React.Dispatch<React.SetStateAction<starType[]>>
+}
 
-const ReviewStar = () => {
+const ReviewStar = ({ starData, setStarData }: types) => {
   const param = useParams()
   const idx = Number(param.orderId) - 1
 
@@ -23,11 +28,10 @@ const ReviewStar = () => {
       {showMore ?
         <>
           <div className={styled.starContainer}>
-            {orderList[idx].orderProduct.map(item => (
-              <ReviewStarItem item={item} />
+            {orderList[idx].orderProduct.map((item, idx) => (
+              <ReviewStarItem item={item} starData={starData} setStarData={setStarData} key={idx} />
             ))}
           </div>
-          <button>별점주기</button>
         </> : null
       }
     </div>
