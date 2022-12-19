@@ -1,14 +1,17 @@
-import React from 'react';
-import styled from './Home.module.scss'
+import React, { useState } from 'react';
+import styled from './Home.module.scss';
 import Snow from './Snow';
 import { useRecoilState } from 'recoil';
 import { loginStore } from '../../store/store';
 import { Link } from 'react-router-dom';
+import { myReviewType } from '../../types/types';
+import { myReviewData } from '../../mock/reviewData';
+import HomeReview from './HomeReview';
 
 const Home = () => {
 
   const [loginCheck] = useRecoilState(loginStore)
-  console.log(loginCheck)
+  const [data] = useState<myReviewType[]>(myReviewData)
 
   return (
     <div className={styled.homeContainer}>
@@ -28,31 +31,9 @@ const Home = () => {
         {
           loginCheck ?
             <div className={styled.reviewCinfirmList}>
-              <div className={styled.reviewCinfirmItem}>
-                <p className={styled.storeName}>정말 맛있는 피자 집</p>
-                <p className={styled.buyDate}>2022-12-16 15:02:21</p>
-                <div className={styled.itemList}>
-                  <span>불고기 피자</span>
-                  <span>콤비네이션 피자</span>
-                </div>
-                <button>리뷰 작성</button>
-              </div>
-              <div className={styled.reviewCinfirmItem}>
-                <p className={styled.storeName}>정말 맛있는 피자 집</p>
-                <p className={styled.buyDate}>2022-12-16 15:02:21</p>
-                <div className={styled.itemList}>
-                  <span>피자</span>
-                </div>
-                <button>리뷰 작성</button>
-              </div>
-              <div className={styled.reviewCinfirmItem}>
-                <p className={styled.storeName}>정말 맛있는 피자 집</p>
-                <p className={styled.buyDate}>2022-12-16 15:02:21</p>
-                <div className={styled.itemList}>
-                  <span>피자</span>
-                </div>
-                <button>리뷰 작성</button>
-              </div>
+              {data.map(item => (
+                <HomeReview item={item} />
+              ))}
             </div>
             :
             <div className={styled.loginplz}>

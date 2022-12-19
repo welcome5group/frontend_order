@@ -55,6 +55,8 @@
   }
 
   .reviewCinfirmItem {
+    display: flex;
+    flex-direction: column;
     min-width: 10rem;
     min-height: 8rem;
     padding: 1rem;
@@ -67,8 +69,15 @@
     }
 
     .storeName {
+      width: 100%;
       font-weight: 700;
+      font-size: .8rem;
+      padding-bottom: .4rem;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
     }
+
 
     & > p {
       font-size: .8rem;
@@ -93,13 +102,16 @@
     }
   }
 
-  button {
+  .linkBtn {
+    display: flex;
+    justify-content: center;
     width: 100%;
     margin-top: .6rem;
-    padding: .2rem 0;
-    border: none;
-    background: rgba(56, 182, 45, 0.808);
+    padding: .2rem;
+    font-size: .8rem;
     color: white;
+    background: rgba(56, 182, 45, 0.808);
+    border: none;
     border-radius: .3rem;
   }
 }
