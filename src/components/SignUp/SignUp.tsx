@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import styled from './SignUp.module.scss'
 import logo from '../../assets/logo.svg'
 import { emailRegExpCheck, onlyTextRegExpCheck, passwordRegExpCheck } from '../../utils/regExp';
-import BackArrow from '../Common/BackArrow';
+import { Link } from 'react-router-dom'
 import { toastError } from '../toast';
-import styled from './SignUp.module.scss'
+import { AiOutlineLeft } from 'react-icons/ai';
 
 const SignUp = () => {
 
@@ -44,7 +45,9 @@ const SignUp = () => {
 
   return (
     <div>
-      <BackArrow link={"/login"} />
+      <Link to={"/login"}>
+        <AiOutlineLeft className={styled.backArrow} />
+      </Link>
       <div className={styled.signUpContainer}>
         <img src={logo} alt="로고" className={styled.img} />
         <div className={styled.signUpInputWrap}>
