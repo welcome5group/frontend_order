@@ -19,7 +19,7 @@ const Home = () => {
           <p>이용해주셔서 감사합니다.</p>
         </div> :
         <div className={styled.mainDesc}>
-          <p>불편하게 주문하지 말고!</p>
+          <p>불편하게 서서 주문하지 말고!</p>
           <p>편하게 앉아서 주문하세요!</p>
         </div>
       }
