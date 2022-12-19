@@ -23,7 +23,6 @@ const MenuList = () => {
     }
   }, [])
 
-  console.log(cartList)
   const handleOrderClick = useCallback((id: number) => {
     const idList = cartList.map(item => item.product.id)
     //idList에 선택한 값과 맞는 값이 없다면 배열에 선택한 값 추가

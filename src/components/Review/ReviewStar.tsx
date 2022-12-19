@@ -28,10 +28,11 @@ const ReviewStar = ({ starData, setStarData }: types) => {
       {showMore ?
         <>
           <div className={styled.starContainer}>
-            {orderList[idx].orderProduct.map((item, idx) => (
-              <ReviewStarItem item={item} starData={starData} setStarData={setStarData} key={idx} />
+            {orderList[idx].orderProduct.map(item => (
+              <ReviewStarItem starData={starData} setStarData={setStarData} item={item} />
             ))}
           </div>
+          <button>별점주기</button>
         </> : null
       }
     </div>

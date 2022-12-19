@@ -6,20 +6,35 @@
 
 .menuContainer {
   position: relative;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
   }
 
   .mainTitle {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 700;
   }
 }
 
+.menuReview {
+  display: flex;
+  align-items: center;
+  margin-top: .5rem;
+  
+  & > p {
+    font-size: .9rem;
+  }
+
+  & > svg {
+    margin-left: .2rem;
+    font-size: .75rem;
+  }
+}
+
 .menuList {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .menuCategory {
@@ -27,8 +42,8 @@
   background: white;
 
   p {
-    margin: 1.5rem 0.5rem 0 0.5rem;
-    padding: 0.5rem 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.5rem 0;
     font-size: 1.2rem;
     font-weight: 700;
   }
@@ -41,7 +56,6 @@
   width: 100%;
   height: 100%;
   margin-top: 0.5rem;
-  padding: 0.5rem;
   padding-bottom: 1.2rem;
   border-bottom: 1px solid #e9e9e9;
 
