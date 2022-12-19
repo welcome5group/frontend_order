@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../../assets/logo.svg'
 import { emailRegExpCheck, onlyTextRegExpCheck, passwordRegExpCheck } from '../../utils/regExp';
-import BackArrow from '../Common/BackArrow';
+// import BackArrow from '../Common/BackArrow';
 import { toastError } from '../toast';
 import styled from './SignUp.module.scss'
 
@@ -44,7 +44,7 @@ const SignUp = () => {
 
   return (
     <div>
-      <BackArrow link={"/login"} />
+      {/* <BackArrow link={"/login"} /> */}
       <div className={styled.signUpContainer}>
         <img src={logo} alt="로고" className={styled.img} />
         <div className={styled.signUpInputWrap}>

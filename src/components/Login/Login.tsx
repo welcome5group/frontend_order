@@ -7,7 +7,7 @@ import { loginStore, paramStore } from '../../store/store';
 import { toastError } from '../toast';
 import { emailRegExpCheck, passwordRegExpCheck } from '../../utils/regExp';
 import { tableNumTypes } from '../../types/types';
-import BackArrow from '../Common/BackArrow';
+// import BackArrow from '../Common/BackArrow';
 
 const Login = () => {
   const nav = useNavigate()
@@ -37,7 +37,7 @@ const Login = () => {
 
   return (
     <>
-      <BackArrow link={"/"} />
+      {/* <BackArrow link={"/"} /> */}
       <div className={styled.loginContainer}>
         <img src={logo} alt="로고" className={styled.img} />
         <div className={styled.loginInputWrap}>
