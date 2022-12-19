@@ -50,11 +50,11 @@ function App() {
         <Route path="/mypayment" element={<MyPaymentPage />} />
         <Route path="/review/:orderId" element={<ReviewPage />} />
         <Route path="/myreview" element={<MyReviewPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/findPassword" element={<FindPasswordPage />} />
-      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
