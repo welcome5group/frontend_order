@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import logo from '../../assets/logo.svg'
 import styled from './Login.module.scss'
 import { Link, useNavigate } from 'react-router-dom'
-import BackArrow from '../Common/BackArrow';
 import { useRecoilState } from 'recoil';
 import { loginStore, paramStore } from '../../store/store';
 import { toastError } from '../toast';
 import { emailRegExpCheck, passwordRegExpCheck } from '../../utils/regExp';
 import { tableNumTypes } from '../../types/types';
+import BackArrow from '../Common/BackArrow';
 
 const Login = () => {
   const nav = useNavigate()
