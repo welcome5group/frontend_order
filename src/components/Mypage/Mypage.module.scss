@@ -60,10 +60,12 @@
   justify-content: center;
   margin-top: 2rem;
 
-  span {
+  button {
     display: flex;
     align-items: center;
     justify-content: center;
+    border: none;
+    background: none;
     height: 1.5rem;
     padding: 0 .25rem;
     font-size: 0.9rem;
@@ -71,6 +73,12 @@
   }
   
   .bar {
-    padding-bottom: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5rem;
+    padding: 0 .25rem;
+    font-size: 0.9rem;
+    color: #aaa;
   }
 }

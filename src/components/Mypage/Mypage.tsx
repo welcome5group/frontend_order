@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
 import styled from './Mypage.module.scss'
 import { AiOutlineAudit, AiOutlineCreditCard, AiOutlineFileSearch, AiOutlineLock } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ChangeNickName from '../Modal/ChangeNickName';
 import ChangePasswordCinfirm from '../Modal/ChangePasswordCinfirm';
 import WithDraw from '../Modal/WithDraw';
+import { useRecoilState } from 'recoil';
+import { loginStore } from '../../store/store';
 
 const Mypage = () => {
+
+  const nav = useNavigate()
 
   const [showChangeNickName, setShowChangeNickName] = useState(false)
   const [showChangePassword, setShowChangePassword] = useState(false)
   const [showWithDraw, setShowWithDraw] = useState(false)
+
+  const [, setLogin] = useRecoilState(loginStore)
+  const handleLogOutClick = () => {
+    setLogin({ token: '' })
+    nav('/')
+  }
 
   return (
     <div className={styled.mypageContainer}>
@@ -37,14 +47,14 @@ const Mypage = () => {
         </div>
       </div>
       <div className={styled.myapgeLinkGroup}>
-        <span onClick={() => setShowWithDraw(!showWithDraw)}>
+        <button onClick={() => setShowWithDraw(!showWithDraw)}>
           회원탈퇴
-        </span>
+        </button>
         <span className={styled.bar}>|</span>
         <span>
-          <Link to={'/'}>
+          <button onClick={handleLogOutClick}>
             로그아웃
-          </Link>
+          </button>
         </span>
       </div>
       {
