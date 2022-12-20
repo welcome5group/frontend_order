@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import styled from './SignUp.module.scss'
 import logo from '../../assets/logo.svg'
 import { emailRegExpCheck, onlyTextRegExpCheck, passwordRegExpCheck } from '../../utils/regExp';
-import { Link } from 'react-router-dom'
-import { toastError } from '../toast';
+import { Link, useNavigate } from 'react-router-dom'
+import { toastError, toastSuccess } from '../toast';
 import { AiOutlineLeft } from 'react-icons/ai';
+import { signUp } from '../../apis/memberApi';
+import { AxiosError } from 'axios';
+import { testMode } from '../../utils/testMode';
 
 const SignUp = () => {
 
+  const nav = useNavigate();
   const [inputValue, setInputValue] = useState({
     email: '',
     password: '',
     nickname: '',
-    type: 'member'
+    type: 'MEMBER'
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +25,7 @@ const SignUp = () => {
 
   const handleSubmit = async () => {
     if (emailRegExpCheck(inputValue.email) === false) {
-      toastError("이메일을 확인해주세요.")
+      toastError("잘못된 이메일 형식입니다.")
       return
     }
     else if (passwordRegExpCheck(inputValue.password) === false) {
@@ -33,14 +37,20 @@ const SignUp = () => {
       return
     }
 
-    console.log('성공!')
+    if (!testMode) {
+      try {
+        const result = await signUp(inputValue)
 
-    // try {
-    //   const result = await signup(inputValue)
-
-    // } catch (e) {
-    //   console.log(1)
-    // }
+        if (result.status === 200) {
+          toastSuccess('회원가입이 성공적으로 완료되었습니다')
+          nav('/')
+        }
+      } catch (e: any) {
+        toastError(e.response.data.message)
+      }
+    } else {
+      nav('/')
+    }
   }
 
   return (
@@ -64,8 +74,8 @@ const SignUp = () => {
             <label id='email'>닉네임</label>
             <input type="text" name='nickname' placeholder='NICKNAME' onChange={handleChange} />
           </div>
+          <button className={styled.signUpBtn} type='button' onClick={handleSubmit}>회원가입</button>
         </div>
-        <button className={styled.signUpBtn} type='button' onClick={handleSubmit}>회원가입</button>
       </div>
     </div>
   );

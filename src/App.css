@@ -3,11 +3,11 @@
     font-size: 25px;
   }
 }
-@media ( min-width: 1024px ) {
+/* @media ( max-width: 1024px ) {
   html {
     font-size: 35px;
   }
-}
+} */
 
 .container {
   width: 100%;
