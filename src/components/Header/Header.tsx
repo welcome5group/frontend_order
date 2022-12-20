@@ -9,13 +9,15 @@ const Header = () => {
 
   const [loginCheck] = useRecoilState(loginStore);
 
+  console.log(loginCheck)
+
   return (
     <>
       <header className={styled.headerContainer}>
         <h1 className={styled.title}>
           Finger Order
         </h1>
-        {loginCheck ?
+        {loginCheck.token.length !== 0 ?
           <Link to='/mypage'>
             <AiOutlineUser />
           </Link>
