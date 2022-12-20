@@ -29,7 +29,7 @@ const Home = () => {
       <div className={styled.reviewCinfirmArea}>
         <p>리뷰는 작성 하셨나요?</p>
         {
-          loginCheck ?
+          loginCheck.token !== '' ?
             <div className={styled.reviewCinfirmList}>
               {data.map(item => (
                 <HomeReview item={item} />
