@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, memo } from 'react';
+import React, { useEffect, useState, useCallback, memo, useRef } from 'react';
 import { menu } from '../../mock/testData';
 import styled from './Menu.module.scss'
 import { useRecoilState } from 'recoil';
@@ -44,6 +44,12 @@ const MenuList = () => {
     }
   }, [cartList, data, setCartList])
 
+  //카테고리 선택 시 해당 div로 이동
+  let categoryRef = useRef<HTMLDivElement[]>([])
+  const handleMove = (idx: number) => {
+    window.scrollTo({ top: categoryRef.current[idx].offsetTop, behavior: 'smooth' });
+  }
+
   //처음 렌더링 시 param 값 저장
   useEffect(() => {
     const params: tableNumTypes =
@@ -62,8 +68,15 @@ const MenuList = () => {
   return (
     <>
       <div className={styled.menuList}>
-        {category.length !== 0 && category.map((category) => (
-          <MenuCategory category={category} key={category} data={data} handleOrderClick={handleOrderClick} />
+        <div className={styled.categoryList}>
+          {
+            category.map((item, idx) => (
+              <span onClick={() => handleMove(idx)}>{item}</span>
+            ))
+          }
+        </div>
+        {category.length !== 0 && category.map((category, idx) => (
+          <MenuCategory category={category} categoryRef={categoryRef} idx={idx} key={category} data={data} handleOrderClick={handleOrderClick} />
         ))}
       </div>
     </>

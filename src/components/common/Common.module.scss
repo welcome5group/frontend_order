@@ -1,0 +1,12 @@
+// 뒤로 가기 버튼
+.backContainer {
+  position: absolute;
+  margin: 15px;
+  left: 0;
+
+  .backArrow {
+    width: 30px;
+    height: 30px;
+    fill: #bdbdbd;
+  }
+}
