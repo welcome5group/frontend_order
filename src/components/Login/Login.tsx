@@ -48,9 +48,7 @@ const Login = () => {
         setLogin({ token: '1' })
         nav('/')
       }
-
     }
-
   }
 
   return (
