@@ -2,18 +2,16 @@ import React, { useState } from 'react';
 import logo from '../../assets/logo.svg'
 import styled from './Login.module.scss'
 import { Link, useNavigate } from 'react-router-dom'
-import { useRecoilState, useSetRecoilState } from 'recoil';
-import { loginStore, paramStore } from '../../store/store';
+import { useSetRecoilState } from 'recoil';
+import { loginStore } from '../../store/store';
 import { toastError } from '../toast';
 import { emailRegExpCheck, passwordRegExpCheck } from '../../utils/regExp';
-import { tableNumTypes } from '../../types/types';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { testMode } from '../../utils/testMode';
 import { signIn } from '../../apis/memberApi';
 
 const Login = () => {
   const nav = useNavigate()
-  const [params] = useRecoilState<tableNumTypes>(paramStore)
   const setLogin = useSetRecoilState(loginStore)
   const [inputValue, setInputValue] = useState({
     email: '',
@@ -48,9 +46,7 @@ const Login = () => {
         setLogin({ token: '1', email: '1' })
         nav('/')
       }
-
     }
-
   }
 
   return (
@@ -65,6 +61,9 @@ const Login = () => {
           <input type="password" name='password' value={inputValue.password} placeholder='PASSWORD' onChange={handleChange} />
         </div>
         <button className={styled.loginBtn} type='button' onClick={handleSubmit}>로그인</button>
+        <div>
+          <button className={styled.loginBtn} type='button' onClick={handleSubmit}>카카오 로그인</button>
+        </div>
         <div className={styled.subLink}>
           <Link to="/findPassword">비밀번호 찾기</Link>
           <span className={styled.bar}>|</span>
