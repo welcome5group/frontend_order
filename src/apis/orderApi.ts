@@ -16,9 +16,10 @@ const order = async (token: string) => {
     ],
   };
 
+  console.log(token);
   const res = await axios.post(`api/guest/store/order`, test, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `${token}`,
     },
   });
 
