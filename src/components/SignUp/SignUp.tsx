@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { toastError, toastSuccess } from '../toast';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { signUp } from '../../apis/memberApi';
-import { AxiosError } from 'axios';
 import { testMode } from '../../utils/testMode';
 
 const SignUp = () => {
@@ -42,7 +41,7 @@ const SignUp = () => {
         const result = await signUp(inputValue)
 
         if (result.status === 200) {
-          toastSuccess('회원가입이 성공적으로 완료되었습니다')
+          toastSuccess('이메일 인증 후 로그인 해주세요')
           nav('/')
         }
       } catch (e: any) {

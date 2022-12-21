@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
-import "./App.css";
 import { Routes, Route } from "react-router-dom"
+import { useRecoilState } from "recoil";
+import { paramStore } from "./store/store";
+import { tableNumTypes } from "./types/types";
+import "./App.css";
 import MainPage from "./pages/MainPage";
 import LoginPage from "./pages/Login/LoginPage";
 import SignUpPage from "./pages/Login/SignUpPage";
@@ -12,11 +15,9 @@ import MypagePage from "./pages/MyPage/MypagePage";
 import MyPaymentPage from "./pages/MyPage/MyPaymentPage";
 import ReviewPage from "./pages/Order/ReviewPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import { useRecoilState } from "recoil";
-import { paramStore } from "./store/store";
 import MyReviewPage from "./pages/MyPage/MyReviewPage";
 import HomePage from "./pages/Home/HomePage";
-import { tableNumTypes } from "./types/types";
+import SignUpCheckPage from "./pages/Login/SignUpCheckPage";
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/findPassword" element={<FindPasswordPage />} />
+      <Route path="/signupCheck" element={<SignUpCheckPage />} />
     </Routes>
   );
 }

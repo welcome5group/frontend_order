@@ -6,11 +6,11 @@ const order = async (token: string) => {
     storeId: 1,
     orderMenus: [
       {
-        menuId: 1,
+        id: 1,
         count: 5,
       },
       {
-        menuId: 2,
+        id: 2,
         count: 3,
       },
     ],

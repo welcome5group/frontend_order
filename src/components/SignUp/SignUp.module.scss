@@ -67,3 +67,20 @@
   background: #457aff;
   border: none;
 }
+
+.signupCheckContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2rem;
+
+  .text {
+    font-size: 1.2rem;
+    font-weight: 700;
+
+    & {
+      margin-bottom: 1rem;
+    }
+  }
+}

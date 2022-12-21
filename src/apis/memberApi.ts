@@ -26,6 +26,13 @@ const signUp = async (inputValue: signupType) => {
   return res;
 };
 
+//회원가입 인증 API
+const signCheck = async (uuid: string) => {
+  const res = await axios.put(`api/auth/sign-up?uuid=${uuid}`);
+
+  return res;
+};
+
 //로그인 API
 const signIn = async (inputValue: signInType) => {
   const res = await axios.post(`api/auth/sign-in`, inputValue);
@@ -52,6 +59,7 @@ const getUser = async (token: string, email: string) => {
   return res;
 };
 
+//닉네임 변경 API
 const changeNickName = async (token: string, data: changeNickNameType) => {
   const res = await axios.put(`api/users`, data, {
     headers: {
@@ -62,4 +70,4 @@ const changeNickName = async (token: string, data: changeNickNameType) => {
   return res;
 };
 
-export { signUp, signIn, findPassword, getUser, changeNickName };
+export { signUp, signCheck, signIn, findPassword, getUser, changeNickName };
