@@ -43,7 +43,7 @@ const SignUp = () => {
 
         if (result.status === 200) {
           toastSuccess('회원가입이 성공적으로 완료되었습니다')
-          // nav('/')
+          nav('/')
         }
       } catch (e: any) {
         toastError(e.response.data.message)
