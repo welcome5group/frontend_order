@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import styled from './Modal.module.scss'
 import { toastError, toastSuccess } from '../toast';
 import { onlyTextRegExpCheck } from '../../utils/regExp';
+import { useRecoilState } from 'recoil';
+import { loginStore } from '../../store/store';
+import { testMode } from '../../utils/testMode';
+import { changeNickName } from '../../apis/memberApi';
 
 interface types {
   showChangeNickName: boolean,
@@ -11,26 +15,37 @@ interface types {
 const ChangeNickName = ({ showChangeNickName, setShowChangeNickName }: types) => {
 
   const [inputValue, setInputValue] = useState('')
-  const [doubleCheck, setDoubleCheck] = useState(false)
+  const [userInfo] = useRecoilState(loginStore)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)
   }
 
-  const handleDoubleCheck = () => {
+  const handleSubmit = async () => {
     if (onlyTextRegExpCheck(inputValue) === false) {
-      toastError("닉네임을 확인해주세요.")
+      toastError('닉네임을 확인해주세요.')
+      return
     } else {
-      toastSuccess("중복확인 완료")
-      setDoubleCheck(true)
-    }
-  }
+      if (!testMode) {
+        const data = {
+          email: userInfo.email,
+          nickName: inputValue,
+          type: 'MEMBER'
+        }
+        try {
+          const result = await changeNickName(userInfo.token, data)
 
-  const handleSubmit = () => {
-    if (doubleCheck !== false) {
-      toastSuccess("변경 완료")
-    } else {
-      toastError("중복확인 후 변경이 가능합니다.")
+          if (result.status === 200) {
+            toastSuccess('닉네임이 변경되었습니다.')
+            setShowChangeNickName(!showChangeNickName)
+          }
+        } catch (e: any) {
+          toastError(e.response.data.message)
+        }
+      } else {
+        toastSuccess('닉네임이 변경되었습니다.')
+        setShowChangeNickName(!showChangeNickName)
+      }
     }
   }
 
@@ -40,7 +55,6 @@ const ChangeNickName = ({ showChangeNickName, setShowChangeNickName }: types) =>
       <span className={styled.subDesc}>변경하실 닉네임을 입력해주세요</span>
       <div className={styled.inputGroup}>
         <input type="text" value={inputValue} onChange={handleChange} />
-        <button onClick={handleDoubleCheck}>중복확인</button>
       </div>
       <div className={styled.btnGroup}>
         <button className={styled.changeBtn} onClick={handleSubmit}>변경</button>

@@ -28,24 +28,24 @@ const Home = () => {
   }
 
   useEffect(() => {
-    const data = async () => {
-      if (loginInfo.token !== '') {
-        if (!testMode) {
-          try {
-            const result = await getUser(loginInfo.token, loginInfo.email)
+    if (!testMode) {
+      const data = async () => {
+        if (loginInfo.token !== '') {
+          if (!testMode) {
+            try {
+              const result = await getUser(loginInfo.token, loginInfo.email)
 
-            if (result.status === 200) {
-              console.log(result)
+              if (result.status === 200) {
+                console.log(result)
+              }
+            } catch (e: any) {
+              console.log(e)
             }
-          } catch (e: any) {
-            console.log(e)
           }
         }
       }
+      data()
     }
-
-    data()
-
   }, [loginInfo.email, loginInfo.token])
 
 
