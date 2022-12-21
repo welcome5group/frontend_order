@@ -13,6 +13,11 @@ interface signInType {
   type: string;
 }
 
+interface findPasswordType {
+  email: string;
+  type: string;
+}
+
 interface changeNickNameType {
   email: string;
   nickName: string;
@@ -41,8 +46,19 @@ const signIn = async (inputValue: signInType) => {
 };
 
 //비밀번호 찾기 API
-const findPassword = async (inputValue: string) => {
-  const res = await axios.post(`api/users/password`, inputValue);
+const findPassword = async (inputValue: findPasswordType) => {
+  const res = await axios.post(`api/auth/password`, inputValue);
+
+  return res;
+};
+
+//비밀번호 변경 API
+const changePassword = async (uuid: string, password: string) => {
+  const newPassword = { password: password };
+  const res = await axios.put(
+    `api/auth/resetPassword?uuid=${uuid}`,
+    newPassword
+  );
 
   return res;
 };
@@ -70,4 +86,12 @@ const changeNickName = async (token: string, data: changeNickNameType) => {
   return res;
 };
 
-export { signUp, signCheck, signIn, findPassword, getUser, changeNickName };
+export {
+  signUp,
+  signCheck,
+  signIn,
+  findPassword,
+  getUser,
+  changeNickName,
+  changePassword,
+};
