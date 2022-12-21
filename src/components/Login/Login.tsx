@@ -38,17 +38,19 @@ const Login = () => {
 
           if (result.status === 200) {
             console.log(result)
-            setLogin({ token: result.data.accessToken })
+            setLogin({ token: result.data.accessToken, email: inputValue.email })
             nav('/')
           }
         } catch (e: any) {
           toastError(e.response.data.message)
         }
       } else {
-        setLogin({ token: '1' })
+        setLogin({ token: '1', email: '1' })
         nav('/')
       }
+
     }
+
   }
 
   return (

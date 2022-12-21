@@ -15,7 +15,7 @@ const SignUp = () => {
   const [inputValue, setInputValue] = useState({
     email: '',
     password: '',
-    nickname: '',
+    nickName: '',
     type: 'MEMBER'
   })
 
@@ -32,7 +32,7 @@ const SignUp = () => {
       console.log('비밀번호 조건이 맞지 않습니다.')
       return
     }
-    else if (onlyTextRegExpCheck(inputValue.nickname) === false) {
+    else if (onlyTextRegExpCheck(inputValue.nickName) === false) {
       toastError('닉네임을 확인해주세요.')
       return
     }
@@ -43,7 +43,7 @@ const SignUp = () => {
 
         if (result.status === 200) {
           toastSuccess('회원가입이 성공적으로 완료되었습니다')
-          nav('/')
+          // nav('/')
         }
       } catch (e: any) {
         toastError(e.response.data.message)
@@ -72,7 +72,7 @@ const SignUp = () => {
           </div>
           <div className={styled.signUpInput}>
             <label id='email'>닉네임</label>
-            <input type="text" name='nickname' placeholder='NICKNAME' onChange={handleChange} />
+            <input type="text" name='nickName' placeholder='NICKNAME' onChange={handleChange} />
           </div>
           <button className={styled.signUpBtn} type='button' onClick={handleSubmit}>회원가입</button>
         </div>

@@ -27,7 +27,7 @@ const FindPassword = () => {
     else {
       if (!testMode) {
         try {
-          const result = await findPassword(inputValue)
+          const result = await findPassword(inputValue.email)
 
           if (result.status === 200) {
             console.log(result)

@@ -3,7 +3,7 @@ import axios from "axios";
 interface signupType {
   email: string;
   password: string;
-  nickname: string;
+  nickName: string;
   type: string;
 }
 
@@ -11,10 +11,6 @@ interface signInType {
   email: string;
   password: string;
   type: string;
-}
-
-interface findPasswordType {
-  email: string;
 }
 
 const signUp = async (inputValue: signupType) => {
@@ -29,10 +25,21 @@ const signIn = async (inputValue: signInType) => {
   return res;
 };
 
-const findPassword = async (inputValue: findPasswordType) => {
+const findPassword = async (inputValue: string) => {
   const res = await axios.post(`api/users/password`, inputValue);
 
   return res;
 };
 
-export { signUp, signIn, findPassword };
+const getUser = async (token: string, email: string) => {
+  console.log(token);
+  const res = await axios.get(`api/users?email=${email}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res;
+};
+
+export { signUp, signIn, findPassword, getUser };

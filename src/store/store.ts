@@ -20,7 +20,7 @@ export const testModeCheckStore = atom<boolean>({
 //로그인 체크 아톰
 export const loginStore = atom<loginType>({
   key: "loginStore",
-  default: { token: "" },
+  default: { token: "", email: "" },
   effects_UNSTABLE: [persistAtom],
 });
 
