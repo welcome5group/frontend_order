@@ -2,8 +2,8 @@ import axios from "axios";
 
 const order = async (token: string) => {
   const test = {
-    memberId: 2,
-    storeId: 1,
+    memberId: 1,
+    storeId: 2,
     orderMenus: [
       {
         id: 1,
@@ -19,11 +19,21 @@ const order = async (token: string) => {
   console.log(token);
   const res = await axios.post(`api/guest/store/order`, test, {
     headers: {
-      Authorization: `${token}`,
+      Authorization: token,
     },
   });
 
   return res;
 };
 
-export { order };
+const getPayment = async (token: string) => {
+  const res = await axios.get(`api/guest/store/1/pays`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  return res;
+};
+
+export { order, getPayment };

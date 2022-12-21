@@ -52,7 +52,7 @@ const getUser = async (token: string, email: string) => {
   console.log(token);
   const res = await axios.get(`api/users?email=${email}`, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: token,
     },
   });
 
@@ -63,7 +63,7 @@ const getUser = async (token: string, email: string) => {
 const changeNickName = async (token: string, data: changeNickNameType) => {
   const res = await axios.put(`api/users`, data, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: token,
     },
   });
 

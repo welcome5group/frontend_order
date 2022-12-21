@@ -11,23 +11,11 @@ import { myReviewData } from '../../mock/reviewData';
 import HomeReview from './HomeReview';
 import { testMode } from '../../utils/testMode';
 import { getUser } from '../../apis/memberApi';
-import { order } from '../../apis/orderApi';
 
 const Home = () => {
 
   const [loginInfo] = useRecoilState<loginType>(loginStore)
   const [data] = useState<myReviewType[]>(myReviewData)
-
-  const [userInfo, setUserInfo] = useState()
-
-  const handleBtnClick = async () => {
-    try {
-      const result = await order(loginInfo.token)
-      console.log(result)
-    } catch (e) {
-      console.log(e)
-    }
-  }
 
   useEffect(() => {
     if (!testMode) {
@@ -36,7 +24,6 @@ const Home = () => {
           if (!testMode) {
             try {
               const result = await getUser(loginInfo.token, loginInfo.email)
-
               if (result.status === 200) {
                 console.log(result)
               }
@@ -82,7 +69,6 @@ const Home = () => {
       <div className={styled.banner}>
         <img src={maskImg} alt={"img"} className={styled.bannerImg} />
       </div>
-      <button onClick={handleBtnClick}>주문테스트</button>
     </div>
   );
 };
