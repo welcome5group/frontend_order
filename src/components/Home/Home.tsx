@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from './Home.module.scss';
 import Snow from './Snow';
+import maskImg from '../../assets/maskImg.png'
+import smartOrderImg from '../../assets/smartOrder.png'
 import { useRecoilState } from 'recoil';
 import { loginStore } from '../../store/store';
 import { Link } from 'react-router-dom';
@@ -76,6 +78,9 @@ const Home = () => {
               <Link to="/login">로그인</Link> 후 확인이 가능합니다.
             </div>
         }
+      </div>
+      <div className={styled.banner}>
+        <img src={maskImg} alt={"img"} className={styled.bannerImg} />
       </div>
       <button onClick={handleBtnClick}>주문테스트</button>
     </div>
