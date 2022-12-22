@@ -1,7 +1,7 @@
 export const paymentData = [
   {
     id: 1,
-    date: "2022-01-10",
+    createdAt: "2022-01-10",
     storeName: "김밥집",
     menu: [
       {
@@ -19,7 +19,7 @@ export const paymentData = [
   },
   {
     id: 2,
-    date: "2022-01-12",
+    createdAt: "2022-01-12",
     storeName: "피자집",
     menu: [
       {
@@ -37,7 +37,7 @@ export const paymentData = [
   },
   {
     id: 3,
-    date: "2022-02-11",
+    createdAt: "2022-02-11",
     storeName: "치킨집",
     menu: [
       {
@@ -55,7 +55,7 @@ export const paymentData = [
   },
   {
     id: 3,
-    date: "2022-03-01",
+    createdAt: "2022-03-01",
     storeName: "치킨집",
     menu: [
       {
@@ -73,7 +73,7 @@ export const paymentData = [
   },
   {
     id: 4,
-    date: "2022-03-01",
+    createdAt: "2022-03-01",
     storeName: "치킨집",
     menu: [
       {
@@ -91,7 +91,7 @@ export const paymentData = [
   },
   {
     id: 5,
-    date: "2021-03-01",
+    createdAt: "2021-03-01",
     storeName: "치킨집",
     menu: [
       {
