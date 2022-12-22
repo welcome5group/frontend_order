@@ -1,6 +1,13 @@
 export const useDateFilter = (data: any, num: number) => {
-  const paymentDate = data.map((item: { date: any; }) => item.date.split('-')[num]);
-  const paymentDateFiltered: string[] = paymentDate.filter((item: string, idx: number) => paymentDate.indexOf(item) === idx)
+  if (num === 2) {
+    const paymentDate = data?.map((item: { createdAt: string; }) => item.createdAt.split('T')[0].split('-')[2]);
+    const paymentDateFiltered: string[] = paymentDate.filter((item: string, idx: number) => paymentDate.indexOf(item) === idx)
 
-  return paymentDateFiltered
+    return paymentDateFiltered
+  } else {
+    const paymentDate = data?.map((item: { createdAt: string; }) => item.createdAt.split('-')[num]);
+    const paymentDateFiltered: string[] = paymentDate.filter((item: string, idx: number) => paymentDate.indexOf(item) === idx)
+
+    return paymentDateFiltered
+  }
 }

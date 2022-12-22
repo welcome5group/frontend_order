@@ -1,21 +1,19 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { getPayment } from '../../apis/orderApi';
 import { useDateFilter } from '../../Hooks/useDateFilter';
 import { paymentData } from '../../mock/paymentData';
+import { loginStore, userStore } from '../../store/store';
 import { paymentType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
+import { toastError, toastSuccess } from '../toast';
 import styled from './MyPayment.module.scss'
 import MyPaymentList from './MyPaymentList';
 
 const MyPayment = () => {
 
   const [paymentList, setPaymentList] = useState<paymentType[]>([])
-  //테스트모드
-  useEffect(() => {
-    if (testMode) {
-      setPaymentList(paymentData)
-    }
-  }, [])
-
+  const [userInfo] = useRecoilState(loginStore)
   const [paymentFilterList, setPaymentFilterList] = useState<paymentType[]>([])
 
   const currentYear = new Date().getFullYear()
@@ -34,15 +32,38 @@ const MyPayment = () => {
     }
     return yearOption
   }
-  const yearOption = yearOptions();
 
+  const yearOption = yearOptions();
   const month = useDateFilter(paymentFilterList, 1)
 
   useEffect(() => {
+    const getPaymentList = async () => {
+      if (!testMode) {
+        try {
+          const result = await getPayment(userInfo.token)
+
+          if (result.status === 200) {
+            console.log(result.data)
+            setPaymentList(result.data)
+          }
+        } catch (e: any) {
+          toastError(e.response.data.message)
+        }
+      } else {
+        // setPaymentList(paymentData)
+      }
+    }
+
+    getPaymentList()
+
+  }, [])
+
+  useEffect(() => {
     //데이터 중 현재 년도에 해당하는 데이터만 저장
-    console.log(paymentList)
-    const yearFilteredData = paymentList?.filter(item => item.date.split('-')[0] === year)
-    setPaymentFilterList(yearFilteredData)
+    if (paymentList.length !== 0) {
+      const yearFilteredData = paymentList?.filter(item => item.createdAt.split('-')[0] === year)
+      setPaymentFilterList(yearFilteredData)
+    }
   }, [paymentList, year])
 
   return (

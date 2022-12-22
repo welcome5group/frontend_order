@@ -62,7 +62,7 @@ export interface orderNumTypes {
 
 export interface paymentType {
   id: number;
-  date: string;
+  createdAt: string;
   storeName: string;
   menu: {
     menuName: string;
