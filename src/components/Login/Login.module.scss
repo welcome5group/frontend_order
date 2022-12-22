@@ -52,6 +52,12 @@
   border: none;
 }
 
+.kakao {
+  width: 14rem;
+  height: 2rem;
+  border-radius: 8px;
+}
+
 .subLink {
   display: flex;
   margin-top: 30px;
@@ -74,4 +80,21 @@
     display: inline-block;
     text-indent: -9999em;
     vertical-align: -2px;
+}
+
+.kakaoCinfirmContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2rem;
+
+  .text {
+    font-size: 1.2rem;
+    font-weight: 700;
+
+    & {
+      margin-bottom: 1rem;
+    }
+  }
 }

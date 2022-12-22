@@ -19,6 +19,7 @@ import MyReviewPage from "./pages/MyPage/MyReviewPage";
 import HomePage from "./pages/Home/HomePage";
 import SignUpCheckPage from "./pages/Login/SignUpCheckPage";
 import ChangePasswordPage from "./pages/Login/ChangePasswordPage";
+import KakaoPage from "./pages/Login/KakaoPage";
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/kakao" element={<KakaoPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/findPassword" element={<FindPasswordPage />} />
       <Route path="/changePassword" element={<ChangePasswordPage />} />

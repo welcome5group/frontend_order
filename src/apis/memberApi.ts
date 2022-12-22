@@ -45,6 +45,12 @@ const signIn = async (inputValue: signInType) => {
   return res;
 };
 
+const kakaoSignIn = async () => {
+  const res = await axios.get(`api/auth/kakao/sign-in`);
+
+  return res;
+};
+
 //비밀번호 찾기 API
 const findPassword = async (inputValue: findPasswordType) => {
   const res = await axios.post(`api/auth/password`, inputValue);
@@ -94,4 +100,5 @@ export {
   getUser,
   changeNickName,
   changePassword,
+  kakaoSignIn,
 };
