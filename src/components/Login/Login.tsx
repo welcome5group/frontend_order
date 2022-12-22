@@ -30,7 +30,10 @@ const Login = () => {
         const result = await kakaoSignIn()
 
         if (result.status === 200) {
-          window.location.href = result.data.slice(9)
+          const link = result.data.slice(9)
+          window.location.href = link;
+          window.location.replace(link)
+          window.open(link)
           console.log(result.data.slice(9))
         }
       } catch (e: any) {

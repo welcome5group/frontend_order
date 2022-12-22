@@ -46,7 +46,7 @@ const signIn = async (inputValue: signInType) => {
 };
 
 const kakaoSignIn = async () => {
-  const res = await axios.get(`api/auth/kakao/sign-in`);
+  const res = await axios.get(`api/auth/kakao/sign-in?type=MEMBER`);
 
   return res;
 };
