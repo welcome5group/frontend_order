@@ -14,6 +14,7 @@ const SignUp = () => {
   const [inputValue, setInputValue] = useState({
     email: '',
     password: '',
+    passwordCinfirm: '',
     nickName: '',
     type: 'MEMBER'
   })
@@ -34,21 +35,23 @@ const SignUp = () => {
     else if (onlyTextRegExpCheck(inputValue.nickName) === false) {
       toastError('닉네임을 확인해주세요.')
       return
-    }
-
-    if (!testMode) {
-      try {
-        const result = await signUp(inputValue)
-
-        if (result.status === 200) {
-          toastSuccess('이메일 인증 후 로그인 해주세요')
-          nav('/')
-        }
-      } catch (e: any) {
-        toastError(e.response.data.message)
-      }
+    } else if (inputValue.password !== inputValue.passwordCinfirm) {
+      toastError('비밀번호가 다릅니다.')
     } else {
-      nav('/')
+      if (!testMode) {
+        try {
+          const result = await signUp(inputValue)
+
+          if (result.status === 200) {
+            toastSuccess('이메일 인증 후 로그인 해주세요')
+            nav('/')
+          }
+        } catch (e: any) {
+          toastError(e.response.data.message)
+        }
+      } else {
+        nav('/')
+      }
     }
   }
 
@@ -65,9 +68,13 @@ const SignUp = () => {
             <input type="text" name='email' placeholder='E - MAIL' onChange={handleChange} />
           </div>
           <div className={styled.signUpInput}>
-            <label id='email'>비밀번호</label>
-            <input type="password" name='password' placeholder='PASSWORD' onChange={handleChange} />
+            <label id='password' className={styled.noMargin}>비밀번호</label>
             <span className={styled.passwordDesc}>8~16자 영문 대 소문자, 숫자, 특수문자를 사용해주세요. </span>
+            <input type="password" name='password' placeholder='PASSWORD' onChange={handleChange} />
+          </div>
+          <div className={styled.signUpInput}>
+            <label id='passwordCinfirm'>비밀번호 확인</label>
+            <input type="password" name='passwordCinfirm' placeholder='PASSWORD' onChange={handleChange} />
           </div>
           <div className={styled.signUpInput}>
             <label id='email'>닉네임</label>

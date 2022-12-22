@@ -49,10 +49,15 @@
     color: #bdbdbd;
   }
 
+  .noMargin {
+    margin-bottom: 0 !important; 
+  }
+
   .passwordDesc {
     font-size: .2rem;
     color: rgb(255, 105, 105);
     margin-top: .2rem;
+    margin-bottom: .6rem;
   }
 }
 
