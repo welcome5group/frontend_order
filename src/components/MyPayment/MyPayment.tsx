@@ -50,7 +50,7 @@ const MyPayment = () => {
           toastError(e.response.data.message)
         }
       } else {
-        setPaymentList(paymentData)
+        // setPaymentList(paymentData)
       }
     }
 

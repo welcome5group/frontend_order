@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from './Home.module.scss';
 import Snow from './Snow';
 import maskImg from '../../assets/maskImg.png'
-import smartOrderImg from '../../assets/smartOrder.png'
 import { useRecoilState } from 'recoil';
 import { loginStore } from '../../store/store';
 import { Link } from 'react-router-dom';

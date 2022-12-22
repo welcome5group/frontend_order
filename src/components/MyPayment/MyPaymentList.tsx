@@ -10,9 +10,6 @@ interface types {
 }
 
 const MyPaymentList = ({ paymentFilterList, month }: types) => {
-
-  console.log(paymentFilterList)
-
   // props로 받은 월에 해당하는 일별 데이터 분류
   const day = paymentFilterList.filter(item => item.createdAt.split('-')[1] === month)
   // 일별 데이터 배열(중복 제거)

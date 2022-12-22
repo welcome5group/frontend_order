@@ -63,11 +63,24 @@ export interface orderNumTypes {
 export interface paymentType {
   id: number;
   createdAt: string;
-  storeName: string;
-  menu: {
-    menuName: string;
+  store: {
+    storeId: number;
+    name: string;
+    location: string;
+  };
+  orderMenus: {
     count: number;
-    price: number;
+    id: number;
+    menu: {
+      categoryName: string;
+      description: string;
+      imageUrl: string;
+      menuId: number;
+      name: string;
+      price: number;
+      storeId: number | null;
+    };
+    totalPrice: number;
   }[];
   totalPrice: number;
 }
