@@ -31,8 +31,7 @@ const Login = () => {
 
         if (result.status === 200) {
           const link = result.data.slice(9)
-          window.location.href = link;
-          window.location.replace(link)
+          // window.location.href = link;
           window.open(link)
           console.log(result.data.slice(9))
         }
