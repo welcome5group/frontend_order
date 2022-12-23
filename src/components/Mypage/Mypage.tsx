@@ -7,6 +7,8 @@ import ChangePasswordCinfirm from '../Modal/ChangePasswordCinfirm';
 import WithDraw from '../Modal/WithDraw';
 import { useRecoilState } from 'recoil';
 import { loginStore } from '../../store/store';
+import profile1 from '../../assets/profile/profile1.png'
+import MypageProfileChange from './MypageProfileChange';
 
 const Mypage = () => {
 
@@ -15,6 +17,7 @@ const Mypage = () => {
   const [showChangeNickName, setShowChangeNickName] = useState(false)
   const [showChangePassword, setShowChangePassword] = useState(false)
   const [showWithDraw, setShowWithDraw] = useState(false)
+  const [changeProfile, setChangeProfile] = useState(false)
 
   const [, setLogin] = useRecoilState(loginStore)
   const handleLogOutClick = () => {
@@ -25,8 +28,13 @@ const Mypage = () => {
   return (
     <div className={styled.mypageContainer}>
       <div className={styled.mainTitle}>
-        <span><h3>JYS9049</h3>님</span>
-        <span>환영합니다!</span>
+        <div className={styled.profileContainer}>
+          <img src={profile1} alt={"프로필"} className={styled.profile} onClick={() => setChangeProfile(!changeProfile)} />
+          {changeProfile &&
+            <MypageProfileChange setChangeProfile={setChangeProfile} />
+          }
+        </div>
+        <span><h3>JYS9049</h3>님 환영합니다!</span>
       </div>
       <div className={styled.mypageMenuListGroup}>
         <Link to='/mypayment'>

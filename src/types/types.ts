@@ -89,3 +89,7 @@ export interface loginType {
   token: string;
   email: string;
 }
+
+export interface urlType {
+  url: string;
+}
