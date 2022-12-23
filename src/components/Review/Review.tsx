@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { reviewData } from '../../mock/reviewData';
 import styled from './Review.module.scss'
 
-import ReviewStar from './ReviewStar';
 import ReviewWrite from './ReviewWrite';
-import ReviewItem from './ReviewItem';
+import ReviewList from './ReviewList';
 import { reviewType, starType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
 
@@ -28,9 +27,8 @@ const Review = () => {
           리뷰
         </h1>
       </div>
-      <ReviewStar starData={starData} setStarData={setStarData} />
       <ReviewWrite reviewList={reviewList} setReviewList={setReviewList} starData={starData} />
-      <ReviewItem reviewList={reviewList} />
+      <ReviewList reviewList={reviewList} />
     </div>
   );
 };

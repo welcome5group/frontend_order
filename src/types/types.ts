@@ -16,9 +16,14 @@ export interface userType {
 
 export interface reviewType {
   id: number;
+  orderMenu: string[];
   userInfo: userType;
   time: string;
   content: string;
+  presidentContent: {
+    time: string;
+    content: string;
+  };
 }
 
 export interface myReviewType {

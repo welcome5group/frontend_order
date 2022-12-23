@@ -34,9 +34,18 @@ const ReviewWrite = ({ reviewList, setReviewList, starData }: types) => {
   }
 
   const handleSubmit = () => {
-    const item = { id: reviewList.length + 1, userInfo: userInfo, time: time(), content: textValue }
-    console.log(item)
-    console.log(starData)
+    const item = {
+      id: reviewList.length + 1,
+      orderMenu: ['김밥', '떡볶이', '콜라'],
+      userInfo: userInfo,
+      time: time(),
+      content: textValue,
+      presidentContent: {
+        time: "",
+        content: "",
+      }
+    }
+
     setReviewList([...reviewList, item])
     setTextValue('')
   }

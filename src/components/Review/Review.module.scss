@@ -83,6 +83,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 1rem;
+    padding: .4rem;
     width: 100%;
     height: 5rem;
     border-radius: 0.5rem;
@@ -105,7 +106,11 @@
   flex-direction: column;
 
   .reviewItem {
+    display: flex;
+    flex-direction: column;
     margin-top: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #c9c9c9;
 
     .userInfo {
       display: flex;
@@ -128,5 +133,74 @@
         }
       }
     }
+
+    .orderMenuList {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: .5rem;
+      width: 100%;
+      height: 100%;
+
+      .orderMenuItem {
+        background: #ebebeb;
+        border-radius: 10rem;
+        padding: .2rem .4rem;
+        margin-right: .2rem;
+        margin-bottom: .2rem;
+        font-size: .6rem;
+      }
+    }
+
+    .presidentReview {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+
+      svg {
+        padding: .3rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        background: rgba(186, 208, 255, 0.568);
+        border-radius: 100%;
+      }
+
+      .presidentReviewInfo {
+        display: flex;
+        flex-direction: column;
+        width: 84%;
+        height: 100%;
+        padding: .8rem .6rem;
+        background: rgb(243, 243, 243);
+        border-radius: .5rem;
+
+        .presidentInfo {
+          margin-bottom: 1rem;
+        }
+
+        .presidnetName {
+          display: flex;
+          font-weight: 700;
+        }
+
+        .writeDate {
+          font-size: .8rem;
+        }
+
+        .presidentReviewContent {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          height: 100%;
+        }
+      }
+    }
   }
+}
+
+.reviewContent {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
 }
