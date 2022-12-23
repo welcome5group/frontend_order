@@ -50,7 +50,7 @@ const MyPayment = () => {
           toastError(e.response.data.message)
         }
       } else {
-        // setPaymentList(paymentData)
+        setPaymentList(paymentData)
       }
     }
 
@@ -73,6 +73,7 @@ const MyPayment = () => {
           <option className={styled.yearOpstion} value={item} key={item}>{item}</option>
         ))}
       </select>
+      <div className={styled.desc}>내역을 클릭 하시면 상세 내역이 보입니다.</div>
       <div className={styled.mypaymentContent}>
         {month.map(item => (
           <div key={item}>

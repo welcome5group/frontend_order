@@ -15,8 +15,6 @@ const MyPaymentList = ({ paymentFilterList, month }: types) => {
   // 일별 데이터 배열(중복 제거)
   // ex) [11, 11, 12, 12, 21] => [11, 12, 21]
   const filteredDay = useDateFilter(day, 2)
-
-  console.log(filteredDay)
   return (
     <>
       {filteredDay.map((item, idx) => (

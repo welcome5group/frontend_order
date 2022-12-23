@@ -78,7 +78,7 @@ export interface paymentType {
       menuId: number;
       name: string;
       price: number;
-      storeId: number | null;
+      storeId: number;
     };
     totalPrice: number;
   }[];

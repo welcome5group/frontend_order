@@ -5,6 +5,11 @@
     padding: 0 .2rem;
   }
 
+  .desc {
+    font-size: .7rem;
+    padding-left: .2rem;
+  }
+
   .year {
     display: flex;
     font-size: 2rem;
@@ -57,5 +62,90 @@
     justify-content: space-between;
     margin-top: 1rem;
     font-size: 0.8rem;
+  }
+  
+  .moreInfo {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: .4rem;
+    font-size: .4rem;
+    color: #aaa;
+  }
+}
+
+.paymentModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20rem;
+  height: max-content;
+  background: white;
+  border: 1px solid black;
+  padding: 1rem;
+  font-size: .9rem;
+
+  .paymentInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding-bottom: 2rem;
+  }
+
+  .closeBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    background: none;
+    font-size: .7rem;
+    padding: .4rem;
+  }
+
+  .storeName {
+    margin-bottom: 1rem;
+
+    & > span {
+      width: 33.3%;
+    }
+    border-bottom: 1px solid black;
+    border-style: dashed;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .infoTitle, .menuInfo {
+    display: flex;
+    margin-bottom: .4rem;
+
+    & > span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 33.3%;
+
+      &:first-child {
+        justify-content: flex-start;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
+
+      &:last-child {
+        justify-content: flex-end;
+      }
+    }
+  }
+  
+  .totalPrice {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-top: 1px solid black;
+    border-style: dashed;
+    margin-top: 1rem;
+    padding-top: 1rem;
   }
 }
