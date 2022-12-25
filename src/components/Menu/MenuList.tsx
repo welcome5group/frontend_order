@@ -17,12 +17,12 @@ const MenuList = () => {
   const [loginCheck] = useRecoilState(loginStore)
   const [cartList, setCartList] = useRecoilState<cartType[]>(cartStore)
   const [category, setCategory] = useState<string[]>([]);
-  const [data, setData] = useState<menuTypes[]>([])
+  const [menuList, setMenuList] = useState<menuTypes[]>([])
 
   //테스트모드
   useEffect(() => {
     if (testMode) {
-      setData(menu)
+      setMenuList(menu)
     }
   }, [])
 
@@ -32,7 +32,7 @@ const MenuList = () => {
       const idList = cartList.map(item => item.product.id)
       //idList에 선택한 값과 맞는 값이 없다면 배열에 선택한 값 추가
       if (idList.indexOf(id) === -1) {
-        const item = { product: data[id - 1], count: 1 };
+        const item = { product: menuList[id - 1], count: 1 };
         setCartList([...cartList, item]);
       }
       //idList에 선택한 값이 있다면 카운트만 + 1
@@ -51,7 +51,7 @@ const MenuList = () => {
       toastError('로그인이 필요한 기능입니다.')
       nav('/login')
     }
-  }, [cartList, data, setCartList])
+  }, [cartList, menuList, setCartList])
 
   //카테고리 선택 시 해당 div로 이동
   let categoryRef = useRef<HTMLDivElement[]>([])
@@ -69,10 +69,10 @@ const MenuList = () => {
 
   useEffect(() => {
     //데이터 중 카테고리 값만 따로 빼서 중복 제거 후 저장
-    const categoryFilter = data.map(item => item.category)
+    const categoryFilter = menuList.map(item => item.category)
     const categoryArray = categoryFilter.filter((cateogry: string, idx: number) => categoryFilter.indexOf(cateogry) === idx)
     setCategory(categoryArray)
-  }, [cartList, data])
+  }, [cartList, menuList])
 
   return (
     <>
@@ -85,7 +85,7 @@ const MenuList = () => {
           }
         </div>
         {category.length !== 0 && category.map((category, idx) => (
-          <MenuCategory category={category} categoryRef={categoryRef} idx={idx} key={category} data={data} handleOrderClick={handleOrderClick} />
+          <MenuCategory category={category} categoryRef={categoryRef} idx={idx} key={category} menuList={menuList} handleOrderClick={handleOrderClick} />
         ))}
       </div>
     </>
