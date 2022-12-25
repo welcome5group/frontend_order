@@ -39,7 +39,7 @@ const Cart = () => {
           </h1>
         </div>
         <div className={styled.cartListArea}>
-          {cartList.length === 0 ? <div className={styled.noCart}>주문 내역이 없습니다.</div> :
+          {cartList.length === 0 ? <div className={styled.noCart}>주문하신 메뉴가 없습니다.</div> :
             <CartList cartList={cartList} setCartList={setCartList} />
           }
         </div>
