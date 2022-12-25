@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { userStore } from '../../store/store';
+import { loginStore, userStore } from '../../store/store';
 import { reviewType, starType } from '../../types/types';
+import { toastError } from '../toast';
 import styled from './Review.module.scss'
 
 interface types {
@@ -12,8 +14,11 @@ interface types {
 
 const ReviewWrite = ({ reviewList, setReviewList, starData }: types) => {
 
+  const nav = useNavigate()
+
   const [textValue, setTextValue] = useState('')
   const [userInfo] = useRecoilState(userStore)
+  const [loginCheck] = useRecoilState(loginStore)
 
   const time = () => {
     const today = new Date()
@@ -34,20 +39,26 @@ const ReviewWrite = ({ reviewList, setReviewList, starData }: types) => {
   }
 
   const handleSubmit = () => {
-    const item = {
-      id: reviewList.length + 1,
-      orderMenu: ['김밥', '떡볶이', '콜라'],
-      userInfo: userInfo,
-      time: time(),
-      content: textValue,
-      presidentContent: {
-        time: "",
-        content: "",
+    if (loginCheck.login === true) {
+      const item = {
+        id: reviewList.length + 1,
+        orderMenu: ['김밥', '떡볶이', '콜라'],
+        userInfo: userInfo,
+        time: time(),
+        content: textValue,
+        presidentContent: {
+          time: "",
+          content: "",
+        }
       }
-    }
 
-    setReviewList([...reviewList, item])
-    setTextValue('')
+      setReviewList([...reviewList, item])
+      setTextValue('')
+
+    } else {
+      toastError('로그인이 필요한 기능입니다.')
+      nav('/login')
+    }
   }
 
   return (
