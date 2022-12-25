@@ -2,16 +2,19 @@ import React, { useEffect, useState, useCallback, memo, useRef } from 'react';
 import { menu } from '../../mock/testData';
 import styled from './Menu.module.scss'
 import { useRecoilState } from 'recoil';
-import { cartStore, paramStore } from '../../store/store';
+import { cartStore, loginStore, paramStore } from '../../store/store';
 import MenuCategory from './MenuCategory';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { cartType, menuTypes, tableNumTypes } from '../../types/types';
 import { testMode } from '../../utils/testMode';
+import { toastError } from '../toast';
 
 const MenuList = () => {
   const param = useParams()
+  const nav = useNavigate()
   const [, setParams] = useRecoilState<tableNumTypes>(paramStore)
 
+  const [loginCheck] = useRecoilState(loginStore)
   const [cartList, setCartList] = useRecoilState<cartType[]>(cartStore)
   const [category, setCategory] = useState<string[]>([]);
   const [data, setData] = useState<menuTypes[]>([])
@@ -24,23 +27,29 @@ const MenuList = () => {
   }, [])
 
   const handleOrderClick = useCallback((id: number) => {
-    const idList = cartList.map(item => item.product.id)
-    //idList에 선택한 값과 맞는 값이 없다면 배열에 선택한 값 추가
-    if (idList.indexOf(id) === -1) {
-      const item = { product: data[id - 1], count: 1 };
-      setCartList([...cartList, item]);
-    }
-    //idList에 선택한 값이 있다면 카운트만 + 1
-    else {
-      setCartList(prevState => {
-        return prevState.map(obj => {
-          if (obj.product.id === id) {
-            return { ...obj, 'count': obj.count + 1 }
-          } else {
-            return { ...obj };
-          }
+
+    if (loginCheck.login === true) {
+      const idList = cartList.map(item => item.product.id)
+      //idList에 선택한 값과 맞는 값이 없다면 배열에 선택한 값 추가
+      if (idList.indexOf(id) === -1) {
+        const item = { product: data[id - 1], count: 1 };
+        setCartList([...cartList, item]);
+      }
+      //idList에 선택한 값이 있다면 카운트만 + 1
+      else {
+        setCartList(prevState => {
+          return prevState.map(obj => {
+            if (obj.product.id === id) {
+              return { ...obj, 'count': obj.count + 1 }
+            } else {
+              return { ...obj };
+            }
+          })
         })
-      })
+      }
+    } else {
+      toastError('로그인이 필요한 기능입니다.')
+      nav('/login')
     }
   }, [cartList, data, setCartList])
 
