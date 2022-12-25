@@ -56,14 +56,14 @@ const Login = () => {
 
           if (result.status === 200) {
             console.log(result)
-            setLogin({ token: result.data.accessToken, email: inputValue.email })
+            setLogin({ token: result.data.accessToken, email: inputValue.email, login: true })
             nav('/')
           }
         } catch (e: any) {
           toastError(e.response.data.message)
         }
       } else {
-        setLogin({ token: '1', email: '1' })
+        setLogin({ token: '1', email: '1', login: true })
         nav('/')
       }
     }

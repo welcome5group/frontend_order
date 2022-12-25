@@ -93,6 +93,7 @@ export interface paymentType {
 export interface loginType {
   token: string;
   email: string;
+  login: boolean;
 }
 
 export interface urlType {

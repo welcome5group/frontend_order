@@ -17,10 +17,10 @@ export const testModeCheckStore = atom<boolean>({
   default: true,
 });
 
-//로그인 체크 아톰
+//로그인 정보 아톰
 export const loginStore = atom<loginType>({
   key: "loginStore",
-  default: { token: "", email: "" },
+  default: { token: "", email: "", login: false },
   effects_UNSTABLE: [persistAtom],
 });
 
