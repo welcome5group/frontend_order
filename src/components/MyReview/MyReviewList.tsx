@@ -11,7 +11,7 @@ const MyReviewList = ({ data }: types) => {
   return (
     <div className={styled.myReviewList}>
       {data.map(item => (
-        <MyReviewItem item={item} />
+        <MyReviewItem item={item} key={item.id} />
       ))}
     </div>
   );

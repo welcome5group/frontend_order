@@ -35,7 +35,7 @@ export const reviewData = [
     },
   },
   {
-    id: 2,
+    id: 3,
     orderMenu: ["후라이드 치킨", "양념 치킨", "맥주"],
     userInfo: {
       id: 1,
@@ -90,7 +90,7 @@ export const myReviewData = [
     },
   },
   {
-    id: 2,
+    id: 3,
     storeName: "엄청 맛있는 치킨 집",
     orderMenu: ["후라이드 치킨", "양념 치킨", "맥주"],
     userInfo: {
