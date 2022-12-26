@@ -13,29 +13,29 @@ const MyReviewItem = ({ item }: types) => {
       <div className={styled.infoGroup}>
         <div className={styled.reviewInfoGroup}>
           <span className={styled.storeName}>{item.storeName}</span>
-          <span className={styled.writeDate}>{item.time}</span>
+          <span className={styled.writeDate}>{item.createdAt}</span>
         </div>
         <div className={styled.deleteBtn}>
           <button>삭제</button>
         </div>
       </div>
       <div className={styled.orderMenuList}>
-        {item.orderMenu.map((item, idx) => (
+        {item.menuNames.map((item, idx) => (
           <span className={styled.orderMenuItem} key={idx}>{item}</span>
         ))}
       </div>
       <div className={styled.userReview}>
         <span>{item.content}</span>
       </div>
-      {item.presidentContent.content !== "" &&
+      {Object.keys(item.comment).length !== 0 &&
         <div className={styled.presidentReview}>
           <AiOutlineUser />
           <div className={styled.presidentReviewInfo}>
             <div className={styled.presidentInfo}>
               <span className={styled.presidnetName}>사장님</span>
-              <span className={styled.writeDate}>{item.presidentContent.time}</span>
+              <span className={styled.writeDate}>{item.comment.createdAt}</span>
             </div>
-            <div className={styled.presidentReviewContent}>{item.presidentContent.content}</div>
+            <div className={styled.presidentReviewContent}>{item.comment.content}</div>
           </div>
         </div>
       }

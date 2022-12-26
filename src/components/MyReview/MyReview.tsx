@@ -7,12 +7,14 @@ import { getReview } from '../../apis/reviewApi';
 import { useRecoilState } from 'recoil';
 import { tokenStore, userStore } from '../../store/store';
 import { testMode } from '../../utils/testMode';
+import { getMyReview } from '../../apis/memberApi';
 
 const MyReview = () => {
 
-  const [data, setData] = useState<myReviewType[]>(myReviewData)
+  const [reviewList, setReviewList] = useState<myReviewType[]>([])
   const [tokenInfo] = useRecoilState(tokenStore)
   const [userInfo] = useRecoilState(userStore)
+  console.log(reviewList)
 
   useEffect(() => {
     if (!testMode) {
@@ -20,9 +22,10 @@ const MyReview = () => {
         if (tokenInfo.login) {
           if (!testMode) {
             try {
-              const result = await getReview(userInfo.id, tokenInfo.token)
+              console.log(userInfo.id)
+              const result = await getMyReview(userInfo.id, tokenInfo.token)
               if (result.status === 200) {
-                console.log(result)
+                setReviewList(result.data)
               }
             } catch (e: any) {
               console.log(e)
@@ -31,15 +34,17 @@ const MyReview = () => {
         }
       }
       data()
+    } else {
+      setReviewList(myReviewData)
     }
   }, [])
 
   return (
     <div className={styled.myReviewContainer}>
       <div className={styled.myReviewMainTitle}>
-        <h2>내가 쓴 리뷰 {data.length}개</h2>
+        <h2>내가 쓴 리뷰 {reviewList.length}개</h2>
       </div>
-      <MyReviewList data={data} />
+      <MyReviewList reviewList={reviewList} />
     </div>
   );
 };

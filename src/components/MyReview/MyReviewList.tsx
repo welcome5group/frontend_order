@@ -4,13 +4,13 @@ import styled from './MyReview.module.scss'
 import MyReviewItem from './MyReviewItem';
 
 interface types {
-  data: myReviewType[]
+  reviewList: myReviewType[]
 }
 
-const MyReviewList = ({ data }: types) => {
+const MyReviewList = ({ reviewList }: types) => {
   return (
     <div className={styled.myReviewList}>
-      {data.map(item => (
+      {reviewList.map(item => (
         <MyReviewItem item={item} key={item.id} />
       ))}
     </div>

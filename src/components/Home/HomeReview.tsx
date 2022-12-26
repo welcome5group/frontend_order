@@ -11,9 +11,9 @@ const HomeReview = ({ item }: types) => {
   return (
     <div className={styled.reviewCinfirmItem}>
       <div className={styled.storeName}>{item.storeName}</div>
-      <p className={styled.buyDate}>{item.time}</p>
+      <p className={styled.buyDate}>{item.createdAt}</p>
       <div className={styled.itemList}>
-        {item.orderMenu.map((item, idx) => (
+        {item.menuNames.map((item, idx) => (
           <span key={idx}>{item}</span>
         ))}
       </div>

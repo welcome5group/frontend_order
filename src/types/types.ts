@@ -30,12 +30,12 @@ export interface reviewType {
 export interface myReviewType {
   id: number;
   storeName: string;
-  orderMenu: string[];
-  userInfo: userType;
-  time: string;
+  menuNames: string[];
+  createdAt: string;
   content: string;
-  presidentContent: {
-    time: string;
+  comment: {
+    profile: string;
+    createdAt: string;
     content: string;
   };
 }
