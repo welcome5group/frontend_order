@@ -13,17 +13,19 @@ import { getUser } from '../../apis/memberApi';
 
 const Home = () => {
 
-  const [loginInfo] = useRecoilState<tokenType>(tokenStore)
+  const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
   const [userInfo] = useRecoilState<userType>(userStore)
   const [data] = useState<myReviewType[]>(myReviewData)
+
+  console.log(userInfo)
 
   useEffect(() => {
     if (!testMode) {
       const data = async () => {
-        if (loginInfo.token !== '') {
+        if (tokenInfo.login) {
           if (!testMode) {
             try {
-              const result = await getUser(loginInfo.token, userInfo.email)
+              const result = await getUser(tokenInfo.token, userInfo.email)
               if (result.status === 200) {
                 console.log(result)
               }
@@ -35,13 +37,13 @@ const Home = () => {
       }
       data()
     }
-  }, [userInfo.email, loginInfo.token])
+  }, [userInfo.email, tokenInfo.token, tokenInfo.login])
 
 
   return (
     <div className={styled.homeContainer}>
       <Snow />
-      {loginInfo ?
+      {tokenInfo.login ?
         <div className={styled.mainDesc}>
           <p>JYS9049 님 안녕하세요?</p>
           <p>이용해주셔서 감사합니다.</p>
@@ -54,7 +56,7 @@ const Home = () => {
       <div className={styled.reviewCinfirmArea}>
         <p>리뷰는 작성 하셨나요?</p>
         {
-          loginInfo.token !== '' ?
+          tokenInfo.login ?
             <div className={styled.reviewCinfirmList}>
               {data.map(item => (
                 <HomeReview item={item} />
