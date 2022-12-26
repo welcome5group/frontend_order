@@ -1,6 +1,6 @@
 export interface cartType {
-  // id: number,
-  product: menuTypes;
+  // id: number;
+  product: menuItemTypes;
   count: number;
 }
 
@@ -49,13 +49,25 @@ export interface orderType {
   orderStatus: boolean;
 }
 
-export interface menuTypes {
-  id: number;
-  name: string;
-  desc: string;
+export interface menuListTypes {
+  categoryName: string;
+  menus: {
+    description: string;
+    imageUrl: string;
+    menuId: number;
+    menuName: string;
+    menuStatus: string;
+    price: number;
+  }[];
+}
+
+export interface menuItemTypes {
+  description: string;
+  imageUrl: string;
+  menuId: number;
+  menuName: string;
+  menuStatus: string;
   price: number;
-  scope: number;
-  category: string;
 }
 
 export interface tableNumTypes {

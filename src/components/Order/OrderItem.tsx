@@ -29,7 +29,7 @@ const OrderItem = ({ order }: types) => {
           }
         </p>
       </div>
-      {
+      {/* {
         order.orderProduct.map((item) => (
           <div key={item.product.id} className={styled.orderProductWrap}>
             <div className={styled.orderInfo}>
@@ -38,7 +38,7 @@ const OrderItem = ({ order }: types) => {
             </div>
           </div>
         ))
-      }
+      } */}
       <div className={styled.totalPrice}>결제금액 : {order.totalPrice.toLocaleString()} 원</div>
       {
         testStatus ?

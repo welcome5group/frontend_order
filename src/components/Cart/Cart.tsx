@@ -21,8 +21,8 @@ const Cart = () => {
   useEffect(() => {
     // 카트 리스트 안에 있는 아이템 총 합 계산
     if (cartList.length !== 0) {
-      let price = cartList.map(item => (item.product.price * item.count))
-      setTotalPrice(price.reduce((acc, cur) => acc + cur))
+      // let price = cartList.map(item => (item.product.price * item.count))
+      // setTotalPrice(price.reduce((acc, cur) => acc + cur))
     } else {
       setTotalPrice(0)
     }

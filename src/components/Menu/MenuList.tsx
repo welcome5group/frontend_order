@@ -5,41 +5,37 @@ import { useRecoilState } from 'recoil';
 import { cartStore, tokenStore } from '../../store/store';
 import MenuCategory from './MenuCategory';
 import { useNavigate } from 'react-router-dom';
-import { cartType, menuTypes } from '../../types/types';
-import { testMode } from '../../utils/testMode';
+import { cartType, menuListTypes } from '../../types/types';
 import { toastError } from '../toast';
 
-const MenuList = () => {
+interface types {
+  menuList: menuListTypes[]
+}
 
+const MenuList = ({ menuList }: types) => {
   const nav = useNavigate()
-
-
   const [tokenInfo] = useRecoilState(tokenStore)
   const [cartList, setCartList] = useRecoilState<cartType[]>(cartStore)
-  const [category, setCategory] = useState<string[]>([]);
-  const [menuList, setMenuList] = useState<menuTypes[]>([])
 
-  //테스트모드
-  useEffect(() => {
-    if (testMode) {
-      setMenuList(menu)
-    }
-  }, [])
+  console.log(cartList)
 
-  const handleOrderClick = useCallback((id: number) => {
-
+  const handleOrderClick = useCallback((category: string, id: number) => {
     if (tokenInfo.login === true) {
-      const idList = cartList.map(item => item.product.id)
+      const idList = cartList.map(item => item.product.menuId)
+
+      const categoryIdx = menuList.map(item => item.categoryName).indexOf(category)
+      const itemIdx = menuList[categoryIdx].menus.map(item => item.menuId).indexOf(id)
+
       //idList에 선택한 값과 맞는 값이 없다면 배열에 선택한 값 추가
       if (idList.indexOf(id) === -1) {
-        const item = { product: menuList[id - 1], count: 1 };
+        const item = { product: menuList[categoryIdx].menus[itemIdx], count: 1 };
         setCartList([...cartList, item]);
       }
       //idList에 선택한 값이 있다면 카운트만 + 1
       else {
         setCartList(prevState => {
           return prevState.map(obj => {
-            if (obj.product.id === id) {
+            if (obj.product.menuId === id) {
               return { ...obj, 'count': obj.count + 1 }
             } else {
               return { ...obj };
@@ -59,30 +55,21 @@ const MenuList = () => {
     window.scrollTo({ top: categoryRef.current[idx].offsetTop, behavior: 'smooth' });
   }
 
-  //처음 렌더링 시 param 값 저장
-
-
-
-  useEffect(() => {
-    //데이터 중 카테고리 값만 따로 빼서 중복 제거 후 저장
-    const categoryFilter = menuList.map(item => item.category)
-    const categoryArray = categoryFilter.filter((cateogry: string, idx: number) => categoryFilter.indexOf(cateogry) === idx)
-    setCategory(categoryArray)
-  }, [cartList, menuList])
-
   return (
     <>
       <div className={styled.menuList}>
         <div className={styled.categoryList}>
           {
-            category.map((item, idx) => (
-              <span onClick={() => handleMove(idx)}>{item}</span>
+            menuList.map((item, idx) => (
+              <span onClick={() => handleMove(idx)}>{item.categoryName}</span>
             ))
           }
         </div>
-        {category.length !== 0 && category.map((category, idx) => (
-          <MenuCategory category={category} categoryRef={categoryRef} idx={idx} key={category} menuList={menuList} handleOrderClick={handleOrderClick} />
-        ))}
+        {
+          menuList.map((item, idx) => (
+            <MenuCategory key={item.categoryName} category={item.categoryName} handleOrderClick={handleOrderClick} item={item} categoryRef={categoryRef} idx={idx} />
+          ))
+        }
       </div>
     </>
   );

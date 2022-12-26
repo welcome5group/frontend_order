@@ -1,27 +1,24 @@
 import React, { useMemo, useRef } from 'react';
 import MenuItem from './MenuItem';
 import styled from './Menu.module.scss'
-import { menuTypes } from '../../types/types';
+import { menuListTypes } from '../../types/types';
 
 interface types {
-  category: string
-  menuList: menuTypes[]
+  item: menuListTypes
   categoryRef: React.MutableRefObject<HTMLDivElement[]>
-  idx: number
-  handleOrderClick: (id: number) => void;
+  idx: number;
+  category: string;
+  handleOrderClick: (category: string, id: number) => void
 }
 
-const MenuCategory = ({ category, categoryRef, idx, menuList, handleOrderClick }: types) => {
-
-  // props로 받은 카테고리에 해당하는 아이템 분류
-  const categoryItmes = menuList.filter(item => item.category === category)
+const MenuCategory = ({ categoryRef, category, idx, item, handleOrderClick }: types) => {
   return (
     <div className={styled.menuCategory} ref={el => (categoryRef.current[idx] = el)}>
       <div className={styled.categoryTitle}>
-        {category}
+        {item.categoryName}
       </div>
-      {categoryItmes.map((item) => (
-        <MenuItem item={item} key={item.id} handleOrderClick={handleOrderClick} />
+      {item.menus.map((item) => (
+        <MenuItem item={item} category={category} key={item.menuId} handleOrderClick={handleOrderClick} />
       ))}
     </div>
   );

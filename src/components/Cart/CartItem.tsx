@@ -9,10 +9,10 @@ interface types {
 }
 
 const CartItem = ({ cartItem, handleIncreaseHanlder, handleDeleteItem }: types) => {
-  const totalPrice = (Number(cartItem.product.price) * Number(cartItem.count));
+  // const totalPrice = (Number(cartItem.product.price) * Number(cartItem.count));
   return (
     <>
-      <div className={styled.cartItem}>
+      {/* <div className={styled.cartItem}>
         <div className={styled.cartImg}>
           <img src={require('../../assets/americano.jpg')} alt="이미지" />
         </div>
@@ -30,7 +30,7 @@ const CartItem = ({ cartItem, handleIncreaseHanlder, handleDeleteItem }: types) 
             <button className={styled.countBtn} onClick={() => handleIncreaseHanlder(cartItem.product.id, 'plus')}>+</button>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
