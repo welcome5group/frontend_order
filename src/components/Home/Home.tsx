@@ -14,10 +14,8 @@ import { getUser } from '../../apis/memberApi';
 const Home = () => {
 
   const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
-  const [userInfo] = useRecoilState<userType>(userStore)
+  const [userInfo, setUserInfo] = useRecoilState<userType>(userStore)
   const [data] = useState<myReviewType[]>(myReviewData)
-
-  console.log(userInfo)
 
   useEffect(() => {
     if (!testMode) {
@@ -27,7 +25,7 @@ const Home = () => {
             try {
               const result = await getUser(tokenInfo.token, userInfo.email)
               if (result.status === 200) {
-                console.log(result)
+                setUserInfo(result.data)
               }
             } catch (e: any) {
               console.log(e)
@@ -37,7 +35,7 @@ const Home = () => {
       }
       data()
     }
-  }, [userInfo.email, tokenInfo.token, tokenInfo.login])
+  }, [userInfo.email, tokenInfo.token, tokenInfo.login, setUserInfo])
 
 
   return (

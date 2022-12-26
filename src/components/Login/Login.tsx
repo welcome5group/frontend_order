@@ -3,19 +3,18 @@ import logo from '../../assets/logo.svg'
 import kakao from '../../assets/kakao.png'
 import styled from './Login.module.scss'
 import { Link, useNavigate } from 'react-router-dom'
-import { useRecoilState, useSetRecoilState } from 'recoil';
-import { tokenStore, userStore } from '../../store/store';
+import { useSetRecoilState } from 'recoil';
+import { tokenStore } from '../../store/store';
 import { toastError } from '../toast';
 import { emailRegExpCheck, passwordRegExpCheck } from '../../utils/regExp';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { testMode } from '../../utils/testMode';
 import { kakaoSignIn, signIn } from '../../apis/memberApi';
-import { tokenType, userType } from '../../types/types';
+import { tokenType } from '../../types/types';
 
 const Login = () => {
   const nav = useNavigate()
   const setLogin = useSetRecoilState<tokenType>(tokenStore)
-  const [, setUserInfo] = useRecoilState<userType>(userStore)
   const [inputValue, setInputValue] = useState({
     email: '',
     password: '',
@@ -59,7 +58,6 @@ const Login = () => {
           if (result.status === 200) {
             console.log(result)
             setLogin({ token: result.data.accessToken, login: true })
-            setUserInfo(result.data)
             nav('/')
           }
         } catch (e: any) {

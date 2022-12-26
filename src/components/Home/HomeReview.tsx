@@ -8,9 +8,6 @@ interface types {
 }
 
 const HomeReview = ({ item }: types) => {
-
-  console.log(item)
-
   return (
     <div className={styled.reviewCinfirmItem}>
       <div className={styled.storeName}>{item.storeName}</div>
