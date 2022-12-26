@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { loginStore, userStore } from '../../store/store';
-import { reviewType, starType } from '../../types/types';
+import { reviewType } from '../../types/types';
 import { toastError } from '../toast';
 import styled from './Review.module.scss'
 
 interface types {
   reviewList: reviewType[],
   setReviewList: React.Dispatch<React.SetStateAction<reviewType[]>>,
-  starData: starType[],
 }
 
-const ReviewWrite = ({ reviewList, setReviewList, starData }: types) => {
+const ReviewWrite = ({ reviewList, setReviewList }: types) => {
 
   const nav = useNavigate()
 

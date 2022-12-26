@@ -4,11 +4,6 @@ export interface cartType {
   count: number;
 }
 
-export interface starType {
-  id: number;
-  scope: number;
-}
-
 export interface userType {
   id: number;
   nickName: string;
