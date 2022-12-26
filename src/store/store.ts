@@ -26,7 +26,16 @@ export const paramStore = atom<tableNumTypes>({
 //유저 정보 저장 아톰
 export const userStore = atom<userType>({
   key: "userStore",
-  default: { id: 1, nickName: "jys9049" },
+  default: {
+    createdAt: "",
+    email: "",
+    id: null,
+    memberType: "MEMBER",
+    nickName: "",
+    profile: null,
+    status: "ACTIVATE",
+    updatedAt: "",
+  },
 });
 
 //장바구니 아톰

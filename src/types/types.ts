@@ -5,8 +5,14 @@ export interface cartType {
 }
 
 export interface userType {
+  createdAt: string;
+  email: string;
   id: number;
+  memberType: string;
   nickName: string;
+  profile: number | null;
+  status: string;
+  updatedAt: string;
 }
 
 export interface reviewType {
