@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { loginStore, userStore } from '../../store/store';
+import { tokenStore, userStore } from '../../store/store';
 import { reviewType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
 import { toastError } from '../toast';
@@ -18,7 +18,7 @@ const ReviewWrite = ({ reviewList, setReviewList }: types) => {
 
   const [textValue, setTextValue] = useState('')
   const [userInfo] = useRecoilState(userStore)
-  const [loginCheck] = useRecoilState(loginStore)
+  const [tokenInfo] = useRecoilState(tokenStore)
 
   const time = () => {
     const today = new Date()
@@ -39,7 +39,7 @@ const ReviewWrite = ({ reviewList, setReviewList }: types) => {
   }
 
   const handleSubmit = () => {
-    if (loginCheck.login === true) {
+    if (tokenInfo.login === true) {
       if (!testMode) {
         const item = {
           id: reviewList.length + 1,

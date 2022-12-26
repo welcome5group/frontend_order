@@ -2,19 +2,19 @@ import React, { useEffect, useState, useCallback, memo, useRef } from 'react';
 import { menu } from '../../mock/testData';
 import styled from './Menu.module.scss'
 import { useRecoilState } from 'recoil';
-import { cartStore, loginStore, paramStore } from '../../store/store';
+import { cartStore, tokenStore } from '../../store/store';
 import MenuCategory from './MenuCategory';
-import { useNavigate, useParams } from 'react-router-dom';
-import { cartType, menuTypes, tableNumTypes } from '../../types/types';
+import { useNavigate } from 'react-router-dom';
+import { cartType, menuTypes } from '../../types/types';
 import { testMode } from '../../utils/testMode';
 import { toastError } from '../toast';
 
 const MenuList = () => {
-  const param = useParams()
-  const nav = useNavigate()
-  const [, setParams] = useRecoilState<tableNumTypes>(paramStore)
 
-  const [loginCheck] = useRecoilState(loginStore)
+  const nav = useNavigate()
+
+
+  const [tokenInfo] = useRecoilState(tokenStore)
   const [cartList, setCartList] = useRecoilState<cartType[]>(cartStore)
   const [category, setCategory] = useState<string[]>([]);
   const [menuList, setMenuList] = useState<menuTypes[]>([])
@@ -28,7 +28,7 @@ const MenuList = () => {
 
   const handleOrderClick = useCallback((id: number) => {
 
-    if (loginCheck.login === true) {
+    if (tokenInfo.login === true) {
       const idList = cartList.map(item => item.product.id)
       //idList에 선택한 값과 맞는 값이 없다면 배열에 선택한 값 추가
       if (idList.indexOf(id) === -1) {
@@ -60,11 +60,7 @@ const MenuList = () => {
   }
 
   //처음 렌더링 시 param 값 저장
-  useEffect(() => {
-    const params: tableNumTypes =
-      { id: param.id, storeName: param.storeName, tableNum: Number(param.tableNum) }
-    setParams(params)
-  }, [])
+
 
 
   useEffect(() => {

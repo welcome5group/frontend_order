@@ -3,17 +3,17 @@ import { useRecoilState } from 'recoil';
 import { getPayment } from '../../apis/orderApi';
 import { useDateFilter } from '../../Hooks/useDateFilter';
 import { paymentData } from '../../mock/paymentData';
-import { loginStore, userStore } from '../../store/store';
+import { tokenStore } from '../../store/store';
 import { paymentType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
-import { toastError, toastSuccess } from '../toast';
+import { toastError } from '../toast';
 import styled from './MyPayment.module.scss'
 import MyPaymentList from './MyPaymentList';
 
 const MyPayment = () => {
 
   const [paymentList, setPaymentList] = useState<paymentType[]>([])
-  const [userInfo] = useRecoilState(loginStore)
+  const [tokenInfo] = useRecoilState(tokenStore)
   const [paymentFilterList, setPaymentFilterList] = useState<paymentType[]>([])
 
   const currentYear = new Date().getFullYear()
@@ -40,7 +40,7 @@ const MyPayment = () => {
     const getPaymentList = async () => {
       if (!testMode) {
         try {
-          const result = await getPayment(userInfo.token)
+          const result = await getPayment(tokenInfo.token)
 
           if (result.status === 200) {
             console.log(result.data)

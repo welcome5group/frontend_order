@@ -91,9 +91,8 @@ export interface paymentType {
   totalPrice: number;
 }
 
-export interface loginType {
+export interface tokenType {
   token: string;
-  email: string;
   login: boolean;
 }
 

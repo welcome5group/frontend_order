@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { reviewData } from '../../mock/reviewData';
 import styled from './Review.module.scss'
-
 import ReviewWrite from './ReviewWrite';
 import ReviewList from './ReviewList';
 import { reviewType } from '../../types/types';

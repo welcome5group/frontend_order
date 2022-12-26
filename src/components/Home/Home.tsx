@@ -3,9 +3,9 @@ import styled from './Home.module.scss';
 import Snow from './Snow';
 import maskImg from '../../assets/maskImg.png'
 import { useRecoilState } from 'recoil';
-import { loginStore } from '../../store/store';
+import { tokenStore, userStore } from '../../store/store';
 import { Link } from 'react-router-dom';
-import { loginType, myReviewType } from '../../types/types';
+import { myReviewType, tokenType, userType } from '../../types/types';
 import { myReviewData } from '../../mock/reviewData';
 import HomeReview from './HomeReview';
 import { testMode } from '../../utils/testMode';
@@ -13,7 +13,8 @@ import { getUser } from '../../apis/memberApi';
 
 const Home = () => {
 
-  const [loginInfo] = useRecoilState<loginType>(loginStore)
+  const [loginInfo] = useRecoilState<tokenType>(tokenStore)
+  const [userInfo] = useRecoilState<userType>(userStore)
   const [data] = useState<myReviewType[]>(myReviewData)
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const Home = () => {
         if (loginInfo.token !== '') {
           if (!testMode) {
             try {
-              const result = await getUser(loginInfo.token, loginInfo.email)
+              const result = await getUser(loginInfo.token, userInfo.email)
               if (result.status === 200) {
                 console.log(result)
               }
@@ -34,7 +35,7 @@ const Home = () => {
       }
       data()
     }
-  }, [loginInfo.email, loginInfo.token])
+  }, [userInfo.email, loginInfo.token])
 
 
   return (

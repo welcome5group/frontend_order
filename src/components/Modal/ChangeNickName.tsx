@@ -3,7 +3,7 @@ import styled from './Modal.module.scss'
 import { toastError, toastSuccess } from '../toast';
 import { onlyTextRegExpCheck } from '../../utils/regExp';
 import { useRecoilState } from 'recoil';
-import { loginStore } from '../../store/store';
+import { tokenStore, userStore } from '../../store/store';
 import { testMode } from '../../utils/testMode';
 import { changeNickName } from '../../apis/memberApi';
 
@@ -15,7 +15,8 @@ interface types {
 const ChangeNickName = ({ showChangeNickName, setShowChangeNickName }: types) => {
 
   const [inputValue, setInputValue] = useState('')
-  const [userInfo] = useRecoilState(loginStore)
+  const [tokenInfo] = useRecoilState(tokenStore)
+  const [userInfo] = useRecoilState(userStore)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)
@@ -33,7 +34,7 @@ const ChangeNickName = ({ showChangeNickName, setShowChangeNickName }: types) =>
           type: 'MEMBER'
         }
         try {
-          const result = await changeNickName(userInfo.token, data)
+          const result = await changeNickName(tokenInfo.token, data)
 
           if (result.status === 200) {
             toastSuccess('닉네임이 변경되었습니다.')

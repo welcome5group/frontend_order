@@ -2,7 +2,7 @@ import { atom, selector } from "recoil";
 import { recoilPersist } from "recoil-persist";
 import {
   cartType,
-  loginType,
+  tokenType,
   orderType,
   tableNumTypes,
   userType,
@@ -10,9 +10,9 @@ import {
 const { persistAtom } = recoilPersist();
 
 //로그인 정보 아톰
-export const loginStore = atom<loginType>({
+export const tokenStore = atom<tokenType>({
   key: "loginStore",
-  default: { token: "", email: "", login: false },
+  default: { token: "", login: false },
   effects_UNSTABLE: [persistAtom],
 });
 

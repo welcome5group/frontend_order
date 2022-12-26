@@ -6,7 +6,7 @@ import ChangeNickName from '../Modal/ChangeNickName';
 import ChangePasswordCinfirm from '../Modal/ChangePasswordCinfirm';
 import WithDraw from '../Modal/WithDraw';
 import { useRecoilState } from 'recoil';
-import { loginStore } from '../../store/store';
+import { tokenStore } from '../../store/store';
 import profile1 from '../../assets/profile/profile1.png'
 import MypageProfileChange from './MypageProfileChange';
 
@@ -19,9 +19,9 @@ const Mypage = () => {
   const [showWithDraw, setShowWithDraw] = useState(false)
   const [changeProfile, setChangeProfile] = useState(false)
 
-  const [, setLogin] = useRecoilState(loginStore)
+  const [, setLogin] = useRecoilState(tokenStore)
   const handleLogOutClick = () => {
-    setLogin({ token: '', email: '', login: false })
+    setLogin({ token: '', login: false })
     nav('/')
   }
 
