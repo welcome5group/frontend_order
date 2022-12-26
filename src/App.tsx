@@ -23,23 +23,23 @@ import KakaoPage from "./pages/Login/KakaoPage";
 
 function App() {
 
-  const [, setParams] = useRecoilState<tableNumTypes>(paramStore)
+  // const [, setParams] = useRecoilState<tableNumTypes>(paramStore)
 
-  const closeEvent = (e: BeforeUnloadEvent) => {
-    e.returnValue = "";
-    localStorage.removeItem("recoil-persist");
-    setParams({
-      id: '',
-      storeName: '',
-      tableNum: 0,
-    })
-  };
+  // const closeEvent = (e: BeforeUnloadEvent) => {
+  //   e.returnValue = "";
+  //   localStorage.removeItem("recoil-persist");
+  //   setParams({
+  //     id: '',
+  //     storeName: '',
+  //     tableNum: 0,
+  //   })
+  // };
 
-  useEffect(() => {
-    (() => {
-      window.addEventListener("beforeunload", closeEvent);
-    })();
-  })
+  // useEffect(() => {
+  //   (() => {
+  //     window.addEventListener("beforeunload", closeEvent);
+  //   })();
+  // })
 
   return (
     <Routes>

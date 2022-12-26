@@ -17,6 +17,8 @@ const Home = () => {
   const [userInfo, setUserInfo] = useRecoilState<userType>(userStore)
   const [data] = useState<myReviewType[]>(myReviewData)
 
+  console.log(userInfo)
+
   useEffect(() => {
     if (!testMode) {
       const data = async () => {

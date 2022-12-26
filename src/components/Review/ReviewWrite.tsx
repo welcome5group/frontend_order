@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { writeReview } from '../../apis/reviewApi';
+import { testApi, writeReview } from '../../apis/reviewApi';
 import { paramStore, tokenStore, userStore } from '../../store/store';
 import { reviewType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
@@ -43,6 +43,23 @@ const ReviewWrite = ({ reviewList, setReviewList }: types) => {
   const handleSubmit = async () => {
     if (tokenInfo.login === true) {
       if (!testMode) {
+        try {
+          const value = {
+            memberId: userInfo.id,
+            storeId: Number(paramsInfo.id),
+            ordersId: 1,
+            content: textValue,
+          }
+          const result = await writeReview(value, tokenInfo.token)
+          // const result = await testApi(tokenInfo.token)
+
+          if (result.status === 200) {
+            toastSuccess('리뷰 작성이 완료되었습니다.')
+          }
+        } catch (e: any) {
+          toastError(e.response.data.message)
+        }
+      } else {
         const item = {
           id: reviewList.length + 1,
           orderMenu: ['김밥', '떡볶이', '콜라'],
@@ -56,22 +73,6 @@ const ReviewWrite = ({ reviewList, setReviewList }: types) => {
         }
         setReviewList([...reviewList, item])
         setTextValue('')
-
-      } else {
-        try {
-          const value = {
-            memberId: userInfo.id,
-            storeId: Number(paramsInfo.id),
-            content: textValue,
-          }
-          const result = await writeReview(value, tokenInfo.token)
-
-          if (result.status === 200) {
-            toastSuccess('리뷰 작성이 완료되었습니다.')
-          }
-        } catch (e: any) {
-          toastError(e.response.data.message)
-        }
       }
     } else {
       toastError('로그인이 필요한 기능입니다.')

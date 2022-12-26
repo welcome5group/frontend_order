@@ -26,34 +26,34 @@ interface changeNickNameType {
 
 //회원가입 API
 const signUp = async (inputValue: signupType) => {
-  const res = await axios.post(`api/auth/sign-up`, inputValue);
+  const res = await axios.post(`/api/auth/sign-up`, inputValue);
 
   return res;
 };
 
 //회원가입 인증 API
 const signCheck = async (uuid: string) => {
-  const res = await axios.put(`api/auth/sign-up?uuid=${uuid}`);
+  const res = await axios.put(`/api/auth/sign-up?uuid=${uuid}`);
 
   return res;
 };
 
 //로그인 API
 const signIn = async (inputValue: signInType) => {
-  const res = await axios.post(`api/auth/sign-in`, inputValue);
+  const res = await axios.post(`/api/auth/sign-in`, inputValue);
 
   return res;
 };
 
 const kakaoSignIn = async () => {
-  const res = await axios.get(`api/auth/kakao/sign-in?type=MEMBER`);
+  const res = await axios.get(`/api/auth/kakao/sign-in?type=MEMBER`);
 
   return res;
 };
 
 //비밀번호 찾기 API
 const findPassword = async (inputValue: findPasswordType) => {
-  const res = await axios.post(`api/auth/password`, inputValue);
+  const res = await axios.post(`/api/auth/password`, inputValue);
 
   return res;
 };
@@ -62,7 +62,7 @@ const findPassword = async (inputValue: findPasswordType) => {
 const changePassword = async (uuid: string, password: string) => {
   const newPassword = { password: password };
   const res = await axios.put(
-    `api/auth/resetPassword?uuid=${uuid}`,
+    `/api/auth/resetPassword?uuid=${uuid}`,
     newPassword
   );
 
@@ -72,7 +72,7 @@ const changePassword = async (uuid: string, password: string) => {
 //유저 정보 조회 API
 const getUser = async (token: string, email: string) => {
   console.log(token);
-  const res = await axios.get(`api/users?email=${email}`, {
+  const res = await axios.get(`/api/users?email=${email}`, {
     headers: {
       Authorization: token,
     },
@@ -83,7 +83,17 @@ const getUser = async (token: string, email: string) => {
 
 //닉네임 변경 API
 const changeNickName = async (token: string, data: changeNickNameType) => {
-  const res = await axios.put(`api/users`, data, {
+  const res = await axios.put(`/api/users`, data, {
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  return res;
+};
+
+const getMyReview = async (memberId: number, token: string) => {
+  const res = await axios.get(`/api/user/review/${memberId}`, {
     headers: {
       Authorization: token,
     },
@@ -101,4 +111,5 @@ export {
   changeNickName,
   changePassword,
   kakaoSignIn,
+  getMyReview,
 };
