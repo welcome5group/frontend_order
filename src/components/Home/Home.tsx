@@ -23,7 +23,7 @@ const Home = () => {
         if (tokenInfo.login) {
           if (!testMode) {
             try {
-              const result = await getUser(tokenInfo.token, userInfo.email)
+              const result = await getUser(tokenInfo.token, tokenInfo.email)
               if (result.status === 200) {
                 setUserInfo(result.data)
               }

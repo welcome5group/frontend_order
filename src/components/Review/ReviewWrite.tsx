@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { tokenStore, userStore } from '../../store/store';
+import { writeReview } from '../../apis/reviewApi';
+import { paramStore, tokenStore, userStore } from '../../store/store';
 import { reviewType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
-import { toastError } from '../toast';
+import { toastError, toastSuccess } from '../toast';
 import styled from './Review.module.scss'
 
 interface types {
@@ -17,8 +18,9 @@ const ReviewWrite = ({ reviewList, setReviewList }: types) => {
   const nav = useNavigate()
 
   const [textValue, setTextValue] = useState('')
-  const [userInfo] = useRecoilState(userStore)
   const [tokenInfo] = useRecoilState(tokenStore)
+  const [userInfo] = useRecoilState(userStore)
+  const [paramsInfo] = useRecoilState(paramStore)
 
   const time = () => {
     const today = new Date()
@@ -38,7 +40,7 @@ const ReviewWrite = ({ reviewList, setReviewList }: types) => {
     setTextValue(e.target.value)
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (tokenInfo.login === true) {
       if (!testMode) {
         const item = {
@@ -56,7 +58,20 @@ const ReviewWrite = ({ reviewList, setReviewList }: types) => {
         setTextValue('')
 
       } else {
+        try {
+          const value = {
+            memberId: userInfo.id,
+            storeId: Number(paramsInfo.id),
+            content: textValue,
+          }
+          const result = await writeReview(value, tokenInfo.token)
 
+          if (result.status === 200) {
+            toastSuccess('리뷰 작성이 완료되었습니다.')
+          }
+        } catch (e: any) {
+          toastError(e.response.data.message)
+        }
       }
     } else {
       toastError('로그인이 필요한 기능입니다.')

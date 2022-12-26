@@ -9,10 +9,10 @@ import {
 } from "../types/types";
 const { persistAtom } = recoilPersist();
 
-//로그인 정보 아톰
+//토큰 정보 아톰
 export const tokenStore = atom<tokenType>({
   key: "loginStore",
-  default: { token: "", login: false },
+  default: { token: "", email: "", login: false },
   effects_UNSTABLE: [persistAtom],
 });
 

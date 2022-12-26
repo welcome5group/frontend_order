@@ -21,7 +21,7 @@ const Mypage = () => {
 
   const [, setLogin] = useRecoilState(tokenStore)
   const handleLogOutClick = () => {
-    setLogin({ token: '', login: false })
+    setLogin({ token: '', email: '', login: false })
     nav('/')
   }
 
