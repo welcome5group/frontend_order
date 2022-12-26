@@ -10,7 +10,6 @@ import { toastError } from '../toast';
 import { useRecoilState } from 'recoil';
 import { paramStore, tokenStore } from '../../store/store';
 import { order } from '../../apis/orderApi';
-import { useParams } from 'react-router-dom';
 
 const Review = () => {
 
@@ -61,7 +60,7 @@ const Review = () => {
         </h1>
       </div>
       <ReviewWrite reviewList={reviewList} setReviewList={setReviewList} />
-      {/* <ReviewList reviewList={reviewList} /> */}
+      <ReviewList reviewList={reviewList} />
     </div>
   );
 };

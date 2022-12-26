@@ -61,15 +61,18 @@ const ReviewWrite = ({ reviewList, setReviewList }: types) => {
         }
       } else {
         const item = {
-          id: reviewList.length + 1,
-          orderMenu: ['김밥', '떡볶이', '콜라'],
-          userInfo: userInfo,
-          time: time(),
-          content: textValue,
-          presidentContent: {
-            time: "",
-            content: "",
-          }
+          reviewId: 2,
+          nickName: "jys9049",
+          menuNames: ["떡볶이", "튀김", "어묵"],
+          createdAt: "2022-12-08 14:22:01",
+          content: "여기 정말 맛있어요!!",
+          comment: {
+            content: "네 감사합니다 !!",
+            nickName: "사장님",
+            parentId: 3,
+            reviewId: 4,
+            updatedAt: "2022-12-26 17:05:52.20",
+          },
         }
         setReviewList([...reviewList, item])
         setTextValue('')

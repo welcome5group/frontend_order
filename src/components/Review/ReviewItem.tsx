@@ -10,31 +10,31 @@ interface types {
 const ReviewItem = ({ item }: types) => {
   console.log(item)
   return (
-    <div className={styled.reviewItem} key={item.id}>
+    <div className={styled.reviewItem} key={item.reviewId}>
       <div className={styled.userInfo}>
         <span className={styled.userImg}><AiOutlineUser /></span>
         <div className={styled.textWrap}>
-          <span className={styled.userNickname}>{item.userInfo.nickName}</span>
-          <span className={styled.writeTime}>{item.time}</span>
+          <span className={styled.userNickname}>{item.nickName}</span>
+          <span className={styled.writeTime}>{item.createdAt}</span>
         </div>
       </div>
       <div className={styled.orderMenuList}>
-        {item.orderMenu.map((item, idx) => (
+        {item.menuNames.map((item, idx) => (
           <span className={styled.orderMenuItem} key={idx}>{item}</span>
         ))}
       </div>
       <div className={styled.reviewContent}>
         {item.content}
       </div>
-      {item.presidentContent.content !== "" &&
+      {item.comment !== null &&
         <div className={styled.presidentReview}>
           <AiOutlineUser />
           <div className={styled.presidentReviewInfo}>
             <div className={styled.presidentInfo}>
               <span className={styled.presidnetName}>사장님</span>
-              <span className={styled.writeDate}>{item.presidentContent.time}</span>
+              <span className={styled.writeDate}>{item.comment.updatedAt}</span>
             </div>
-            <div className={styled.presidentReviewContent}>{item.presidentContent.content}</div>
+            <div className={styled.presidentReviewContent}>{item.comment.content}</div>
           </div>
         </div>
       }

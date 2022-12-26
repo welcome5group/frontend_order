@@ -16,14 +16,17 @@ export interface userType {
 }
 
 export interface reviewType {
-  id: number;
-  orderMenu: string[];
-  userInfo: userType;
-  time: string;
+  reviewId: number;
+  nickName: string;
+  menuNames: string[];
+  createdAt: string;
   content: string;
-  presidentContent: {
-    time: string;
+  comment: {
     content: string;
+    nickName: string;
+    parentId: number;
+    reviewId: number;
+    updatedAt: string;
   };
 }
 
