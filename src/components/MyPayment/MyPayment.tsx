@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 import { getPayment } from '../../apis/orderApi';
 import { useDateFilter } from '../../Hooks/useDateFilter';
 import { paymentData } from '../../mock/paymentData';
-import { tokenStore } from '../../store/store';
+import { tokenStore, userStore } from '../../store/store';
 import { paymentType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
 import { toastError } from '../toast';
@@ -13,6 +13,7 @@ import MyPaymentList from './MyPaymentList';
 const MyPayment = () => {
 
   const [paymentList, setPaymentList] = useState<paymentType[]>([])
+  const [userInfo] = useRecoilState(userStore)
   const [tokenInfo] = useRecoilState(tokenStore)
   const [paymentFilterList, setPaymentFilterList] = useState<paymentType[]>([])
 
@@ -40,7 +41,7 @@ const MyPayment = () => {
     const getPaymentList = async () => {
       if (!testMode) {
         try {
-          const result = await getPayment(tokenInfo.token)
+          const result = await getPayment(userInfo.id, tokenInfo.token)
 
           if (result.status === 200) {
             console.log(result.data)

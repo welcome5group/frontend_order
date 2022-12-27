@@ -29,10 +29,10 @@ const MyPaymentModal = ({ item, setShowModal }: types) => {
         <div className={styled.menuInfo} key={item.id}>
           <span>{item.menu.name}</span>
           <span>{item.count}</span>
-          <span>{item.menu.price}원</span>
+          <span>{(item.count * item.menu.price).toLocaleString()}원</span>
         </div>
       ))}
-      <div className={styled.totalPrice}>총 금액 : {item.totalPrice}</div>
+      <div className={styled.totalPrice}>총 금액 : {item.totalPrice.toLocaleString()}</div>
     </div>
   );
 };

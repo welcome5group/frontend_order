@@ -19,8 +19,8 @@ const order = async (value: orderType, token: string) => {
   return res;
 };
 
-const getPayment = async (token: string) => {
-  const res = await axios.get(`/api/guest/store/1/pays`, {
+const getPayment = async (userId: number, token: string) => {
+  const res = await axios.get(`/api/guest/store/${userId}/pays`, {
     headers: {
       Authorization: token,
     },
