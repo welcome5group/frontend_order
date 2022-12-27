@@ -1,13 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { orderStore } from '../../store/store';
+import { getOrderList, getPayment } from '../../apis/orderApi';
+import { orderStore, tokenStore, userStore } from '../../store/store';
 import { orderType } from '../../types/types';
+import { testMode } from '../../utils/testMode';
 import styled from './Order.module.scss'
 import OrderList from './OrderList';
 
 const Order = () => {
 
-  const [orderList] = useRecoilState<orderType[]>(orderStore)
+  const [orderList, setOrderList] = useRecoilState<orderType[]>(orderStore)
+  const [userInfo] = useRecoilState(userStore)
+  const [tokenInfo] = useRecoilState(tokenStore)
+
+  console.log(orderList)
+
+  useEffect(() => {
+    if (!testMode) {
+      const data = async () => {
+        if (tokenInfo.login) {
+          if (!testMode) {
+            try {
+              const result = await getOrderList(userInfo.id, tokenInfo.token)
+              if (result.status === 200) {
+                console.log(result)
+                setOrderList(result.data)
+              }
+            } catch (e: any) {
+              console.log(e)
+            }
+          }
+        }
+      }
+      data()
+    }
+  }, [])
 
   return (
     <div className={styled.orderContainer}>

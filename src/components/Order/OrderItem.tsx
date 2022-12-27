@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { paramStore } from '../../store/store';
+import { orderStore, paramStore } from '../../store/store';
 import { orderType } from '../../types/types';
 import styled from './Order.module.scss'
 
@@ -12,36 +12,34 @@ interface types {
 const OrderItem = ({ order }: types) => {
 
   const [params] = useRecoilState(paramStore)
-  const [testStatus, setTestStatus] = useState(false)
 
-  console.log(params)
-
+  const orderTime = order?.orderDate.split('T')[0] + " " + order?.orderDate.split('T')[1].slice(0, 8)
   return (
     <div className={styled.orderProductContainer}>
       <div className={styled.orderNumberArea}>
-        <p>주문번호 : 122</p>
-        <p>주문일시 : 2022-12-02 13:42:02</p>
+        <p>주문번호 : {order.orderId}</p>
+        <p>주문일시 : {orderTime}</p>
         <p>주문상태 :
           {
-            testStatus ?
-              <span className={styled.complet} onClick={() => setTestStatus(!testStatus)}>완료</span> :
-              <span className={styled.ready} onClick={() => setTestStatus(!testStatus)}>준비중</span>
+            order.orderStatus !== "INCOMP" ?
+              <span className={styled.complet}>완료</span> :
+              <span className={styled.ready}>준비중</span>
           }
         </p>
       </div>
-      {/* {
-        order.orderProduct.map((item) => (
-          <div key={item.product.id} className={styled.orderProductWrap}>
+      {
+        order.menuList.map((item) => (
+          <div key={item.name} className={styled.orderProductWrap}>
             <div className={styled.orderInfo}>
-              <p>{item.product.name}</p>
+              <p>{item.name}</p>
               <p>{item.count} 개 </p>
             </div>
           </div>
         ))
-      } */}
+      }
       <div className={styled.totalPrice}>결제금액 : {order.totalPrice.toLocaleString()} 원</div>
       {
-        testStatus ?
+        order.orderStatus !== "INCOMP" ?
           <Link to={`/review/${params.id}`} className={styled.reviewBtn}>리뷰작성</Link> : null
       }
     </div >

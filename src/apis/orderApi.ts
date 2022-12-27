@@ -29,4 +29,14 @@ const getPayment = async (token: string) => {
   return res;
 };
 
-export { order, getPayment };
+const getOrderList = async (memberId: number, token: string) => {
+  const res = await axios.get(`/api/user/orders?memberId=${memberId}`, {
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  return res;
+};
+
+export { order, getPayment, getOrderList };

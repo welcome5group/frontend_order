@@ -42,7 +42,23 @@ const Cart = () => {
       }
 
     } else {
-      const item = { orderProduct: cartList, totalPrice: totalPrice, orderStatus: false }
+
+      const cart = cartList.map((item) => {
+        return { name: item.product.menuName, count: item.count, price: item.product.price }
+      })
+
+      console.log(cart)
+
+      const item = {
+        orderId: 1,
+        orderDate: '2022-12-11',
+        orderStatus: "INCOM",
+        totalPrice: totalPrice,
+        reviewStatus: "INCOM",
+        menuList: cart,
+      }
+
+      console.log(item)
       setOrderList([...orderList, item])
       setCartList([])
     }

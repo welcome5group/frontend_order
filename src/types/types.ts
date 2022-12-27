@@ -44,9 +44,16 @@ export interface myReviewType {
 }
 
 export interface orderType {
-  orderProduct: cartType[];
+  orderId: number;
+  orderDate: string;
+  orderStatus: string;
+  reviewStatus: string;
   totalPrice: number;
-  orderStatus: boolean;
+  menuList: {
+    count: number;
+    name: string;
+    price: number;
+  }[];
 }
 
 export interface menuListTypes {
