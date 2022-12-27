@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from './Home.module.scss';
-import Snow from './Snow';
-import maskImg from '../../assets/maskImg.png'
 import { useRecoilState } from 'recoil';
 import { tokenStore, userStore } from '../../store/store';
 import { Link } from 'react-router-dom';
-import { myReviewType, tokenType, userType } from '../../types/types';
-import { myReviewData } from '../../mock/reviewData';
-import HomeReview from './HomeReview';
+import { tokenType, userType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
 import { getUser } from '../../apis/memberApi';
+import Snow from './Snow';
+import maskImg from '../../assets/maskImg.png'
+import HomeReview from './HomeReview';
 
 const Home = () => {
 
   const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
-  const [userInfo, setUserInfo] = useRecoilState<userType>(userStore)
-  const [data] = useState<myReviewType[]>(myReviewData)
+  const [, setUserInfo] = useRecoilState<userType>(userStore)
 
   useEffect(() => {
     if (!testMode) {
@@ -35,7 +33,7 @@ const Home = () => {
       }
       data()
     }
-  }, [userInfo.email, tokenInfo.token, tokenInfo.login, setUserInfo])
+  }, [tokenInfo.token, tokenInfo.login, setUserInfo, tokenInfo.email])
 
 
   return (
@@ -55,11 +53,7 @@ const Home = () => {
         <p>리뷰는 작성 하셨나요?</p>
         {
           tokenInfo.login ?
-            <div className={styled.reviewCinfirmList}>
-              {data.map(item => (
-                <HomeReview item={item} />
-              ))}
-            </div>
+            <HomeReview tokenInfo={tokenInfo} />
             :
             <div className={styled.loginplz}>
               <Link to="/login">로그인</Link> 후 확인이 가능합니다.

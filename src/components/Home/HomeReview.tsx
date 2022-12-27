@@ -1,23 +1,49 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from './Home.module.scss';
-import { myReviewType } from '../../types/types';
+import { myReviewType, reviewType, tokenType } from '../../types/types';
 import { Link } from 'react-router-dom';
+import { testMode } from '../../utils/testMode';
+import { useRecoilState } from 'recoil';
+import { userStore } from '../../store/store';
+import { getOrderList } from '../../apis/orderApi';
+import HomeReviewItem from './HomeReviewItem';
 
 interface types {
-  item: myReviewType
+  tokenInfo: tokenType
 }
 
-const HomeReview = ({ item }: types) => {
+const HomeReview = ({ tokenInfo }: types) => {
+
+  const [userInfo] = useRecoilState(userStore)
+  const [reviewList, setReviewList] = useState<reviewType[]>([])
+
+  console.log(reviewList)
+
+  useEffect(() => {
+    if (!testMode) {
+      const data = async () => {
+        if (tokenInfo.login) {
+          if (!testMode) {
+            try {
+              const result = await getOrderList(userInfo.id, tokenInfo.token)
+              if (result.status === 200) {
+                setReviewList(result.data)
+              }
+            } catch (e: any) {
+              console.log(e)
+            }
+          }
+        }
+      }
+      data()
+    }
+  }, [tokenInfo.login, tokenInfo.token, userInfo.id])
+
   return (
-    <div className={styled.reviewCinfirmItem}>
-      <div className={styled.storeName}>{item.storeName}</div>
-      <p className={styled.buyDate}>{item.createdAt}</p>
-      <div className={styled.itemList}>
-        {item.menuNames.map((item, idx) => (
-          <span key={idx}>{item}</span>
-        ))}
-      </div>
-      <Link className={styled.linkBtn} to={`/review/${item.id}`}>리뷰 작성</Link>
+    <div className={styled.reviewCinfirmList}>
+      {/* {reviewList.map(item => (
+        <HomeReviewItem item={item} />
+      ))} */}
     </div>
   );
 };
