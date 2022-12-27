@@ -1,22 +1,16 @@
 import axios from "axios";
 
-const order = async (token: string) => {
-  const test = {
-    memberId: 1,
-    storeId: 1,
-    orderMenus: [
-      {
-        id: 1,
-        count: 5,
-      },
-      {
-        id: 2,
-        count: 3,
-      },
-    ],
-  };
+interface orderType {
+  memberId: number;
+  storeId: number;
+  orderMenus: {
+    id: number;
+    count: number;
+  }[];
+}
 
-  const res = await axios.post(`/api/guest/store/order`, test, {
+const order = async (value: orderType, token: string) => {
+  const res = await axios.post(`/api/guest/store/order`, value, {
     headers: {
       Authorization: token,
     },

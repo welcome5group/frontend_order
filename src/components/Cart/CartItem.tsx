@@ -9,28 +9,28 @@ interface types {
 }
 
 const CartItem = ({ cartItem, handleIncreaseHanlder, handleDeleteItem }: types) => {
-  // const totalPrice = (Number(cartItem.product.price) * Number(cartItem.count));
+  const totalPrice = (cartItem.product.price * cartItem.count);
   return (
     <>
-      {/* <div className={styled.cartItem}>
+      <div className={styled.cartItem}>
         <div className={styled.cartImg}>
           <img src={require('../../assets/americano.jpg')} alt="이미지" />
         </div>
         <div className={styled.iteminfoWrap}>
-          <span className={styled.itemName}>{cartItem.product.name}</span>
+          <span className={styled.itemName}>{cartItem.product.menuName}</span>
           <span className={styled.itemPrice}>{totalPrice.toLocaleString()}원</span>
         </div>
         <div className={styled.functionBtnGroup}>
           <div>
-            <button className={styled.deleteBtn} onClick={() => handleDeleteItem(cartItem.product.id)} > X </button>
+            <button className={styled.deleteBtn} onClick={() => handleDeleteItem(cartItem.product.menuId)} > X </button>
           </div>
           <div className={styled.countGroup}>
-            <button className={cartItem.count === 1 ? `${styled.countBtn} ${styled.disabled}` : styled.countBtn} onClick={() => handleIncreaseHanlder(cartItem.product.id, 'minus')} disabled={cartItem.count === 1}>-</button>
+            <button className={cartItem.count === 1 ? `${styled.countBtn} ${styled.disabled}` : styled.countBtn} onClick={() => handleIncreaseHanlder(cartItem.product.menuId, 'minus')} disabled={cartItem.count === 1}>-</button>
             <p>{cartItem.count}</p>
-            <button className={styled.countBtn} onClick={() => handleIncreaseHanlder(cartItem.product.id, 'plus')}>+</button>
+            <button className={styled.countBtn} onClick={() => handleIncreaseHanlder(cartItem.product.menuId, 'plus')}>+</button>
           </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };
