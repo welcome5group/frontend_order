@@ -57,8 +57,12 @@ const kakaoSignIn = async () => {
 };
 
 //비밀번호 찾기 API
-const findPassword = async (inputValue: findPasswordType) => {
-  const res = await axios.post(`/api/auth/password`, inputValue);
+const findPassword = async (inputValue: findPasswordType, token: string) => {
+  const res = await axios.post(`/api/auth/password`, inputValue, {
+    headers: {
+      Authorization: token,
+    },
+  });
 
   return res;
 };

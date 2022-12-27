@@ -7,15 +7,17 @@ import { emailRegExpCheck, onlyTextRegExpCheck } from '../../utils/regExp';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { testMode } from '../../utils/testMode';
 import { findPassword } from '../../apis/memberApi';
+import { useRecoilState } from 'recoil';
+import { tokenStore } from '../../store/store';
 
 const FindPassword = () => {
 
   const nav = useNavigate()
-
   const [inputValue, setInputValue] = useState({
     email: '',
     type: 'MEMBER'
   })
+  const [tokenInfo] = useRecoilState(tokenStore)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value })
@@ -28,7 +30,7 @@ const FindPassword = () => {
     else {
       if (!testMode) {
         try {
-          const result = await findPassword(inputValue)
+          const result = await findPassword(inputValue, tokenInfo.token)
 
           if (result.status === 200) {
             console.log(result.data.result)

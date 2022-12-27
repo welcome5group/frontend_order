@@ -72,7 +72,7 @@ const Mypage = () => {
       }
       {
         showChangePassword &&
-        <ChangePasswordCinfirm showChangePassword={showChangePassword} setShowChangePassword={setShowChangePassword} />
+        <ChangePasswordCinfirm email={userInfo.email} token={tokenInfo.token} showChangePassword={showChangePassword} setShowChangePassword={setShowChangePassword} />
       }
       {
         showWithDraw &&
