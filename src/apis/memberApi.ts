@@ -24,6 +24,11 @@ interface changeNickNameType {
   type: string;
 }
 
+interface changeProfileType {
+  email: string;
+  profile: string;
+}
+
 //회원가입 API
 const signUp = async (inputValue: signupType) => {
   const res = await axios.post(`/api/auth/sign-up`, inputValue);
@@ -83,7 +88,7 @@ const getUser = async (token: string, email: string) => {
 
 //닉네임 변경 API
 const changeNickName = async (token: string, data: changeNickNameType) => {
-  const res = await axios.put(`/api/users`, data, {
+  const res = await axios.put(`/api/users/edit/nickname`, data, {
     headers: {
       Authorization: token,
     },
@@ -102,6 +107,16 @@ const getMyReview = async (memberId: number, token: string) => {
   return res;
 };
 
+const changeProfileImg = async (value: changeProfileType, token: string) => {
+  const res = await axios.put(`/api/users/edit/profile`, value, {
+    headers: {
+      Authorization: token,
+    },
+  });
+
+  return res;
+};
+
 export {
   signUp,
   signCheck,
@@ -112,4 +127,5 @@ export {
   changePassword,
   kakaoSignIn,
   getMyReview,
+  changeProfileImg,
 };

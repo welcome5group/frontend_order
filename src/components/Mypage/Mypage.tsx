@@ -6,22 +6,23 @@ import ChangeNickName from '../Modal/ChangeNickName';
 import ChangePasswordCinfirm from '../Modal/ChangePasswordCinfirm';
 import WithDraw from '../Modal/WithDraw';
 import { useRecoilState } from 'recoil';
-import { tokenStore } from '../../store/store';
+import { tokenStore, userStore } from '../../store/store';
 import profile1 from '../../assets/profile/profile1.png'
 import MypageProfileChange from './MypageProfileChange';
+import { userType } from '../../types/types';
 
 const Mypage = () => {
 
   const nav = useNavigate()
 
-  const [showChangeNickName, setShowChangeNickName] = useState(false)
-  const [showChangePassword, setShowChangePassword] = useState(false)
-  const [showWithDraw, setShowWithDraw] = useState(false)
-  const [changeProfile, setChangeProfile] = useState(false)
-
-  const [, setLogin] = useRecoilState(tokenStore)
+  const [showChangeNickName, setShowChangeNickName] = useState<boolean>(false)
+  const [showChangePassword, setShowChangePassword] = useState<boolean>(false)
+  const [showWithDraw, setShowWithDraw] = useState<boolean>(false)
+  const [changeProfile, setChangeProfile] = useState<boolean>(false)
+  const [userInfo] = useRecoilState<userType>(userStore)
+  const [tokenInfo, setTokenInfo] = useRecoilState(tokenStore)
   const handleLogOutClick = () => {
-    setLogin({ token: '', email: '', login: false })
+    setTokenInfo({ token: '', email: '', login: false })
     nav('/')
   }
 
@@ -29,12 +30,12 @@ const Mypage = () => {
     <div className={styled.mypageContainer}>
       <div className={styled.mainTitle}>
         <div className={styled.profileContainer}>
-          <img src={profile1} alt={"프로필"} className={styled.profile} onClick={() => setChangeProfile(!changeProfile)} />
+          <img src={require(`../../assets/profile/profile${userInfo.profile === null ? 1 : userInfo.profile}.png`)} alt={"프로필"} className={styled.profile} onClick={() => setChangeProfile(!changeProfile)} />
           {changeProfile &&
-            <MypageProfileChange setChangeProfile={setChangeProfile} />
+            <MypageProfileChange email={userInfo.email} token={tokenInfo.token} setChangeProfile={setChangeProfile} />
           }
         </div>
-        <span><h3>JYS9049</h3>님 환영합니다!</span>
+        <span><h3>{userInfo.nickName}</h3>님 환영합니다!</span>
       </div>
       <div className={styled.mypageMenuListGroup}>
         <Link to='/mypayment'>
