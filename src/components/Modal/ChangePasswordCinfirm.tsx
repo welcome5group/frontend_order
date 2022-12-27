@@ -1,6 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
 import { findPassword } from '../../apis/memberApi';
+import { tokenStore } from '../../store/store';
+import { tokenType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
 import { toastError, toastSuccess } from '../toast';
 import styled from './Modal.module.scss'
@@ -8,12 +11,12 @@ import styled from './Modal.module.scss'
 interface types {
   showChangePassword: boolean;
   email: string;
-  token: string;
   setShowChangePassword: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const ChangePasswordCinfirm = ({ showChangePassword, email, token, setShowChangePassword }: types) => {
+const ChangePasswordCinfirm = ({ showChangePassword, email, setShowChangePassword }: types) => {
   const nav = useNavigate()
+  const [tokenInfo, setTokenInfo] = useRecoilState(tokenStore)
   const handleSubmit = async () => {
     if (!testMode) {
       const value = {
@@ -21,12 +24,12 @@ const ChangePasswordCinfirm = ({ showChangePassword, email, token, setShowChange
         type: 'MEMBER'
       }
       try {
-        const result = await findPassword(value, token)
-
+        const result = await findPassword(value, tokenInfo.token)
         if (result.status === 200) {
           console.log(result.data.result)
           if (result.data.result === true) {
             toastSuccess('메일을 통해 비밀번호를 변경해주세요')
+            setTokenInfo({ token: '', email: '', login: false })
             nav('/')
           }
         }

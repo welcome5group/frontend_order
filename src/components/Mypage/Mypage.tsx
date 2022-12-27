@@ -7,7 +7,6 @@ import ChangePasswordCinfirm from '../Modal/ChangePasswordCinfirm';
 import WithDraw from '../Modal/WithDraw';
 import { useRecoilState } from 'recoil';
 import { tokenStore, userStore } from '../../store/store';
-import profile1 from '../../assets/profile/profile1.png'
 import MypageProfileChange from './MypageProfileChange';
 import { userType } from '../../types/types';
 
@@ -72,7 +71,7 @@ const Mypage = () => {
       }
       {
         showChangePassword &&
-        <ChangePasswordCinfirm email={userInfo.email} token={tokenInfo.token} showChangePassword={showChangePassword} setShowChangePassword={setShowChangePassword} />
+        <ChangePasswordCinfirm email={userInfo.email} showChangePassword={showChangePassword} setShowChangePassword={setShowChangePassword} />
       }
       {
         showWithDraw &&
