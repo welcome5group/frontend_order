@@ -50,6 +50,8 @@ const Cart = () => {
       console.log(cart)
 
       const item = {
+        storeId: 1,
+        storeName: '커피 참 잘하는 집',
         orderId: 1,
         orderDate: '2022-12-11',
         orderStatus: "INCOM",
@@ -58,7 +60,6 @@ const Cart = () => {
         menuList: cart,
       }
 
-      console.log(item)
       setOrderList([...orderList, item])
       setCartList([])
     }

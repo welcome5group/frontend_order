@@ -44,6 +44,8 @@ export interface myReviewType {
 }
 
 export interface orderType {
+  storeId: number;
+  storeName: string;
   orderId: number;
   orderDate: string;
   orderStatus: string;
