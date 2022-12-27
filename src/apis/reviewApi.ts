@@ -6,7 +6,7 @@ interface writeType {
   content: string;
 }
 
-const getReview = async (storeId: number, token: string) => {
+const getReview = async (storeId: number) => {
   const res = await axios.get(`/api/store/${storeId}/review`);
 
   return res;

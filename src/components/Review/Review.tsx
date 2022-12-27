@@ -22,7 +22,7 @@ const Review = () => {
     } else {
       const getReviewList = async () => {
         try {
-          const result = await getReview(Number(paramsInfo.id), tokenInfo.token)
+          const result = await getReview(Number(paramsInfo.id))
 
           if (result.status === 200) {
             setReviewList(result.data)
