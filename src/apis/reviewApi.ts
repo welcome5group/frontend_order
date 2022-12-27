@@ -13,40 +13,7 @@ const getReview = async (storeId: number, token: string) => {
 };
 
 const writeReview = async (value: writeType, token: string) => {
-  const test = {
-    memberId: 1,
-    storeId: 1,
-    ordersId: 1,
-    content: "맛있습니다~",
-  };
-
-  const res = await axios.post(`/api/user/review`, test, {
-    headers: {
-      Authorization: token,
-      "Context-Type": "application/json",
-    },
-  });
-
-  return res;
-};
-
-const testApi = async (token: string) => {
-  const test = {
-    memberId: 1,
-    storeId: 1,
-    orderMenus: [
-      {
-        id: 1,
-        count: 5,
-      },
-      {
-        id: 1,
-        count: 3,
-      },
-    ],
-  };
-
-  const res = await axios.post(`/api/guest/store/order`, test, {
+  const res = await axios.post(`/api/user/review`, value, {
     headers: {
       Authorization: token,
     },
@@ -55,4 +22,10 @@ const testApi = async (token: string) => {
   return res;
 };
 
-export { writeReview, getReview, testApi };
+const deleteReview = async (id: number) => {
+  const res = await axios.delete(`/api/user/review?reviewId=${id}`);
+
+  return res;
+};
+
+export { writeReview, getReview, deleteReview };

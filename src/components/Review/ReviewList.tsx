@@ -8,10 +8,11 @@ interface types {
 }
 
 const ReviewList = ({ reviewList }: types) => {
+  console.log(reviewList)
   return (
     <div className={styled.reviewList}>
       {reviewList.map(item => (
-        <ReviewItem item={item} />
+        <ReviewItem item={item} key={item.reviewId} />
       ))}
     </div>
   );

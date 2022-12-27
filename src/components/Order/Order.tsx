@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { getOrderList, getPayment } from '../../apis/orderApi';
 import { orderStore, tokenStore, userStore } from '../../store/store';
@@ -9,7 +9,7 @@ import OrderList from './OrderList';
 
 const Order = () => {
 
-  const [orderList, setOrderList] = useRecoilState<orderType[]>(orderStore)
+  const [orderList, setOrderList] = useState<orderType[]>([])
   const [userInfo] = useRecoilState(userStore)
   const [tokenInfo] = useRecoilState(tokenStore)
 

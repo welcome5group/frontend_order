@@ -51,7 +51,8 @@ function App() {
         <Route path="/order" element={<OrderPage />} />
         <Route path="/mypage" element={<MypagePage />} />
         <Route path="/mypayment" element={<MyPaymentPage />} />
-        <Route path="/review/:orderId" element={<ReviewPage />} />
+        <Route path="/review/:storeId/:orderId" element={<ReviewPage />} />
+        <Route path="/review/:storeId" element={<ReviewPage />} />
         <Route path="/myreview" element={<MyReviewPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

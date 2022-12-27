@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { testApi, writeReview } from '../../apis/reviewApi';
+import { writeReview } from '../../apis/reviewApi';
 import { paramStore, tokenStore, userStore } from '../../store/store';
 import { reviewType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
@@ -16,25 +16,12 @@ interface types {
 const ReviewWrite = ({ reviewList, setReviewList }: types) => {
 
   const nav = useNavigate()
+  const param = useParams()
 
   const [textValue, setTextValue] = useState('')
   const [tokenInfo] = useRecoilState(tokenStore)
   const [userInfo] = useRecoilState(userStore)
   const [paramsInfo] = useRecoilState(paramStore)
-
-  const time = () => {
-    const today = new Date()
-
-    const year = today.getFullYear()
-    const month = today.getMonth() - 1
-    const day = today.getDay()
-
-    const hour = today.getHours()
-    const min = today.getMinutes()
-    const sec = today.getSeconds()
-
-    return `${year}-${month}-${day} ${hour}:${min}:${sec}`
-  }
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTextValue(e.target.value)
@@ -47,7 +34,7 @@ const ReviewWrite = ({ reviewList, setReviewList }: types) => {
           const value = {
             memberId: userInfo.id,
             storeId: Number(paramsInfo.id),
-            ordersId: 1,
+            orderId: Number(param.orderId),
             content: textValue,
           }
           const result = await writeReview(value, tokenInfo.token)
@@ -55,6 +42,7 @@ const ReviewWrite = ({ reviewList, setReviewList }: types) => {
 
           if (result.status === 200) {
             toastSuccess('리뷰 작성이 완료되었습니다.')
+            window.location.replace(`/review/${param.storeId}`)
           }
         } catch (e: any) {
           toastError(e.response.data.message)
@@ -86,7 +74,7 @@ const ReviewWrite = ({ reviewList, setReviewList }: types) => {
   return (
     <div className={styled.reviewWriteArea}>
       <textarea className={styled.reviewTextArea} value={textValue} onChange={handleChange} />
-      <button className={styled.reivewWriteBtn} onClick={handleSubmit}>작성하기</button>
+      <button className={param.orderId !== null ? styled.reivewWriteBtn : styled.canNotWrite} onClick={handleSubmit} disabled={param.orderId === null}>작성하기</button>
     </div>
   );
 };
