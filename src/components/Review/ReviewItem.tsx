@@ -20,7 +20,6 @@ const ReviewItem = ({ item }: types) => {
   const nav = useNavigate()
 
   const [showOption, setShowOption] = useState<Boolean>(false)
-  const [tokenInfo] = useRecoilState(tokenStore)
 
   const handleDelteClick = async () => {
     if (!testMode) {
@@ -29,7 +28,7 @@ const ReviewItem = ({ item }: types) => {
 
         if (result.status === 200) {
           toastSuccess('리뷰가 삭제되었습니다.')
-          nav(`/review/${param.storeId}`)
+          window.location.replace(`/review/${param.storeId}`)
         }
       } catch (e: any) {
         toastError(e.response.data.message)

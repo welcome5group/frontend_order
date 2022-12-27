@@ -23,7 +23,7 @@ const writeReview = async (value: writeType, token: string) => {
 };
 
 const deleteReview = async (id: number) => {
-  const res = await axios.delete(`/api/user/review?reviewId=${id}`);
+  const res = await axios.delete(`/api/user/review/${id}`);
 
   return res;
 };
