@@ -6,6 +6,7 @@ import { useRecoilState } from 'recoil';
 import { tokenStore, userStore } from '../../store/store';
 import { testMode } from '../../utils/testMode';
 import { changeNickName } from '../../apis/memberApi';
+import { useNavigate } from 'react-router-dom';
 
 interface types {
   showChangeNickName: boolean,
@@ -14,6 +15,7 @@ interface types {
 
 const ChangeNickName = ({ showChangeNickName, setShowChangeNickName }: types) => {
 
+  const nav = useNavigate()
   const [inputValue, setInputValue] = useState('')
   const [tokenInfo] = useRecoilState(tokenStore)
   const [userInfo] = useRecoilState(userStore)
@@ -39,6 +41,7 @@ const ChangeNickName = ({ showChangeNickName, setShowChangeNickName }: types) =>
           if (result.status === 200) {
             toastSuccess('닉네임이 변경되었습니다.')
             setShowChangeNickName(!showChangeNickName)
+            nav('/')
           }
         } catch (e: any) {
           toastError(e.response.data.message)
