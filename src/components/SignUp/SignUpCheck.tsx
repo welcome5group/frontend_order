@@ -9,7 +9,7 @@ import { toastError, toastSuccess } from '../toast';
 
 const SignUpCheck = () => {
 
-  const uuid = window.location.search.slice(6)
+  const uuid = window.location.search.slice(5)
 
   const close = () => {
     window.open('', '_self').close();
