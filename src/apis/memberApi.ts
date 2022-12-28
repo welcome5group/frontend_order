@@ -50,7 +50,7 @@ const signCheck = async (uuid: string) => {
 
 //로그인 API
 const signIn = async (inputValue: signInType) => {
-  const res = await axios.post(`/${PROXY}/api/auth/sign-in`, inputValue);
+  const res = await axios.post(`${PROXY}/api/auth/sign-in`, inputValue);
 
   return res;
 };
