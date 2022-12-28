@@ -4,7 +4,7 @@
   status = 200
 
 [[redirects]]
-  from = "/proxy/*"
+  from = "/api/*"
   to = "https://www.fingerorder.ga/:splat"  
   status = 200
   force = true
