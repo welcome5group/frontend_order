@@ -19,7 +19,7 @@ const MenuItem = ({ item, category, handleOrderClick, inputValue }: types) => {
         item.menuName.replace(" ", "").toLocaleLowerCase().includes(inputValue.toLocaleLowerCase().replace(" ", "")) &&
         <div className={styled.menuItem}>
           <div className={styled.menuImg}>
-            <img src={item.imageUrl} alt="이미지" />
+            <img src={require(`../../assets/coffee/${item.imageUrl}.jpg`)} alt="이미지" />
           </div>
           <div className={styled.iteminfoWrap}>
             <span className={styled.itemName}>{item.menuName}</span>

@@ -10,11 +10,12 @@ interface types {
 
 const CartItem = ({ cartItem, handleIncreaseHanlder, handleDeleteItem }: types) => {
   const totalPrice = (cartItem.product.price * cartItem.count);
+  console.log(cartItem)
   return (
     <>
       <div className={styled.cartItem}>
         <div className={styled.cartImg}>
-          <img src={require('../../assets/americano.jpg')} alt="이미지" />
+          <img src={require(`../../assets/coffee/${cartItem.product.imageUrl}.jpg`)} alt="이미지" />
         </div>
         <div className={styled.iteminfoWrap}>
           <span className={styled.itemName}>{cartItem.product.menuName}</span>
