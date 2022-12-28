@@ -7,6 +7,7 @@ import MenuCategory from './MenuCategory';
 import { useNavigate } from 'react-router-dom';
 import { cartType, menuListTypes } from '../../types/types';
 import { toastError } from '../toast';
+import { AiOutlineSearch } from 'react-icons/ai';
 
 interface types {
   menuList: menuListTypes[]
@@ -16,7 +17,7 @@ const MenuList = ({ menuList }: types) => {
   const nav = useNavigate()
   const [tokenInfo] = useRecoilState(tokenStore)
   const [cartList, setCartList] = useRecoilState<cartType[]>(cartStore)
-
+  const [openSearch, setOpenSearch] = useState(false)
   console.log(cartList)
 
   const handleOrderClick = useCallback((category: string, id: number) => {
@@ -59,9 +60,16 @@ const MenuList = ({ menuList }: types) => {
     <>
       <div className={styled.menuList}>
         <div className={styled.categoryList}>
+          {openSearch ?
+            <div className={styled.searchBar}>
+              <input />
+              <AiOutlineSearch className={styled.searchBtn} />
+            </div> :
+            <AiOutlineSearch className={styled.searchOpenBtn} onClick={() => setOpenSearch(!openSearch)} />
+          }
           {
             menuList.map((item, idx) => (
-              <span onClick={() => handleMove(idx)}>{item.categoryName}</span>
+              <span onClick={() => { handleMove(idx); setOpenSearch(false) }}>{item.categoryName}</span>
             ))
           }
         </div>

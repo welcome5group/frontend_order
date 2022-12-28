@@ -52,6 +52,39 @@
       border-radius: .8rem;
       margin-right: .3rem;
     }
+
+    .searchBar {
+      position: relative;
+      display: flex;
+      width: 12rem;
+      height: 1.5rem;
+      transition: 0.4s ease;
+      
+      input {
+        border: 1px solid #c9c9c9;
+        outline: none;
+        border-radius: .5rem;
+        padding-left: .5rem;
+      }
+
+      .searchBtn {
+        position: absolute;
+        width: 1.5rem;
+        height: 1.5rem;
+        top: 0;
+        right: 1.4rem;
+        padding-left: .2rem;
+        border-left: 1px solid #c9c9c9;
+      }
+    }
+
+    .searchOpenBtn {
+      border: 1px solid #c9c9c9;
+      border-radius: .8rem;
+      margin-right: .3rem;
+      width: 2.5rem;
+      height: 1.5rem;
+    }
   }
 }
 
