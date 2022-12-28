@@ -10,5 +10,5 @@
   force = true
 
 [build]
-publish = "publish"
+publish = "public"
 command = "CI= npm run build"
