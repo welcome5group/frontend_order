@@ -45,20 +45,22 @@ const Menu = () => {
     }
   }, [])
 
-  return (
-    <div className={styled.menuContainer}>
-      <h1 className={styled.mainTitle}>
-        {params.storeName}
-      </h1>
-      <div className={styled.menuReview}>
-        <Link to={`/review/${params.id}`}>
-          <p>리뷰 {reviewData.length}개</p>
-          <AiOutlineRight />
-        </Link>
+  if (menuList) {
+    return (
+      <div className={styled.menuContainer}>
+        <h1 className={styled.mainTitle}>
+          {params.storeName}
+        </h1>
+        <div className={styled.menuReview}>
+          <Link to={`/review/${params.id}`}>
+            <p>리뷰 {reviewData.length}개</p>
+            <AiOutlineRight />
+          </Link>
+        </div>
+        <MenuList menuList={menuList} />
       </div>
-      <MenuList menuList={menuList} />
-    </div>
-  );
-};
+    );
+  };
+}
 
 export default Menu;
