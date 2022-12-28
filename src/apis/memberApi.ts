@@ -56,11 +56,7 @@ const signIn = async (inputValue: signInType) => {
 };
 
 const withDraw = async (data: withDrawType, token: string) => {
-  const res = await axios.delete(`/api/users`, {
-    data: {
-      email: data.email,
-      password: data.password,
-    },
+  const res = await axios.post(`api/users/delete`, data, {
     headers: {
       Authorization: token,
     },

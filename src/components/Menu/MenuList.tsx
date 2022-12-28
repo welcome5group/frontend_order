@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useCallback, memo, useRef } from 'react';
+import React, { useEffect, useState, memo, useRef } from 'react';
 import { menu } from '../../mock/testData';
 import styled from './Menu.module.scss'
 import { useRecoilState } from 'recoil';
 import { cartStore, tokenStore } from '../../store/store';
 import MenuCategory from './MenuCategory';
 import { useNavigate } from 'react-router-dom';
-import { cartType, menuListTypes } from '../../types/types';
+import { cartType, menuItemTypes, menuListTypes } from '../../types/types';
 import { toastError } from '../toast';
-import { AiOutlineSearch } from 'react-icons/ai';
+import MenuSearch from './MenuSearch';
 
 interface types {
   menuList: menuListTypes[]
@@ -15,18 +15,21 @@ interface types {
 
 const MenuList = ({ menuList }: types) => {
   const nav = useNavigate()
+  const [inputValue, setInputValue] = useState('')
   const [tokenInfo] = useRecoilState(tokenStore)
   const [cartList, setCartList] = useRecoilState<cartType[]>(cartStore)
-  const [openSearch, setOpenSearch] = useState(false)
-  console.log(cartList)
+  const [openSearch, setOpenSearch] = useState<boolean>(false)
 
-  const handleOrderClick = useCallback((category: string, id: number) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value)
+  }
+
+  //메뉴 클릭 시 장바구니로 데이터 넣는 기능
+  const handleOrderClick = (category: string, id: number) => {
     if (tokenInfo.login === true) {
       const idList = cartList.map(item => item.product.menuId)
-
       const categoryIdx = menuList.map(item => item.categoryName).indexOf(category)
       const itemIdx = menuList[categoryIdx].menus.map(item => item.menuId).indexOf(id)
-
       //idList에 선택한 값과 맞는 값이 없다면 배열에 선택한 값 추가
       if (idList.indexOf(id) === -1) {
         const item = { product: menuList[categoryIdx].menus[itemIdx], count: 1 };
@@ -48,7 +51,7 @@ const MenuList = ({ menuList }: types) => {
       toastError('로그인이 필요한 기능입니다.')
       nav('/login')
     }
-  }, [cartList, menuList, setCartList])
+  }
 
   //카테고리 선택 시 해당 div로 이동
   let categoryRef = useRef<HTMLDivElement[]>([])
@@ -60,13 +63,7 @@ const MenuList = ({ menuList }: types) => {
     <>
       <div className={styled.menuList}>
         <div className={styled.categoryList}>
-          {openSearch ?
-            <div className={styled.searchBar}>
-              <input />
-              <AiOutlineSearch className={styled.searchBtn} />
-            </div> :
-            <AiOutlineSearch className={styled.searchOpenBtn} onClick={() => setOpenSearch(!openSearch)} />
-          }
+          <MenuSearch openSearch={openSearch} setOpenSearch={setOpenSearch} inputValue={inputValue} handleChange={handleChange} />
           {
             menuList.map((item, idx) => (
               <span onClick={() => { handleMove(idx); setOpenSearch(false) }}>{item.categoryName}</span>
@@ -75,7 +72,7 @@ const MenuList = ({ menuList }: types) => {
         </div>
         {
           menuList.map((item, idx) => (
-            <MenuCategory key={item.categoryName} category={item.categoryName} handleOrderClick={handleOrderClick} item={item} categoryRef={categoryRef} idx={idx} />
+            <MenuCategory key={item.categoryName} category={item.categoryName} handleOrderClick={handleOrderClick} item={item} categoryRef={categoryRef} idx={idx} inputValue={inputValue} />
           ))
         }
       </div>

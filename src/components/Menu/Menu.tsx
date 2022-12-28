@@ -23,8 +23,8 @@ const Menu = () => {
     setParams(params)
   }, [])
 
+  console.log(menuList)
 
-  //테스트모드
   useEffect(() => {
     if (testMode) {
       setMenuList(menu)

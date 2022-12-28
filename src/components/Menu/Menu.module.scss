@@ -45,12 +45,14 @@
     display: flex;
     align-items: center;
     width: 100%;
+    overflow-x: auto;
 
     & > span {
       padding: 0.2rem 0.5rem;
       border: 1px solid #c9c9c9;
-      border-radius: .8rem;
+      border-radius: .5rem;
       margin-right: .3rem;
+      min-width: max-content;
     }
 
     .searchBar {
@@ -58,8 +60,8 @@
       display: flex;
       width: 12rem;
       height: 1.5rem;
-      transition: 0.4s ease;
-      
+      margin-right: .5rem;
+
       input {
         border: 1px solid #c9c9c9;
         outline: none;
@@ -72,7 +74,7 @@
         width: 1.5rem;
         height: 1.5rem;
         top: 0;
-        right: 1.4rem;
+        right: .4rem;
         padding-left: .2rem;
         border-left: 1px solid #c9c9c9;
       }
@@ -216,4 +218,19 @@
       height: 100%;
     }
   }
+}
+
+.searchContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.searchItemsWrap {
+  position: absolute;
+  top: 2rem;
+  width: 12rem;
+  padding: 1rem;
+  background:white;
+  border: 1px solid #c9c9c9;
 }

@@ -60,14 +60,7 @@ export interface orderType {
 
 export interface menuListTypes {
   categoryName: string;
-  menus: {
-    description: string;
-    imageUrl: string;
-    menuId: number;
-    menuName: string;
-    menuStatus: string;
-    price: number;
-  }[];
+  menus: menuItemTypes[];
 }
 
 export interface menuItemTypes {
