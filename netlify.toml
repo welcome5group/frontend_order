@@ -3,6 +3,12 @@
   to = "/index.html"
   status = 200
 
+[[redirects]]
+  from = "/proxy/*"
+  to = "https://www.fingerorder.ga/:splat"  
+  status = 200
+  force = true
+
 [build]
 publish = "build"
 command = "CI= npm run build"
