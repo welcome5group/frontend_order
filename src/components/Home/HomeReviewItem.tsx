@@ -1,24 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { myReviewType, reviewType } from '../../types/types';
+import { orderType } from '../../types/types';
 import styled from './Home.module.scss';
 
 interface types {
-  item: reviewType
+  item: orderType
 }
 
 const HomeReviewItem = ({ item }: types) => {
   console.log(item)
+  const orderTime = item?.orderDate.split('T')[0] + " " + item?.orderDate.split('T')[1].slice(0, 8)
   return (
     <div className={styled.reviewCinfirmItem}>
-      {/* <div className={styled.storeName}>{item.storeName}</div> */}
-      <p className={styled.buyDate}>{item.createdAt}</p>
+      <div className={styled.storeName}>{item.storeName}</div>
+      <p className={styled.buyDate}>{orderTime}</p>
       <div className={styled.itemList}>
-        {item.menuNames.map((item, idx) => (
-          <span key={idx}>{item}</span>
+        {item.menuList.map((item, idx) => (
+          <span key={idx}>{item.name}</span>
         ))}
       </div>
-      {/* <Link className={styled.linkBtn} to={`/review/${item.id}`}>리뷰 작성</Link> */}
+      <Link className={styled.linkBtn} to={`/review/${item.storeId}/${item.orderId}`}>리뷰 작성</Link>
     </div>
   );
 };

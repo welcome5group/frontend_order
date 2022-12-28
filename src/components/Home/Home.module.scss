@@ -37,6 +37,19 @@
     overflow-x: auto;
   }
 
+  .canNotWriteReview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 auto;
+    margin: 1.2rem 1.2rem;
+    height: 3rem;
+    border: 1px solid #c9c9c9;
+    border-radius: .5rem;
+  }
+
   .loginplz {
     display: flex;
     margin: 0 auto;
@@ -59,7 +72,7 @@
     flex-direction: column;
     min-width: 10rem;
     min-height: 8rem;
-    padding: 1rem;
+    padding: .8rem;
     margin-right: .5rem;
     border: 1px solid #c9c9c9;
     border-radius: .5rem;
@@ -71,7 +84,7 @@
     .storeName {
       width: 100%;
       font-weight: 700;
-      font-size: .8rem;
+      font-size: 1rem;
       padding-bottom: .4rem;
       overflow:hidden;
       text-overflow:ellipsis;

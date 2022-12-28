@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from './Home.module.scss';
-import { myReviewType, reviewType, tokenType } from '../../types/types';
+import { myReviewType, orderType, reviewType, tokenType } from '../../types/types';
 import { Link } from 'react-router-dom';
 import { testMode } from '../../utils/testMode';
 import { useRecoilState } from 'recoil';
@@ -15,7 +15,7 @@ interface types {
 const HomeReview = ({ tokenInfo }: types) => {
 
   const [userInfo] = useRecoilState(userStore)
-  const [reviewList, setReviewList] = useState<reviewType[]>([])
+  const [reviewList, setReviewList] = useState<orderType[]>([])
 
   console.log(reviewList)
 
@@ -27,7 +27,7 @@ const HomeReview = ({ tokenInfo }: types) => {
             try {
               const result = await getOrderList(userInfo.id, tokenInfo.token)
               if (result.status === 200) {
-                setReviewList(result.data)
+                setReviewList(result.data.filter((item: { reviewStatus: string; }) => item.reviewStatus !== "COMP"))
               }
             } catch (e: any) {
               console.log(e)
@@ -40,11 +40,18 @@ const HomeReview = ({ tokenInfo }: types) => {
   }, [tokenInfo.login, tokenInfo.token, userInfo.id])
 
   return (
-    <div className={styled.reviewCinfirmList}>
-      {/* {reviewList.map(item => (
-        <HomeReviewItem item={item} />
-      ))} */}
-    </div>
+    <>
+      {
+        reviewList.length !== 0 ?
+          <div className={styled.reviewCinfirmList}>
+            {
+              reviewList.map(item => (
+                <HomeReviewItem item={item} />
+              ))
+            }
+          </div> : <div className={styled.canNotWriteReview}>작성 가능한 리뷰가 없습니다.</div>
+      }
+    </>
   );
 };
 
