@@ -1,4 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { withDraw } from '../../apis/memberApi';
+import { tokenStore, userStore } from '../../store/store';
+import { userType } from '../../types/types';
+import { testMode } from '../../utils/testMode';
+import { toastError } from '../toast';
 import styled from './Modal.module.scss'
 
 interface types {
@@ -8,17 +15,29 @@ interface types {
 
 const WithDraw = ({ showWithDraw, setShowWithDraw }: types) => {
 
+  const nav = useNavigate()
   const [inputValue, setInputValue] = useState('')
+  const [userInfo] = useRecoilState<userType>(userStore)
+  const [tokenInfo] = useRecoilState(tokenStore)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)
   }
 
-  const handleSubmit = () => {
-    if (inputValue === '네 동의합니다') {
-      console.log('탈퇴 성공!')
+  const handleSubmit = async () => {
+    const data = { email: userInfo.email, password: inputValue }
+    if (!testMode) {
+      try {
+        const result = await withDraw(data, tokenInfo.token)
+
+        if (result.status === 200) {
+          nav('/')
+        }
+      } catch (e: any) {
+        toastError(e.response.data.message)
+      }
     } else {
-      console.log('탈퇴 실패!')
+      nav('/')
     }
   }
 
@@ -27,7 +46,7 @@ const WithDraw = ({ showWithDraw, setShowWithDraw }: types) => {
       <h2>회원탈퇴</h2>
       <span className={styled.subDesc}>정말 탈퇴 하시겠습니까?</span>
       <div className={styled.inputGroup}>
-        <input type="text" placeholder='"네 동의합니다"를 입력해주세요' onChange={handleChange} />
+        <input type="password" placeholder='비밀번호를 입력해주세요' onChange={handleChange} />
       </div>
       <div className={styled.btnGroup}>
         <button className={styled.withDrawBtn} onClick={handleSubmit}>탈퇴</button>

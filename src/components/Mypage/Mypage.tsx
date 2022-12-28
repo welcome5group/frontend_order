@@ -20,6 +20,7 @@ const Mypage = () => {
   const [changeProfile, setChangeProfile] = useState<boolean>(false)
   const [userInfo] = useRecoilState<userType>(userStore)
   const [tokenInfo, setTokenInfo] = useRecoilState(tokenStore)
+
   const handleLogOutClick = () => {
     setTokenInfo({ token: '', email: '', login: false })
     nav('/')

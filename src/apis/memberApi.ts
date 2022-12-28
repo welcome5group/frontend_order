@@ -13,6 +13,11 @@ interface signInType {
   type: string;
 }
 
+interface withDrawType {
+  email: string;
+  password: string;
+}
+
 interface findPasswordType {
   email: string;
   type: string;
@@ -46,6 +51,20 @@ const signCheck = async (uuid: string) => {
 //로그인 API
 const signIn = async (inputValue: signInType) => {
   const res = await axios.post(`/api/auth/sign-in`, inputValue);
+
+  return res;
+};
+
+const withDraw = async (data: withDrawType, token: string) => {
+  const res = await axios.delete(`/api/users`, {
+    data: {
+      email: data.email,
+      password: data.password,
+    },
+    headers: {
+      Authorization: token,
+    },
+  });
 
   return res;
 };
@@ -125,6 +144,7 @@ export {
   signUp,
   signCheck,
   signIn,
+  withDraw,
   findPassword,
   getUser,
   changeNickName,
