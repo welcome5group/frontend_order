@@ -30,7 +30,7 @@ const Mypage = () => {
     <div className={styled.mypageContainer}>
       <div className={styled.mainTitle}>
         <div className={styled.profileContainer}>
-          <img src={require(`../../assets/profile/profile${userInfo.profile === null ? 1 : userInfo.profile}.png`)} alt={"프로필"} className={styled.profile} onClick={() => setChangeProfile(!changeProfile)} />
+          <img src={require(`../../assets/profile/profile${userInfo.profile === null || undefined ? 1 : userInfo.profile}.png`)} alt={"프로필"} className={styled.profile} onClick={() => setChangeProfile(!changeProfile)} />
           {changeProfile &&
             <MypageProfileChange email={userInfo.email} token={tokenInfo.token} setChangeProfile={setChangeProfile} />
           }

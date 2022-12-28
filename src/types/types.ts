@@ -10,7 +10,7 @@ export interface userType {
   id: number;
   memberType: string;
   nickName: string;
-  profile: number | null;
+  profile: number | null | undefined;
   status: string;
   updatedAt: string;
 }
