@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { PROXY } from "./proxy";
 interface writeType {
   memberId: number;
   storeId: number;
@@ -7,13 +7,13 @@ interface writeType {
 }
 
 const getReview = async (storeId: number) => {
-  const res = await axios.get(`/api/store/${storeId}/review`);
+  const res = await axios.get(`${PROXY}/api/store/${storeId}/review`);
 
   return res;
 };
 
 const writeReview = async (value: writeType, token: string) => {
-  const res = await axios.post(`/api/user/review`, value, {
+  const res = await axios.post(`${PROXY}/api/user/review`, value, {
     headers: {
       Authorization: token,
     },
@@ -23,7 +23,7 @@ const writeReview = async (value: writeType, token: string) => {
 };
 
 const deleteReview = async (id: number) => {
-  const res = await axios.delete(`/api/user/review/${id}`);
+  const res = await axios.delete(`${PROXY}/api/user/review/${id}`);
 
   return res;
 };

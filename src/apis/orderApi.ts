@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { PROXY } from "./proxy";
 interface orderType {
   memberId: number;
   storeId: number;
@@ -10,7 +10,7 @@ interface orderType {
 }
 
 const order = async (value: orderType, token: string) => {
-  const res = await axios.post(`/api/guest/store/order`, value, {
+  const res = await axios.post(`${PROXY}/api/guest/store/order`, value, {
     headers: {
       Authorization: token,
     },
@@ -20,7 +20,7 @@ const order = async (value: orderType, token: string) => {
 };
 
 const getPayment = async (userId: number, token: string) => {
-  const res = await axios.get(`/api/guest/store/${userId}/pays`, {
+  const res = await axios.get(`${PROXY}/api/guest/store/${userId}/pays`, {
     headers: {
       Authorization: token,
     },
@@ -30,7 +30,7 @@ const getPayment = async (userId: number, token: string) => {
 };
 
 const getOrderList = async (memberId: number, token: string) => {
-  const res = await axios.get(`/api/user/orders?memberId=${memberId}`, {
+  const res = await axios.get(`${PROXY}/api/user/orders?memberId=${memberId}`, {
     headers: {
       Authorization: token,
     },

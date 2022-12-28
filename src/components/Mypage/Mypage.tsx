@@ -26,6 +26,8 @@ const Mypage = () => {
     nav('/')
   }
 
+  console.log(userInfo.profile === undefined)
+
   return (
     <div className={styled.mypageContainer}>
       <div className={styled.mainTitle}>
