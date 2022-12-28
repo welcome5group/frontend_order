@@ -51,7 +51,7 @@ const signCheck = async (uuid: string) => {
 //로그인 API
 const signIn = async (inputValue: signInType) => {
   const res = await axios.post(
-    `https://www.fingerorder.ga//api/auth/sign-in`,
+    `https://www.fingerorder.ga/api/auth/sign-in`,
     inputValue
   );
 
