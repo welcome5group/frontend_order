@@ -50,16 +50,13 @@ const signCheck = async (uuid: string) => {
 
 //로그인 API
 const signIn = async (inputValue: signInType) => {
-  const res = await axios.post(
-    `https://www.fingerorder.ga/api/auth/sign-in`,
-    inputValue
-  );
+  const res = await axios.post(`api/auth/sign-in`, inputValue);
 
   return res;
 };
 
 const withDraw = async (data: withDrawType, token: string) => {
-  const res = await axios.post(`api/users/delete`, data, {
+  const res = await axios.post(`/api/users/delete`, data, {
     headers: {
       Authorization: token,
     },
