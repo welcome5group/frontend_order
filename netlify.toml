@@ -11,4 +11,4 @@
 
 [build]
 publish = "publish"
-command = "npm run build"
+command = "CI= npm run build"
