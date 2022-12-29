@@ -24,6 +24,8 @@ const ReviewItem = ({ item }: types) => {
   const userWriteTime = item?.createdAt.split('T')[0] + " " + item?.createdAt.split('T')[1].slice(0, 8)
   const storeWriteTime = item.comment !== null ? item?.comment?.updatedAt.split('T')[0] + " " + item?.comment?.updatedAt.split('T')[1].slice(0, 8) : null
 
+  console.log(item)
+
   const handleDelteClick = async () => {
     if (!testMode) {
       try {
@@ -53,12 +55,14 @@ const ReviewItem = ({ item }: types) => {
             <span className={styled.writeTime}>{userWriteTime}</span>
           </div>
         </div>
-        <div className={styled.option}>
-          <BsThreeDots onClick={() => setShowOption(!showOption)} />
-          {showOption &&
-            <div className={styled.deleteBtn} onClick={handleDelteClick}>삭제</div>
-          }
-        </div>
+        {item.nickName === userInfo.nickName &&
+          <div className={styled.option}>
+            <BsThreeDots onClick={() => setShowOption(!showOption)} />
+            {showOption &&
+              <div className={styled.deleteBtn} onClick={handleDelteClick}>삭제</div>
+            }
+          </div>
+        }
       </div>
       <div className={styled.orderMenuList}>
         {item.menuNames.map((item, idx) => (
