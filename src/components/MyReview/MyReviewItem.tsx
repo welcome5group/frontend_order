@@ -15,9 +15,6 @@ const MyReviewItem = ({ item }: types) => {
           <span className={styled.storeName}>{item.storeName}</span>
           <span className={styled.writeDate}>{item.createdAt}</span>
         </div>
-        <div className={styled.deleteBtn}>
-          <button>삭제</button>
-        </div>
       </div>
       <div className={styled.orderMenuList}>
         {item.menuNames.map((item, idx) => (
