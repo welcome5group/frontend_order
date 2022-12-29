@@ -6,7 +6,7 @@ import { reviewType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
 import { deleteReview } from '../../apis/reviewApi';
 import { useRecoilState } from 'recoil';
-import { tokenStore } from '../../store/store';
+import { tokenStore, userStore } from '../../store/store';
 import { toastError, toastSuccess } from '../toast';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -20,9 +20,10 @@ const ReviewItem = ({ item }: types) => {
   const nav = useNavigate()
 
   const [showOption, setShowOption] = useState<Boolean>(false)
+  const [userInfo] = useRecoilState(userStore)
   const userWriteTime = item?.createdAt.split('T')[0] + " " + item?.createdAt.split('T')[1].slice(0, 8)
   const storeWriteTime = item.comment !== null ? item?.comment?.updatedAt.split('T')[0] + " " + item?.comment?.updatedAt.split('T')[1].slice(0, 8) : null
-  console.log(storeWriteTime)
+
   const handleDelteClick = async () => {
     if (!testMode) {
       try {
@@ -44,7 +45,9 @@ const ReviewItem = ({ item }: types) => {
     <div className={styled.reviewItem} key={item.reviewId}>
       <div className={styled.userWrap}>
         <div className={styled.userInfo}>
-          <span className={styled.userImg}><AiOutlineUser /></span>
+          <span className={styled.userImg}>
+            <img src={require(`../../assets/profile/profile${userInfo.profile === null || undefined ? 1 : userInfo.profile}.png`)} alt={"프로필"} className={styled.profile} />
+          </span>
           <div className={styled.textWrap}>
             <span className={styled.userNickname}>{item.nickName}</span>
             <span className={styled.writeTime}>{userWriteTime}</span>

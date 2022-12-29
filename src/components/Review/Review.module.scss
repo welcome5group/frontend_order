@@ -129,15 +129,16 @@
         align-content: center;
         margin: .5rem 0; 
   
-        svg {
-          width: 2rem;
-          height: 2rem;
+        .profile {
+          width: 2.5rem;
+          height: 2.5rem;
         }
       
         .textWrap {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
+          padding: .2rem;
           padding-left: .7rem;
   
           .writeTime {
