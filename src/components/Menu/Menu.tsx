@@ -10,12 +10,14 @@ import { paramStore } from '../../store/store';
 import { testMode } from '../../utils/testMode';
 import { menu } from '../../mock/testData';
 import { getStore } from '../../apis/storeApi';
+import { getReview } from '../../apis/reviewApi';
 
 const Menu = () => {
 
   const param = useParams()
   const [params, setParams] = useRecoilState<tableNumTypes>(paramStore)
   const [menuList, setMenuList] = useState<menuListTypes[]>([])
+  const [reviewLength, setReviewLength] = useState(0)
 
   useEffect(() => {
     const params: tableNumTypes =
@@ -31,8 +33,12 @@ const Menu = () => {
         if (!testMode) {
           try {
             const result = await getStore(Number(params.id))
+            const reviewResult = await getReview(Number(params.id))
             if (result.status === 200) {
               setMenuList(result.data.data)
+            }
+            if (reviewResult.status === 200) {
+              setReviewLength(reviewResult.data.length)
             }
           } catch (e: any) {
             console.log(e)
@@ -51,7 +57,7 @@ const Menu = () => {
         </h1>
         <div className={styled.menuReview}>
           <Link to={`/review/${params.id}`}>
-            <p>리뷰 {reviewData.length}개</p>
+            <p>리뷰 {reviewLength}개</p>
             <AiOutlineRight />
           </Link>
         </div>
