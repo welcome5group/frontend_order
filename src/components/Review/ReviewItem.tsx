@@ -20,7 +20,8 @@ const ReviewItem = ({ item }: types) => {
   const nav = useNavigate()
 
   const [showOption, setShowOption] = useState<Boolean>(false)
-
+  const userWriteTime = item?.createdAt.split('T')[0] + " " + item?.createdAt.split('T')[1].slice(0, 8)
+  const storeWriteTime = item?.comment.updatedAt.split('T')[0] + " " + item?.comment.updatedAt.split('T')[1].slice(0, 8)
   const handleDelteClick = async () => {
     if (!testMode) {
       try {
@@ -45,7 +46,7 @@ const ReviewItem = ({ item }: types) => {
           <span className={styled.userImg}><AiOutlineUser /></span>
           <div className={styled.textWrap}>
             <span className={styled.userNickname}>{item.nickName}</span>
-            <span className={styled.writeTime}>{item.createdAt}</span>
+            <span className={styled.writeTime}>{userWriteTime}</span>
           </div>
         </div>
         <div className={styled.option}>
@@ -69,7 +70,7 @@ const ReviewItem = ({ item }: types) => {
           <div className={styled.presidentReviewInfo}>
             <div className={styled.presidentInfo}>
               <span className={styled.presidnetName}>사장님</span>
-              <span className={styled.writeDate}>{item.comment.updatedAt}</span>
+              <span className={styled.writeDate}>{storeWriteTime}</span>
             </div>
             <div className={styled.presidentReviewContent}>{item.comment.content}</div>
           </div>
