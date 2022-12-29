@@ -13,6 +13,11 @@ interface types {
 
 const MyReviewItem = ({ item }: types) => {
 
+  console.log(Object.keys(item.comment))
+
+  const userWriteTime = item?.createdAt.split('T')[0] + " " + item?.createdAt.split('T')[1].slice(0, 8)
+  const storeWriteTime = Object.keys(item.comment).length !== 0 ? item?.comment?.createdAt.split('T')[0] + " " + item?.comment?.createdAt.split('T')[1].slice(0, 8) : null
+
   const nav = useNavigate()
 
   const handleDelteClick = async () => {
@@ -37,7 +42,7 @@ const MyReviewItem = ({ item }: types) => {
       <div className={styled.infoGroup}>
         <div className={styled.reviewInfoGroup}>
           <span className={styled.storeName}>{item.storeName}</span>
-          <span className={styled.writeDate}>{item.createdAt}</span>
+          <span className={styled.writeDate}>{userWriteTime}</span>
         </div>
         <div className={styled.deleteBtn}>
           <button onClick={handleDelteClick}>삭제</button>
@@ -57,7 +62,7 @@ const MyReviewItem = ({ item }: types) => {
           <div className={styled.presidentReviewInfo}>
             <div className={styled.presidentInfo}>
               <span className={styled.presidnetName}>사장님</span>
-              <span className={styled.writeDate}>{item.comment.createdAt}</span>
+              <span className={styled.writeDate}>{storeWriteTime}</span>
             </div>
             <div className={styled.presidentReviewContent}>{item.comment.content}</div>
           </div>
