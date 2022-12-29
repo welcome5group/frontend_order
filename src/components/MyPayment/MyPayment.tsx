@@ -44,7 +44,6 @@ const MyPayment = () => {
           const result = await getPayment(userInfo.id, tokenInfo.token)
 
           if (result.status === 200) {
-            console.log(result.data)
             setPaymentList(result.data)
           }
         } catch (e: any) {

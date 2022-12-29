@@ -17,8 +17,6 @@ const Cart = () => {
   const [paramsInfo] = useRecoilState(paramStore)
   const [tokenInfo] = useRecoilState(tokenStore)
 
-  console.log(cartList)
-
   // 계산하기 버튼 클릭 시 주문내역에 카트에 있는 아이템들과 총 결제금액 추가
   const handleClick = async () => {
     const cart = cartList.map((item) => {
@@ -32,7 +30,6 @@ const Cart = () => {
       }
       try {
         const result = await order(value, tokenInfo.token)
-
         if (result.status === 200) {
           toastSuccess('주문이 완료되었습니다.')
           setCartList([])
@@ -40,15 +37,10 @@ const Cart = () => {
       } catch (e: any) {
         toastError(e.response.data.message)
       }
-
     } else {
-
       const cart = cartList.map((item) => {
         return { name: item.product.menuName, count: item.count, price: item.product.price }
       })
-
-      console.log(cart)
-
       const item = {
         storeId: 1,
         storeName: '커피 참 잘하는 집',
@@ -59,7 +51,6 @@ const Cart = () => {
         reviewStatus: "INCOM",
         menuList: cart,
       }
-
       setOrderList([...orderList, item])
       setCartList([])
     }
@@ -73,8 +64,6 @@ const Cart = () => {
     } else {
       setTotalPrice(0)
     }
-
-    console.log(cartList)
   }, [cartList])
 
   return (

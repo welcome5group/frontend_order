@@ -10,7 +10,6 @@ interface types {
 
 const CartItem = ({ cartItem, handleIncreaseHanlder, handleDeleteItem }: types) => {
   const totalPrice = (cartItem.product.price * cartItem.count);
-  console.log(cartItem)
   return (
     <>
       <div className={styled.cartItem}>

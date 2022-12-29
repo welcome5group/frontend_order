@@ -23,8 +23,6 @@ const Menu = () => {
     setParams(params)
   }, [])
 
-  console.log(menuList)
-
   useEffect(() => {
     if (testMode) {
       setMenuList(menu)

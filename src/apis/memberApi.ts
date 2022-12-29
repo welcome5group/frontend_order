@@ -95,7 +95,6 @@ const changePassword = async (uuid: string, password: string) => {
 
 //유저 정보 조회 API
 const getUser = async (token: string, email: string) => {
-  console.log(token);
   const res = await axios.get(`${PROXY}/api/users?email=${email}`, {
     headers: {
       Authorization: token,

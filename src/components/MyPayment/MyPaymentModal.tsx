@@ -8,7 +8,6 @@ interface types {
 }
 
 const MyPaymentModal = ({ item, setShowModal }: types) => {
-  console.log(item)
   return (
     <div className={styled.paymentModal}>
       <button className={styled.closeBtn} onClick={() => setShowModal(false)}>닫기</button>

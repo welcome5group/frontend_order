@@ -17,8 +17,6 @@ const HomeReview = ({ tokenInfo }: types) => {
   const [userInfo] = useRecoilState(userStore)
   const [reviewList, setReviewList] = useState<orderType[]>([])
 
-  console.log(reviewList)
-
   useEffect(() => {
     if (!testMode) {
       const data = async () => {
