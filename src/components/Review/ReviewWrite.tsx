@@ -76,7 +76,7 @@ const ReviewWrite = ({ reviewList, setReviewList }: types) => {
   return (
     <div className={styled.reviewWriteArea}>
       <textarea className={styled.reviewTextArea} value={textValue} onChange={handleChange} />
-      <button className={param.orderId !== null ? styled.canNotWrite : styled.reivewWriteBtn} onClick={handleSubmit} disabled={param.orderId === null}>작성하기</button>
+      <button className={param.orderId !== undefined ? styled.reivewWriteBtn : styled.canNotWrite} onClick={handleSubmit} disabled={param.orderId === null}>작성하기</button>
     </div>
   );
 };
