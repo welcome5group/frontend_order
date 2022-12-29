@@ -25,7 +25,9 @@ const HomeReview = ({ tokenInfo }: types) => {
             try {
               const result = await getOrderList(userInfo.id, tokenInfo.token)
               if (result.status === 200) {
-                setReviewList(result.data.filter((item: { reviewStatus: string; }) => item.reviewStatus !== "COMP"))
+                setReviewList(result.data.filter((item: {
+                  orderStatus: string; reviewStatus: string;
+                }) => item.orderStatus === "COMP" && item.reviewStatus !== "COMP"))
               }
             } catch (e: any) {
               console.log(e)
