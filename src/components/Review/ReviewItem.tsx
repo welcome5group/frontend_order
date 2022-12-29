@@ -21,7 +21,8 @@ const ReviewItem = ({ item }: types) => {
 
   const [showOption, setShowOption] = useState<Boolean>(false)
   const userWriteTime = item?.createdAt.split('T')[0] + " " + item?.createdAt.split('T')[1].slice(0, 8)
-  const storeWriteTime = item?.comment.updatedAt.split('T')[0] + " " + item?.comment.updatedAt.split('T')[1].slice(0, 8)
+  const storeWriteTime = item.comment !== null ? item?.comment?.updatedAt.split('T')[0] + " " + item?.comment?.updatedAt.split('T')[1].slice(0, 8) : null
+  console.log(storeWriteTime)
   const handleDelteClick = async () => {
     if (!testMode) {
       try {
