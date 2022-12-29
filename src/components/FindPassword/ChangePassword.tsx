@@ -61,7 +61,7 @@ const ChangePassword = () => {
             <input type="password" name='passwordCinfirm' onChange={handleChange} />
           </div>
         </div>
-        <button className={styled.findPasswordBtn} type='button' onClick={handleSubmit}>비밀번호 찾기</button>
+        <button className={styled.findPasswordBtn} type='button' onClick={handleSubmit}>비밀번호 변경</button>
       </div>
     </div>
   );
