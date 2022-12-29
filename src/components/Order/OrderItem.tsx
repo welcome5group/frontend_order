@@ -39,7 +39,7 @@ const OrderItem = ({ order }: types) => {
       }
       <div className={styled.totalPrice}>결제금액 : {order.totalPrice.toLocaleString()} 원</div>
       {
-        order.orderStatus !== "INCOMP" ?
+        order.orderStatus !== "INCOMP" && order.reviewStatus !== "COMP" ?
           <Link to={`/review/${params.id}/${order.orderId}`} className={styled.reviewBtn}>리뷰작성</Link> : null
       }
     </div >

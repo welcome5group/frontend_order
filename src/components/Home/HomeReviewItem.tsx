@@ -8,7 +8,6 @@ interface types {
 }
 
 const HomeReviewItem = ({ item }: types) => {
-  console.log(item)
   const orderTime = item?.orderDate.split('T')[0] + " " + item?.orderDate.split('T')[1].slice(0, 8)
   return (
     <div className={styled.reviewCinfirmItem}>

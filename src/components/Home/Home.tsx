@@ -13,7 +13,7 @@ import HomeReview from './HomeReview';
 const Home = () => {
 
   const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
-  const [, setUserInfo] = useRecoilState<userType>(userStore)
+  const [userInfo, setUserInfo] = useRecoilState<userType>(userStore)
 
   useEffect(() => {
     if (!testMode) {
@@ -41,7 +41,7 @@ const Home = () => {
       <Snow />
       {tokenInfo.login ?
         <div className={styled.mainDesc}>
-          <p>JYS9049 님 안녕하세요?</p>
+          <p>{userInfo.nickName} 님 안녕하세요?</p>
           <p>이용해주셔서 감사합니다.</p>
         </div> :
         <div className={styled.mainDesc}>

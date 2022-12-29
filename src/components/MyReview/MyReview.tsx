@@ -14,7 +14,6 @@ const MyReview = () => {
   const [reviewList, setReviewList] = useState<myReviewType[]>([])
   const [tokenInfo] = useRecoilState(tokenStore)
   const [userInfo] = useRecoilState(userStore)
-  console.log(reviewList)
 
   useEffect(() => {
     if (!testMode) {
@@ -22,7 +21,6 @@ const MyReview = () => {
         if (tokenInfo.login) {
           if (!testMode) {
             try {
-              console.log(userInfo.id)
               const result = await getMyReview(userInfo.id, tokenInfo.token)
               if (result.status === 200) {
                 setReviewList(result.data)

@@ -29,7 +29,7 @@ const SignUp = () => {
       return
     }
     else if (passwordRegExpCheck(inputValue.password) === false) {
-      console.log('비밀번호 조건이 맞지 않습니다.')
+      toastError('비밀번호 조건이 맞지 않습니다.')
       return
     }
     else if (onlyTextRegExpCheck(inputValue.nickName) === false) {
