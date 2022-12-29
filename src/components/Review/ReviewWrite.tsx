@@ -71,8 +71,6 @@ const ReviewWrite = ({ reviewList, setReviewList }: types) => {
     }
   }
 
-  console.log(param.orderId)
-
   return (
     <div className={styled.reviewWriteArea}>
       <textarea className={styled.reviewTextArea} value={textValue} onChange={handleChange} />

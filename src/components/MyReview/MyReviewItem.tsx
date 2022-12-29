@@ -22,7 +22,7 @@ const MyReviewItem = ({ item }: types) => {
 
         if (result.status === 200) {
           toastSuccess('리뷰가 삭제되었습니다.')
-          nav(`/myReview`)
+          window.location.replace(`/myReview`)
         }
       } catch (e: any) {
         toastError(e.response.data.message)

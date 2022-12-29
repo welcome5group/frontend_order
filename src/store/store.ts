@@ -11,7 +11,7 @@ const { persistAtom } = recoilPersist();
 
 //토큰 정보 아톰
 export const tokenStore = atom<tokenType>({
-  key: "loginStore",
+  key: "tokenStore",
   default: { token: "", email: "", login: false },
   effects_UNSTABLE: [persistAtom],
 });
@@ -36,6 +36,7 @@ export const userStore = atom<userType>({
     status: "ACTIVATE",
     updatedAt: "",
   },
+  effects_UNSTABLE: [persistAtom],
 });
 
 //장바구니 아톰

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from './Home.module.scss';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { tokenStore, userStore } from '../../store/store';
 import { Link } from 'react-router-dom';
 import { tokenType, userType } from '../../types/types';
@@ -13,7 +13,8 @@ import HomeReview from './HomeReview';
 const Home = () => {
 
   const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
-  const [userInfo, setUserInfo] = useRecoilState<userType>(userStore)
+  const setUserInfo = useSetRecoilState<userType>(userStore)
+  const [userInfo] = useRecoilState<userType>(userStore)
 
   useEffect(() => {
     if (!testMode) {

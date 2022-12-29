@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from './Home.module.scss';
-import { myReviewType, orderType, reviewType, tokenType } from '../../types/types';
+import { orderType, tokenType, userType } from '../../types/types';
 import { Link } from 'react-router-dom';
 import { testMode } from '../../utils/testMode';
 import { useRecoilState } from 'recoil';
@@ -14,7 +14,7 @@ interface types {
 
 const HomeReview = ({ tokenInfo }: types) => {
 
-  const [userInfo] = useRecoilState(userStore)
+  const [userInfo] = useRecoilState<userType>(userStore)
   const [reviewList, setReviewList] = useState<orderType[]>([])
 
   useEffect(() => {

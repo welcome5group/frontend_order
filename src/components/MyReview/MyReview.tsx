@@ -3,7 +3,6 @@ import styled from './MyReview.module.scss'
 import { myReviewData } from '../../mock/reviewData';
 import MyReviewList from './MyReviewList';
 import { myReviewType } from '../../types/types';
-import { getReview } from '../../apis/reviewApi';
 import { useRecoilState } from 'recoil';
 import { tokenStore, userStore } from '../../store/store';
 import { testMode } from '../../utils/testMode';

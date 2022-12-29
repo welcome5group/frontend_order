@@ -29,8 +29,8 @@ const ChangePasswordCinfirm = ({ showChangePassword, email, setShowChangePasswor
           console.log(result.data.result)
           if (result.data.result === true) {
             toastSuccess('메일을 통해 비밀번호를 변경해주세요')
-            setTokenInfo({ token: '', email: '', login: false })
-            nav('/')
+            localStorage.removeItem('recoil-persist')
+            nav('/login')
           }
         }
       } catch (e: any) {
