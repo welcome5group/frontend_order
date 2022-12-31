@@ -30,17 +30,17 @@ const Footer = () => {
   return (
     <>
       <footer className={styled.footerContainer}>
-        <Link to='/'>
+        <Link to='/' aria-label='move home'>
           <BsHouseDoor />
         </Link>
-        <Link to={urlChanger()}>
+        <Link to={urlChanger()} aria-label='move menu'>
           <AiOutlineFileText />
         </Link>
-        <Link to='/cart'>
+        <Link to='/cart' aria-label='move cart'>
           <AiOutlineShoppingCart />
           {totalCartCount !== 0 && <div className={styled.totalCart}>{totalCartCount}</div>}
         </Link>
-        <Link to='/order'>
+        <Link to='/order' aria-label='move order'>
           <AiOutlineBell />
         </Link>
       </footer>

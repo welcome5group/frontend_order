@@ -19,11 +19,11 @@ const MenuItem = ({ item, category, handleOrderClick, inputValue }: types) => {
         item.menuName.replace(" ", "").toLocaleLowerCase().includes(inputValue.toLocaleLowerCase().replace(" ", "")) &&
         <div className={styled.menuItem}>
           <div className={styled.menuImg}>
-            <img src={require(`../../assets/coffee/${item.imageUrl}.jpg`)} width="3rem" height="5rem" alt="이미지" />
+            <img src={require(`../../assets/coffee/${item.imageUrl}.jpg`)} width="48px" height="80px" alt="이미지" />
           </div>
           <div className={styled.iteminfoWrap}>
             <span className={styled.itemName}>{item.menuName}</span>
-            <span className={showDetail ? `${styled.itemdesc} ${styled.showDetail}` : styled.itemDesc}>{item.description}</span>
+            <span className={showDetail ? `${styled.itemDesc} ${styled.showDetail}` : styled.itemDesc}>{item.description}</span>
             <span className={styled.itemPrice}>{item.price.toLocaleString()}원</span>
             {showDetail &&
               <button className={styled.orderBtn} onClick={() => handleOrderClick(category, item.menuId)}>주문하기</button>

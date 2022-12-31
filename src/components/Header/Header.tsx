@@ -16,11 +16,11 @@ const Header = () => {
           Finger Order
         </h1>
         {tokenInfo.token.length !== 0 ?
-          <Link to='/mypage'>
+          <Link to='/mypage' aria-label='move mypage'>
             <AiOutlineUser />
           </Link>
           :
-          <Link to='/login'>
+          <Link to='/login' aria-label='move login'>
             <p>로그인</p>
           </Link>
         }
