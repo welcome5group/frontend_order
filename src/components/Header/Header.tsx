@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from './Header.module.scss'
-import { AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineUser } from '@react-icons/all-files/ai/AiOutlineUser';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { tokenStore } from '../../store/store';

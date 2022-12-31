@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from './Menu.module.scss'
-import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineSearch } from '@react-icons/all-files/ai/AiOutlineSearch';
 import { menuItemTypes } from '../../types/types';
 
 interface types {

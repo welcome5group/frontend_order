@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from './MyReview.module.scss'
-import { AiOutlineUser } from 'react-icons/ai';
+import { AiOutlineUser } from '@react-icons/all-files/ai/AiOutlineUser';
 import { myReviewType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
 import { deleteReview } from '../../apis/reviewApi';

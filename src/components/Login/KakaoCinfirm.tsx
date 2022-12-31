@@ -1,5 +1,5 @@
 import logo from '../../assets/logo.svg'
-import { AiOutlineLeft } from 'react-icons/ai';
+import { AiOutlineLeft } from '@react-icons/all-files/ai/AiOutlineLeft';
 import { Link } from 'react-router-dom'
 import styled from './Login.module.scss'
 

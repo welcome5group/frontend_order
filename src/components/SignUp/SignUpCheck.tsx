@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import logo from '../../assets/logo.svg'
-import { AiOutlineLeft } from 'react-icons/ai';
+import { AiOutlineLeft } from '@react-icons/all-files/ai/AiOutlineLeft';
 import { Link } from 'react-router-dom'
 import styled from './SignUp.module.scss'
 import { testMode } from '../../utils/testMode';

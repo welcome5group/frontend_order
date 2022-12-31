@@ -4,7 +4,7 @@ import logo from '../../assets/logo.svg'
 import { toastError, toastSuccess } from '../toast';
 import { Link, useNavigate } from 'react-router-dom'
 import { emailRegExpCheck, onlyTextRegExpCheck } from '../../utils/regExp';
-import { AiOutlineLeft } from 'react-icons/ai';
+import { AiOutlineLeft } from '@react-icons/all-files/ai/AiOutlineLeft';
 import { testMode } from '../../utils/testMode';
 import { findPassword } from '../../apis/memberApi';
 import { useRecoilState } from 'recoil';

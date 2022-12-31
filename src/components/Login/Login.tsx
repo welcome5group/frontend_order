@@ -7,7 +7,7 @@ import { useSetRecoilState } from 'recoil';
 import { tokenStore } from '../../store/store';
 import { toastError } from '../toast';
 import { emailRegExpCheck, passwordRegExpCheck } from '../../utils/regExp';
-import { AiOutlineLeft } from 'react-icons/ai';
+import { AiOutlineLeft } from '@react-icons/all-files/ai/AiOutlineLeft';
 import { testMode } from '../../utils/testMode';
 import { kakaoSignIn, signIn } from '../../apis/memberApi';
 import { tokenType } from '../../types/types';

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from './Menu.module.scss'
 import MenuList from './MenuList';
-import { AiOutlineRight } from 'react-icons/ai';
+import { AiOutlineRight } from '@react-icons/all-files/ai/AiOutlineRight';
 import { reviewData } from '../../mock/reviewData';
 import { Link, useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';

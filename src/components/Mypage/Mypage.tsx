@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import styled from './Mypage.module.scss'
-import { AiOutlineAudit, AiOutlineCreditCard, AiOutlineFileSearch, AiOutlineLock } from 'react-icons/ai';
+import { AiOutlineAudit } from '@react-icons/all-files/ai/AiOutlineAudit';
+import { AiOutlineCreditCard } from '@react-icons/all-files/ai/AiOutlineCreditCard';
+import { AiOutlineFileSearch } from '@react-icons/all-files/ai/AiOutlineFileSearch';
+import { AiOutlineLock } from '@react-icons/all-files/ai/AiOutlineLock';
 import { Link, useNavigate } from 'react-router-dom';
 import ChangeNickName from '../Modal/ChangeNickName';
 import ChangePasswordCinfirm from '../Modal/ChangePasswordCinfirm';

@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from './Footer.module.scss'
-import { BsHouseDoor } from 'react-icons/bs';
-import { AiOutlineFileText, AiOutlineShoppingCart, AiOutlineBell } from 'react-icons/ai';
-
+import { BsHouseDoor } from '@react-icons/all-files/bs/BsHouseDoor';
+import { AiOutlineFileText } from '@react-icons/all-files/ai/AiOutlineFileText';
+import { AiOutlineShoppingCart } from '@react-icons/all-files/ai/AiOutlineShoppingCart';
+import { AiOutlineBell } from '@react-icons/all-files/ai/AiOutlineBell';
 import { Link } from 'react-router-dom'
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { cartCount, paramStore } from '../../store/store';

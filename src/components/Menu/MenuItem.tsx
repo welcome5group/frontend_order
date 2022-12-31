@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from './Menu.module.scss'
-import { AiOutlineDown } from 'react-icons/ai';
+import { AiOutlineDown } from '@react-icons/all-files/ai/AiOutlineDown';
 import { menuItemTypes } from '../../types/types';
 
 
@@ -19,7 +19,7 @@ const MenuItem = ({ item, category, handleOrderClick, inputValue }: types) => {
         item.menuName.replace(" ", "").toLocaleLowerCase().includes(inputValue.toLocaleLowerCase().replace(" ", "")) &&
         <div className={styled.menuItem}>
           <div className={styled.menuImg}>
-            <img src={require(`../../assets/coffee/${item.imageUrl}.jpg`)} alt="이미지" />
+            <img src={require(`../../assets/coffee/${item.imageUrl}.jpg`)} width="3rem" height="5rem" alt="이미지" />
           </div>
           <div className={styled.iteminfoWrap}>
             <span className={styled.itemName}>{item.menuName}</span>

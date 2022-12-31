@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from './Review.module.scss'
-import { AiOutlineUser } from 'react-icons/ai';
-import { BsThreeDots } from 'react-icons/bs';
+import { AiOutlineUser } from '@react-icons/all-files/ai/AiOutlineUser';
+import { BsThreeDots } from '@react-icons/all-files/bs/BsThreeDots';
 import { reviewType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
 import { deleteReview } from '../../apis/reviewApi';

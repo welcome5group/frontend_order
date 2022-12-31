@@ -4,7 +4,7 @@ import logo from '../../assets/logo.svg'
 import { emailRegExpCheck, onlyTextRegExpCheck, passwordRegExpCheck } from '../../utils/regExp';
 import { Link, useNavigate } from 'react-router-dom'
 import { toastError, toastSuccess } from '../toast';
-import { AiOutlineLeft } from 'react-icons/ai';
+import { AiOutlineLeft } from '@react-icons/all-files/ai/AiOutlineLeft';
 import { signUp } from '../../apis/memberApi';
 import { testMode } from '../../utils/testMode';
 
