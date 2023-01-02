@@ -45,10 +45,10 @@ const Cart = () => {
         storeId: 1,
         storeName: '커피 참 잘하는 집',
         orderId: 1,
-        orderDate: '2022-12-11',
-        orderStatus: "INCOM",
+        orderDate: '2022-12-11T13:21:13',
+        orderStatus: "INCOMP",
         totalPrice: totalPrice,
-        reviewStatus: "INCOM",
+        reviewStatus: "INCOMP",
         menuList: cart,
       }
       setOrderList([...orderList, item])

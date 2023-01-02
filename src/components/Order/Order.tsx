@@ -10,7 +10,7 @@ import OrderList from './OrderList';
 const Order = () => {
 
   const [paramsInfo] = useRecoilState<paramType>(paramStore)
-  const [orderList, setOrderList] = useState<orderType[]>([])
+  const [orderList, setOrderList] = useRecoilState<orderType[]>(orderStore)
   const [userInfo] = useRecoilState<userType>(userStore)
   const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
 
