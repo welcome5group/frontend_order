@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom"
-import { useRecoilState } from "recoil";
-import { paramStore } from "./store/store";
-import { tableNumTypes } from "./types/types";
 import "./App.css";
 import MainPage from "./pages/MainPage";
 import LoginPage from "./pages/Login/LoginPage";
@@ -22,25 +19,6 @@ import ChangePasswordPage from "./pages/Login/ChangePasswordPage";
 import KakaoPage from "./pages/Login/KakaoPage";
 
 function App() {
-
-  // const [, setParams] = useRecoilState<tableNumTypes>(paramStore)
-
-  // const closeEvent = (e: BeforeUnloadEvent) => {
-  //   e.returnValue = "";
-  //   localStorage.removeItem("recoil-persist");
-  //   setParams({
-  //     id: '',
-  //     storeName: '',
-  //     tableNum: 0,
-  //   })
-  // };
-
-  // useEffect(() => {
-  //   (() => {
-  //     window.addEventListener("beforeunload", closeEvent);
-  //   })();
-  // })
-
   return (
     <Routes>
       <Route path="/" element={<MainPage />}>

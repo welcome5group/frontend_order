@@ -4,10 +4,11 @@ import { AiOutlineUser } from '@react-icons/all-files/ai/AiOutlineUser';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { tokenStore } from '../../store/store';
+import { tokenType } from '../../types/types';
 
 const Header = () => {
 
-  const [tokenInfo] = useRecoilState(tokenStore);
+  const [tokenInfo] = useRecoilState<tokenType>(tokenStore);
 
   return (
     <>

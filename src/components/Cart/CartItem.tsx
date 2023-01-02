@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { SetterOrUpdater } from 'recoil';
 import { cartType } from '../../types/types';
 import styled from './Cart.module.scss'
 
 interface types {
   cartItem: cartType,
-  handleIncreaseHanlder: (id: number, operations: string) => void,
+  setCartList: SetterOrUpdater<cartType[]>;
   handleDeleteItem: (id: number) => void
 }
 
-const CartItem = ({ cartItem, handleIncreaseHanlder, handleDeleteItem }: types) => {
-  const totalPrice = (cartItem.product.price * cartItem.count);
+const CartItem = ({ cartItem, setCartList, handleDeleteItem }: types) => {
+  // 카트리스트에 있는 아이템 증가, 감소 기능
+  const handleIncreaseHanlder = useMemo(() => (id: number, operations: string) => {
+    setCartList(item => {
+      return item.map(obj => {
+        if (obj.product.menuId === id) {
+          if (operations === 'plus') {
+            return { ...obj, 'count': obj.count + 1 }
+          } else {
+            return { ...obj, 'count': obj.count - 1 }
+          }
+        } else {
+          return { ...obj };
+        }
+      })
+    })
+  }, [setCartList])
+  const totalPrice = cartItem.product.price * cartItem.count;
   return (
     <>
       <div className={styled.cartItem}>

@@ -4,7 +4,7 @@ import { getPayment } from '../../apis/orderApi';
 import { useDateFilter } from '../../Hooks/useDateFilter';
 import { paymentData } from '../../mock/paymentData';
 import { tokenStore, userStore } from '../../store/store';
-import { paymentType } from '../../types/types';
+import { paymentType, tokenType, userType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
 import { toastError } from '../toast';
 import styled from './MyPayment.module.scss'
@@ -13,8 +13,8 @@ import MyPaymentList from './MyPaymentList';
 const MyPayment = () => {
 
   const [paymentList, setPaymentList] = useState<paymentType[]>([])
-  const [userInfo] = useRecoilState(userStore)
-  const [tokenInfo] = useRecoilState(tokenStore)
+  const [userInfo] = useRecoilState<userType>(userStore)
+  const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
   const [paymentFilterList, setPaymentFilterList] = useState<paymentType[]>([])
 
   const currentYear = new Date().getFullYear()

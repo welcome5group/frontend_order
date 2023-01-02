@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { order } from '../../apis/orderApi';
 import { cartStore, orderStore, paramStore, tokenStore, userStore } from '../../store/store';
-import { cartType, orderType } from '../../types/types';
+import { cartType, orderType, paramType, tokenType, userType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
 import { toastError, toastSuccess } from '../toast';
 import styled from './Cart.module.scss'
@@ -12,10 +12,10 @@ const Cart = () => {
 
   const [cartList, setCartList] = useRecoilState<cartType[]>(cartStore)
   const [orderList, setOrderList] = useRecoilState<orderType[]>(orderStore)
-  const [totalPrice, setTotalPrice] = useState(0)
-  const [userInfo] = useRecoilState(userStore)
-  const [paramsInfo] = useRecoilState(paramStore)
-  const [tokenInfo] = useRecoilState(tokenStore)
+  const [totalPrice, setTotalPrice] = useState<number>(0)
+  const [userInfo] = useRecoilState<userType>(userStore)
+  const [paramsInfo] = useRecoilState<paramType>(paramStore)
+  const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
 
   // 계산하기 버튼 클릭 시 주문내역에 카트에 있는 아이템들과 총 결제금액 추가
   const handleClick = async () => {

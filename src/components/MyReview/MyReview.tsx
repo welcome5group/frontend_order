@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from './MyReview.module.scss'
 import { myReviewData } from '../../mock/reviewData';
 import MyReviewList from './MyReviewList';
-import { myReviewType } from '../../types/types';
+import { myReviewType, tokenType, userType } from '../../types/types';
 import { useRecoilState } from 'recoil';
 import { tokenStore, userStore } from '../../store/store';
 import { testMode } from '../../utils/testMode';
@@ -11,8 +11,8 @@ import { getMyReview } from '../../apis/memberApi';
 const MyReview = () => {
 
   const [reviewList, setReviewList] = useState<myReviewType[]>([])
-  const [tokenInfo] = useRecoilState(tokenStore)
-  const [userInfo] = useRecoilState(userStore)
+  const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
+  const [userInfo] = useRecoilState<userType>(userStore)
 
   useEffect(() => {
     if (!testMode) {

@@ -12,10 +12,16 @@ import { testMode } from '../../utils/testMode';
 import { kakaoSignIn, signIn } from '../../apis/memberApi';
 import { tokenType } from '../../types/types';
 
+interface inputTpye {
+  email: string;
+  password: string;
+  type: string;
+}
+
 const Login = () => {
   const nav = useNavigate()
   const setLogin = useSetRecoilState<tokenType>(tokenStore)
-  const [inputValue, setInputValue] = useState({
+  const [inputValue, setInputValue] = useState<inputTpye>({
     email: '',
     password: '',
     type: 'MEMBER'

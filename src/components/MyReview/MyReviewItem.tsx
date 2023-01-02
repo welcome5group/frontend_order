@@ -12,9 +12,6 @@ interface types {
 }
 
 const MyReviewItem = ({ item }: types) => {
-
-  console.log(Object.keys(item.comment))
-
   const userWriteTime = item?.createdAt.split('T')[0] + " " + item?.createdAt.split('T')[1].slice(0, 8)
   const storeWriteTime = Object.keys(item.comment).length !== 0 ? item?.comment?.createdAt.split('T')[0] + " " + item?.comment?.createdAt.split('T')[1].slice(0, 8) : null
 

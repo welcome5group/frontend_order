@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { orderStore, paramStore } from '../../store/store';
-import { orderType } from '../../types/types';
+import { orderType, paramType } from '../../types/types';
 import styled from './Order.module.scss'
 
 interface types {
@@ -11,7 +11,7 @@ interface types {
 
 const OrderItem = ({ order }: types) => {
 
-  const [params] = useRecoilState(paramStore)
+  const [params] = useRecoilState<paramType>(paramStore)
 
   const orderTime = order?.orderDate.split('T')[0] + " " + order?.orderDate.split('T')[1].slice(0, 8)
   return (

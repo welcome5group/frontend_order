@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { writeReview } from '../../apis/reviewApi';
 import { paramStore, tokenStore, userStore } from '../../store/store';
-import { reviewType } from '../../types/types';
+import { paramType, reviewType, tokenType, userType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
 import { toastError, toastSuccess } from '../toast';
 import styled from './Review.module.scss'
@@ -18,10 +18,10 @@ const ReviewWrite = ({ reviewList, setReviewList }: types) => {
   const nav = useNavigate()
   const param = useParams()
 
-  const [textValue, setTextValue] = useState('')
-  const [tokenInfo] = useRecoilState(tokenStore)
-  const [userInfo] = useRecoilState(userStore)
-  const [paramsInfo] = useRecoilState(paramStore)
+  const [textValue, setTextValue] = useState<string>('')
+  const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
+  const [userInfo] = useRecoilState<userType>(userStore)
+  const [paramsInfo] = useRecoilState<paramType>(paramStore)
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTextValue(e.target.value)

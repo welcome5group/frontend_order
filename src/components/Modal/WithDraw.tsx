@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { withDraw } from '../../apis/memberApi';
 import { tokenStore, userStore } from '../../store/store';
-import { userType } from '../../types/types';
+import { tokenType, userType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
 import { toastError } from '../toast';
 import styled from './Modal.module.scss'
@@ -16,9 +16,9 @@ interface types {
 const WithDraw = ({ showWithDraw, setShowWithDraw }: types) => {
 
   const nav = useNavigate()
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState<string>('')
   const [userInfo] = useRecoilState<userType>(userStore)
-  const [tokenInfo] = useRecoilState(tokenStore)
+  const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)

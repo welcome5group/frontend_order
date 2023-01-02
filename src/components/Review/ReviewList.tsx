@@ -8,7 +8,6 @@ interface types {
 }
 
 const ReviewList = ({ reviewList }: types) => {
-  console.log(reviewList)
   return (
     <div className={styled.reviewList}>
       {reviewList.map(item => (

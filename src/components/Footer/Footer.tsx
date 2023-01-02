@@ -7,12 +7,12 @@ import { AiOutlineBell } from '@react-icons/all-files/ai/AiOutlineBell';
 import { Link } from 'react-router-dom'
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { cartCount, paramStore } from '../../store/store';
-import { tableNumTypes } from '../../types/types';
+import { paramType } from '../../types/types';
 
 const Footer = () => {
 
-  const totalCartCount = useRecoilValue(cartCount)
-  const [params] = useRecoilState<tableNumTypes>(paramStore)
+  const totalCartCount = useRecoilValue<number>(cartCount)
+  const [params] = useRecoilState<paramType>(paramStore)
 
   const urlChanger = () => {
     let url = ''

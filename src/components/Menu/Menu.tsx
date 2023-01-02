@@ -5,7 +5,7 @@ import { AiOutlineRight } from '@react-icons/all-files/ai/AiOutlineRight';
 import { reviewData } from '../../mock/reviewData';
 import { Link, useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { menuListTypes, tableNumTypes } from '../../types/types';
+import { menuListTypes, paramType } from '../../types/types';
 import { paramStore } from '../../store/store';
 import { testMode } from '../../utils/testMode';
 import { menu } from '../../mock/testData';
@@ -15,12 +15,12 @@ import { getReview } from '../../apis/reviewApi';
 const Menu = () => {
 
   const param = useParams()
-  const [params, setParams] = useRecoilState<tableNumTypes>(paramStore)
+  const [params, setParams] = useRecoilState<paramType>(paramStore)
   const [menuList, setMenuList] = useState<menuListTypes[]>([])
-  const [reviewLength, setReviewLength] = useState(0)
+  const [reviewLength, setReviewLength] = useState<number>(0)
 
   useEffect(() => {
-    const params: tableNumTypes =
+    const params: paramType =
       { id: param.id, storeName: param.storeName, tableNum: Number(param.tableNum) }
     setParams(params)
   }, [])

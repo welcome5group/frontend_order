@@ -9,7 +9,7 @@ interface types {
 
 const MypaymentMenuItem = ({ item }: types) => {
 
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState<boolean>(false)
 
   return (
     <>

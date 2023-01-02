@@ -7,6 +7,7 @@ import { tokenStore, userStore } from '../../store/store';
 import { testMode } from '../../utils/testMode';
 import { changeNickName } from '../../apis/memberApi';
 import { useNavigate } from 'react-router-dom';
+import { tokenType, userType } from '../../types/types';
 
 interface types {
   showChangeNickName: boolean,
@@ -16,9 +17,9 @@ interface types {
 const ChangeNickName = ({ showChangeNickName, setShowChangeNickName }: types) => {
 
   const nav = useNavigate()
-  const [inputValue, setInputValue] = useState('')
-  const [tokenInfo] = useRecoilState(tokenStore)
-  const [userInfo] = useRecoilState(userStore)
+  const [inputValue, setInputValue] = useState<string>('')
+  const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
+  const [userInfo] = useRecoilState<userType>(userStore)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)

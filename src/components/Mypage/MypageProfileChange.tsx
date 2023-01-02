@@ -14,7 +14,7 @@ interface types {
 
 const MypageProfileChange = ({ email, token, setChangeProfile }: types) => {
   const nav = useNavigate()
-  const [urlList] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9])
+  const [urlList] = useState<number[]>([1, 2, 3, 4, 5, 6, 7, 8, 9])
 
   const handleClick = async (id: number) => {
     if (!testMode) {

@@ -16,7 +16,7 @@ interface types {
 
 const ChangePasswordCinfirm = ({ showChangePassword, email, setShowChangePassword }: types) => {
   const nav = useNavigate()
-  const [tokenInfo, setTokenInfo] = useRecoilState(tokenStore)
+  const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
   const handleSubmit = async () => {
     if (!testMode) {
       const value = {

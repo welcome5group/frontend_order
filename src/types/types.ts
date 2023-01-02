@@ -72,7 +72,7 @@ export interface menuItemTypes {
   price: number;
 }
 
-export interface tableNumTypes {
+export interface paramType {
   id: string;
   storeName: string;
   tableNum: number;

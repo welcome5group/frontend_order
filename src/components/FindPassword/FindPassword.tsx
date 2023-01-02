@@ -9,6 +9,7 @@ import { testMode } from '../../utils/testMode';
 import { findPassword } from '../../apis/memberApi';
 import { useRecoilState } from 'recoil';
 import { tokenStore } from '../../store/store';
+import { tokenType } from '../../types/types';
 
 const FindPassword = () => {
 
@@ -17,7 +18,7 @@ const FindPassword = () => {
     email: '',
     type: 'MEMBER'
   })
-  const [tokenInfo] = useRecoilState(tokenStore)
+  const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value })

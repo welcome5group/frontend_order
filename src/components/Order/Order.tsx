@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { getOrderList, getPayment } from '../../apis/orderApi';
 import { orderStore, paramStore, tokenStore, userStore } from '../../store/store';
-import { orderType } from '../../types/types';
+import { orderType, paramType, tokenType, userType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
 import styled from './Order.module.scss'
 import OrderList from './OrderList';
 
 const Order = () => {
 
-  const [paramsInfo] = useRecoilState(paramStore)
+  const [paramsInfo] = useRecoilState<paramType>(paramStore)
   const [orderList, setOrderList] = useState<orderType[]>([])
-  const [userInfo] = useRecoilState(userStore)
-  const [tokenInfo] = useRecoilState(tokenStore)
+  const [userInfo] = useRecoilState<userType>(userStore)
+  const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
 
   useEffect(() => {
     if (!testMode) {

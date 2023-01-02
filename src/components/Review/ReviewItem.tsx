@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from './Review.module.scss'
 import { AiOutlineUser } from '@react-icons/all-files/ai/AiOutlineUser';
 import { BsThreeDots } from '@react-icons/all-files/bs/BsThreeDots';
-import { reviewType } from '../../types/types';
+import { reviewType, userType } from '../../types/types';
 import { testMode } from '../../utils/testMode';
 import { deleteReview } from '../../apis/reviewApi';
 import { useRecoilState } from 'recoil';
@@ -20,7 +20,7 @@ const ReviewItem = ({ item }: types) => {
   const nav = useNavigate()
 
   const [showOption, setShowOption] = useState<Boolean>(false)
-  const [userInfo] = useRecoilState(userStore)
+  const [userInfo] = useRecoilState<userType>(userStore)
   const userWriteTime = item?.createdAt.split('T')[0] + " " + item?.createdAt.split('T')[1].slice(0, 8)
   const storeWriteTime = item.comment !== null ? item?.comment?.updatedAt.split('T')[0] + " " + item?.comment?.updatedAt.split('T')[1].slice(0, 8) : null
 

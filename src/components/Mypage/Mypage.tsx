@@ -11,7 +11,7 @@ import WithDraw from '../Modal/WithDraw';
 import { useRecoilState } from 'recoil';
 import { tokenStore, userStore } from '../../store/store';
 import MypageProfileChange from './MypageProfileChange';
-import { userType } from '../../types/types';
+import { tokenType, userType } from '../../types/types';
 
 const Mypage = () => {
 
@@ -21,8 +21,8 @@ const Mypage = () => {
   const [showChangePassword, setShowChangePassword] = useState<boolean>(false)
   const [showWithDraw, setShowWithDraw] = useState<boolean>(false)
   const [changeProfile, setChangeProfile] = useState<boolean>(false)
-  const [userInfo, setUserInfo] = useRecoilState<userType>(userStore)
-  const [tokenInfo, setTokenInfo] = useRecoilState(tokenStore)
+  const [userInfo] = useRecoilState<userType>(userStore)
+  const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
 
   const handleLogOutClick = () => {
     localStorage.removeItem('recoil-persist')

@@ -8,10 +8,18 @@ import { AiOutlineLeft } from '@react-icons/all-files/ai/AiOutlineLeft';
 import { signUp } from '../../apis/memberApi';
 import { testMode } from '../../utils/testMode';
 
+interface inputType {
+  email: string;
+  password: string;
+  passwordCinfirm: string;
+  nickName: string;
+  type: string;
+}
+
 const SignUp = () => {
 
   const nav = useNavigate();
-  const [inputValue, setInputValue] = useState({
+  const [inputValue, setInputValue] = useState<inputType>({
     email: '',
     password: '',
     passwordCinfirm: '',

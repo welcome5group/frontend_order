@@ -4,7 +4,7 @@ import {
   cartType,
   tokenType,
   orderType,
-  tableNumTypes,
+  paramType,
   userType,
 } from "../types/types";
 const { persistAtom } = recoilPersist();
@@ -17,7 +17,7 @@ export const tokenStore = atom<tokenType>({
 });
 
 //param값 저장
-export const paramStore = atom<tableNumTypes>({
+export const paramStore = atom<paramType>({
   key: "paramStroe",
   default: { id: "-1", storeName: "-1", tableNum: -1 },
   effects_UNSTABLE: [persistAtom],
