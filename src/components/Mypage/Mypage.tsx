@@ -26,7 +26,7 @@ const Mypage = () => {
 
   const handleLogOutClick = () => {
     localStorage.removeItem('recoil-persist')
-    nav('/')
+    nav('/login')
   }
 
   return (

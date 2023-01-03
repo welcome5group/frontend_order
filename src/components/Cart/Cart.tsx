@@ -44,7 +44,7 @@ const Cart = () => {
       const item = {
         storeId: 1,
         storeName: '커피 참 잘하는 집',
-        orderId: 1,
+        orderId: orderList.length + 1,
         orderDate: '2022-12-11T13:21:13',
         orderStatus: "INCOMP",
         totalPrice: totalPrice,

@@ -34,7 +34,7 @@ export const menu = [
       {
         description: "녹차입니다.",
         imageUrl: "coffee4",
-        menuId: 1,
+        menuId: 4,
         menuName: "녹차",
         menuStatus: "null",
         price: 3000,
@@ -42,7 +42,7 @@ export const menu = [
       {
         description: "시원한 녹차입니다.",
         imageUrl: "coffee5",
-        menuId: 2,
+        menuId: 5,
         menuName: "아이스 녹차",
         menuStatus: "null",
         price: 3000,
@@ -55,7 +55,7 @@ export const menu = [
       {
         description: "빵이 정말 맛있습니다.",
         imageUrl: "coffee6",
-        menuId: 1,
+        menuId: 6,
         menuName: "베이글",
         menuStatus: "null",
         price: 3000,
@@ -63,7 +63,7 @@ export const menu = [
       {
         description: "빵이 정말 맛있습니다.",
         imageUrl: "coffee7",
-        menuId: 2,
+        menuId: 7,
         menuName: "단팥빵",
         menuStatus: "null",
         price: 3000,
@@ -71,7 +71,7 @@ export const menu = [
       {
         description: "빵이 정말 맛있습니다.",
         imageUrl: "coffee8",
-        menuId: 3,
+        menuId: 8,
         menuName: "크림빵",
         menuStatus: "null",
         price: 3000,
