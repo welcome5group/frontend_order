@@ -19,7 +19,7 @@ const MyPaymentItem = ({ paymentFilterList, month, day }: types) => {
     <div className={styled.paymentItemContainer}>
       {dayFilteredData.map(item => (
         <>
-          <MypaymentMenuItem item={item} />
+          <MypaymentMenuItem item={item} key={item.id} />
         </>
       ))}
     </div>

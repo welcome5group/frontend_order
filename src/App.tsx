@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom"
 import "./App.css";
 import MainPage from "./pages/MainPage";
@@ -19,6 +19,17 @@ import ChangePasswordPage from "./pages/Login/ChangePasswordPage";
 import KakaoPage from "./pages/Login/KakaoPage";
 
 function App() {
+
+  useEffect(() => {
+    alert(
+      '\n테스트 모드입니다.' +
+      '\n몇 몇 기능은 이용할 수 없습니다.' +
+      '\n\n로그인 : 형식만 맞으면 로그인이 가능 합니다.\n           (이메일 형식, 비밀번호(특수문자 + 8자 이상))' +
+      '\n리뷰 작성 : 주문 상태가 완료 상태 시 작성이 가능하도록 되어있습니다.' +
+      '\n닉네임 변경 및 비밀번호 변경 기능을 사용할 수 없습니다.'
+    )
+  }, [])
+
   return (
     <Routes>
       <Route path="/" element={<MainPage />}>

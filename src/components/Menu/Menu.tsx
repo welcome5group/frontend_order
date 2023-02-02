@@ -11,6 +11,7 @@ import { testMode } from '../../utils/testMode';
 import { menu } from '../../mock/testData';
 import { getStore } from '../../apis/storeApi';
 import { getReview } from '../../apis/reviewApi';
+import TestModeModal from '../Modal/TestModeModal';
 
 const Menu = () => {
 
@@ -51,18 +52,20 @@ const Menu = () => {
 
   if (menuList) {
     return (
-      <div className={styled.menuContainer}>
-        <h1 className={styled.mainTitle}>
-          {params.storeName}
-        </h1>
-        <div className={styled.menuReview}>
-          <Link to={`/review/${params.id}`}>
-            <p>리뷰 {reviewLength}개</p>
-            <AiOutlineRight />
-          </Link>
+      <>
+        <div className={styled.menuContainer}>
+          <h1 className={styled.mainTitle}>
+            {params.storeName}
+          </h1>
+          <div className={styled.menuReview}>
+            <Link to={`/review/${params.id}`}>
+              <p>리뷰 {reviewLength}개</p>
+              <AiOutlineRight />
+            </Link>
+          </div>
+          <MenuList menuList={menuList} />
         </div>
-        <MenuList menuList={menuList} />
-      </div>
+      </>
     );
   };
 }

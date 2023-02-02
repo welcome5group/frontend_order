@@ -68,7 +68,7 @@ const Login = () => {
           toastError(e.response.data.message)
         }
       } else {
-        setLogin({ token: '1', email: '1', login: true })
+        setLogin({ token: 'token', email: inputValue.email, login: true })
         nav('/')
       }
     }

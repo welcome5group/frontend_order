@@ -22,10 +22,17 @@ const Mypage = () => {
   const [showWithDraw, setShowWithDraw] = useState<boolean>(false)
   const [changeProfile, setChangeProfile] = useState<boolean>(false)
   const [userInfo] = useRecoilState<userType>(userStore)
-  const [tokenInfo] = useRecoilState<tokenType>(tokenStore)
+  const [tokenInfo, setTokenInfo] = useRecoilState<tokenType>(tokenStore)
+
+  console.log(tokenInfo)
 
   const handleLogOutClick = () => {
     localStorage.removeItem('recoil-persist')
+    setTokenInfo({
+      token: '',
+      email: '',
+      login: false
+    })
     nav('/login')
   }
 
