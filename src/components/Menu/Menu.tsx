@@ -11,7 +11,6 @@ import { testMode } from '../../utils/testMode';
 import { menu } from '../../mock/testData';
 import { getStore } from '../../apis/storeApi';
 import { getReview } from '../../apis/reviewApi';
-import TestModeModal from '../Modal/TestModeModal';
 
 const Menu = () => {
 
