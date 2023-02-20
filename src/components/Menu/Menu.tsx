@@ -11,6 +11,8 @@ import { testMode } from '../../utils/testMode';
 import { menu } from '../../mock/testData';
 import { getStore } from '../../apis/storeApi';
 import { getReview } from '../../apis/reviewApi';
+import { Helmet } from 'react-helmet-async';
+import imgUrl from '../../assets/coffee/coffee1.jpg';
 
 const Menu = () => {
 
@@ -52,6 +54,18 @@ const Menu = () => {
   if (menuList) {
     return (
       <>
+        <Helmet>
+          <title>{`핑거오더`}</title>
+          <meta name="description" content={`${params.storeName} 매장의 메뉴입니다.`} />
+          <meta property="og:type" content="website" />
+          <link href={imgUrl} />
+          <meta property="og:url" content={`https://fingeroreder-order.netlify.app/menu/${params.id}/${params.storeName}`} />
+          <meta name="og:title" content={`핑거오더-${params.storeName}`} />
+          <meta name="og:description" content={`${params.storeName} 매장의 메뉴입니다.`} />
+          <meta property="og:image" content={imgUrl} />
+          <meta property="og:image:width" content={'150px'} />
+          <meta property="og:image:height" content={'150px'} />
+        </Helmet>
         <div className={styled.menuContainer}>
           <h1 className={styled.mainTitle}>
             {params.storeName}
