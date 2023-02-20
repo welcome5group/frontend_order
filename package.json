@@ -37,9 +37,11 @@
     "postbuild": "react-snap"
   },
   "reactSnap": {
-    "include": [
-      "/", "/menu"
-    ]
+    "source": "dist",
+    "minifyHtml": {
+      "collapseWhitespace": false,
+      "removeComments": false
+    }
   },
   "eslintConfig": {
     "extends": [
