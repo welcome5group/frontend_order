@@ -55,7 +55,7 @@ const Menu = () => {
     return (
       <>
         <Helmet>
-          <title>{`핑거오더`}</title>
+          <title>{`핑거오더-${params.storeName}`}</title>
           <meta name="description" content={`${params.storeName} 매장의 메뉴입니다.`} />
           <meta property="og:type" content="website" />
           <link href={imgUrl} />
