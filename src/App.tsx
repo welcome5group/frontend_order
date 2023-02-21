@@ -1,22 +1,25 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom"
 import "./App.css";
-import MainPage from "./pages/MainPage";
-import LoginPage from "./pages/Login/LoginPage";
-import SignUpPage from "./pages/Login/SignUpPage";
-import FindPasswordPage from "./pages/Login/FindPasswordPage";
-import MenuPage from "./pages/Order/MenuPage";
-import CartPage from "./pages/Order/CartPage";
-import OrderPage from "./pages/Order/OrderPage";
-import MypagePage from "./pages/MyPage/MypagePage";
-import MyPaymentPage from "./pages/MyPage/MyPaymentPage";
-import ReviewPage from "./pages/Order/ReviewPage";
-import NotFoundPage from "./pages/NotFoundPage";
-import MyReviewPage from "./pages/MyPage/MyReviewPage";
-import HomePage from "./pages/Home/HomePage";
-import SignUpCheckPage from "./pages/Login/SignUpCheckPage";
-import ChangePasswordPage from "./pages/Login/ChangePasswordPage";
-import KakaoPage from "./pages/Login/KakaoPage";
+import loadable from "@loadable/component";
+
+const MainPage = loadable(() => import('./pages/MainPage'))
+const LoginPage = loadable(() => import('./pages/Login/LoginPage'))
+const SignUpPage = loadable(() => import('./pages/Login/SignUpPage'))
+const FindPasswordPage = loadable(() => import('./pages/Login/FindPasswordPage'))
+const MenuPage = loadable(() => import('./pages/Order/MenuPage'))
+const CartPage = loadable(() => import('./pages/Order/CartPage'))
+const OrderPage = loadable(() => import('./pages/Order/OrderPage'))
+const MypagePage = loadable(() => import('./pages/MyPage/MypagePage'))
+const MyPaymentPage = loadable(() => import('./pages/MyPage/MyPaymentPage'))
+const ReviewPage = loadable(() => import('./pages/Order/ReviewPage'))
+const NotFoundPage = loadable(() => import('./pages/NotFoundPage'))
+const MyReviewPage = loadable(() => import('./pages/MyPage/MyReviewPage'))
+const HomePage = loadable(() => import('./pages/Home/HomePage'))
+const SignUpCheckPage = loadable(() => import('./pages/Login/SignUpCheckPage'))
+const ChangePasswordPage = loadable(() => import('./pages/Login/ChangePasswordPage'))
+const KakaoPage = loadable(() => import('./pages/Login/KakaoPage'))
+
 
 function App() {
 
@@ -33,7 +36,8 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<MainPage />}>
+      <Route path="/" element={<MainPage />} />
+      {/* <Route path="/" element={<MainPage />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/menu/:id/:storeName/:tableNum" element={<MenuPage />} />
         <Route path="/menu/:id/:storeName/" element={<MenuPage />} />
@@ -51,7 +55,7 @@ function App() {
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/findPassword" element={<FindPasswordPage />} />
       <Route path="/changePassword" element={<ChangePasswordPage />} />
-      <Route path="/signupCheck" element={<SignUpCheckPage />} />
+      <Route path="/signupCheck" element={<SignUpCheckPage />} /> */}
     </Routes>
   );
 }
