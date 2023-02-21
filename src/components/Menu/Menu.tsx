@@ -14,6 +14,7 @@ import { getReview } from '../../apis/reviewApi';
 import { Helmet } from 'react-helmet-async';
 import imgUrl from '../../assets/coffee/coffee1.jpg';
 
+
 const Menu = () => {
 
   const param = useParams()
@@ -55,16 +56,16 @@ const Menu = () => {
     return (
       <>
         <Helmet>
-          <title>{`핑거오더-${params.storeName}`}</title>
+          <title>{`핑거오더-test`}</title>
           <link href={imgUrl} />
           <meta property="og:type" content="website" />
-          <meta property="og:url" content={`https://fingeroreder-order.netlify.app/menu/${params.id}/${params.storeName}`} />
-          <meta name="og:title" content={`핑거오더-${params.storeName}`} />
-          <meta name="og:description" content={`${params.storeName} 매장의 메뉴입니다.`} />
-          <meta name="description" content={`${params.storeName} 매장의 메뉴입니다.`} />
+          <meta property="og:url" content={`https://fingeroreder-order.netlify.app/`} />
+          <meta name="og:title" content={`핑거오더-test`} />
+          <meta name="og:description" content={`test 매장의 메뉴입니다.`} />
+          <meta name="description" content={`test 매장의 메뉴입니다.`} />
           <meta property="og:image" content={imgUrl} />
           {/* <meta property="og:image:width" content={'150px'} />
-          <meta property="og:image:height" content={'150px'} /> */}
+    <meta property="og:image:height" content={'150px'} /> */}
         </Helmet>
         <div className={styled.menuContainer}>
           <h1 className={styled.mainTitle}>
