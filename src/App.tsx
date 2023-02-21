@@ -36,8 +36,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<MainPage />} />
-      {/* <Route path="/" element={<MainPage />}>
+      <Route path="/" element={<MainPage />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/menu/:id/:storeName/:tableNum" element={<MenuPage />} />
         <Route path="/menu/:id/:storeName/" element={<MenuPage />} />
@@ -55,7 +54,7 @@ function App() {
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/findPassword" element={<FindPasswordPage />} />
       <Route path="/changePassword" element={<ChangePasswordPage />} />
-      <Route path="/signupCheck" element={<SignUpCheckPage />} /> */}
+      <Route path="/signupCheck" element={<SignUpCheckPage />} />
     </Routes>
   );
 }

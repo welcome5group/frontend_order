@@ -35,16 +35,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "postbuild": "react-snap"
-  },
-  "reactSnap": {
-    "concurrency": 1,
-    "puppeteerArgs": [
-      "--use-gl=egl",
-      "--no-sandbox",
-      "--disable-setuid-sandbox"
-    ]
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
